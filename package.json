@@ -1,11 +1,25 @@
 {
   "name": "bezine-verbruik",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Een api voor het eigen benzine verbruik",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jannyboy313/benzine-verbruik.git"
+  },
+  "author": "Jan van Overbeek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jannyboy313/benzine-verbruik/issues"
+  },
+  "homepage": "https://github.com/Jannyboy313/benzine-verbruik#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
 }
