@@ -17,7 +17,7 @@ const FuelSchema = new Schema({
         trim: true
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User'
     }
 }, { timestamps: {currentTime: () => {
