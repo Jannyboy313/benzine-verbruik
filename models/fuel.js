@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 var Float = require('mongoose-float').loadType(mongoose);
 const Schema = mongoose.Schema;
 
-// Create Schema and model
-
 const FuelSchema = new Schema({
     liters: {
         type: Float,
@@ -16,6 +14,10 @@ const FuelSchema = new Schema({
     location: {
         type: String
     }
-}, { timestamps: true })
+}, { timestamps: {currentTime: () => {
+            let d = new Date();
+            return d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
+}}}
+)
 
 module.exports = mongoose.model('Fuel', FuelSchema);
