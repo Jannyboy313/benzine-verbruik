@@ -1,4 +1,4 @@
-const User = require('../models/users.js')
+const User = require('../models/user.js')
 
 exports.postUser = (req, res) => {
     const user = new User({
