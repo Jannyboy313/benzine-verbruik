@@ -10,4 +10,5 @@ exports.postUser = (req, res) => {
             console.log("This works");
             console.log(result);
         });
+    res.end();
 }
