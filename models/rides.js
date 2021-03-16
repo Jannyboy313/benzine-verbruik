@@ -13,6 +13,10 @@ const RideSchema = new Schema({
     distance: {
         type: Float,
         required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, { timestamps: {currentTime: () => {
             let d = new Date();
