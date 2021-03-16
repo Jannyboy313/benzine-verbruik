@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 var Float = require('mongoose-float').loadType(mongoose);
 const Schema = mongoose.Schema;
 
-const RidesSchema = new Schema({
+const RideSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -20,4 +20,4 @@ const RidesSchema = new Schema({
 }}}
 )
 
-module.exports = mongoose.model('Rides', RidesSchema);
+module.exports = mongoose.model('Ride', RideSchema);

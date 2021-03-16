@@ -13,6 +13,10 @@ const FuelSchema = new Schema({
     },
     location: {
         type: String
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, { timestamps: {currentTime: () => {
             let d = new Date();
