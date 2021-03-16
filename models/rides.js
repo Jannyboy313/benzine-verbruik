@@ -3,9 +3,9 @@ var Float = require('mongoose-float').loadType(mongoose);
 const Schema = mongoose.Schema;
 
 const RideSchema = new Schema({
-    name: {
+    title: {
         type: String,
-        required: [true, 'Name is required'],
+        required: [true, 'Title is required'],
         trim: true,
         lowercase: true
     },
