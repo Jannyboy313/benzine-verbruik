@@ -1,6 +1,7 @@
 require('dotenv/config');
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
@@ -12,6 +13,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //LISTENER
-app.listen(process.env.PORT, () => {
-    console.log('Listening to port ' + process.env.PORT)
-});
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+    .then((result) => app.listen(process.env.PORT))
+    .catch((err) => console.log(err));
