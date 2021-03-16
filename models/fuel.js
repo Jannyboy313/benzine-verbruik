@@ -13,6 +13,7 @@ const FuelSchema = new Schema({
     },
     location: {
         type: String,
+        maxLength: [25, "Location can't be longer then 25 characters"],
         trim: true
     },
     user: {
