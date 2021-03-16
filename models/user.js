@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const validateEmail = require('../validators/emailValidator.js');
+const email = require('../validators/emailValidator.js');
 
 const UserSchema = new Schema({
     email: {
@@ -9,7 +9,10 @@ const UserSchema = new Schema({
         unique: [true, 'Email does already exists'],
         lowercase: true,
         trime: true,
-        validate: [validateEmail, 'Please fill a valid email address']
+        validate: {
+            validator: email.validateEmail,
+            message: 'Please fill a valid email address'
+        },
     },
     password: {
         type: String,
