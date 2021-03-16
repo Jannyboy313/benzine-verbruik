@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.router();
+const router = express.Router();
 const fuelController = require('../controllers/fuelController.js');
 
 router.post('/fuel', fuelController.postFuel);

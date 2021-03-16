@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.router();
+const router = express.Router();
 const rideController = require('../controllers/rideController.js');
 
 router.post('/ride', rideController.postRide);
