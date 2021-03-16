@@ -5,14 +5,17 @@ const Schema = mongoose.Schema;
 const RideSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: [true, 'Name is required'],
+        trim: true,
+        lowercase: true
     },
     description: {
-        type: String
+        type: String,
+        trim: true
     },
     distance: {
         type: Float,
-        required: true
+        required: [true, 'Distance in kilometers is required']
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

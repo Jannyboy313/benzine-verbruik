@@ -5,14 +5,15 @@ const Schema = mongoose.Schema;
 const FuelSchema = new Schema({
     liters: {
         type: Float,
-        required: true
+        required: [true, 'Amount of fuel in liters is required']
     },
     price: {
         type: Float,
-        required: true
+        required: [true, 'Price is required']
     },
     location: {
-        type: String
+        type: String,
+        trim: true
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

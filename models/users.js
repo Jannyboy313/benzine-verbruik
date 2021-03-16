@@ -1,15 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const validateEmail = require('../validators/emailValidator.js');
 
 const UserSchema = new Schema({
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: [true, 'Email is required'],
+        unique: [true, 'Email does already exists'],
+        lowercase: true,
+        trime: true,
+        validate: [validateEmail, 'Please fill a valid email address']
     },
     password: {
         type: String,
-        required: true
+        required: [true, 'Password is required']
     }
 }, { timestamps: {currentTime: () => {
             let d = new Date();
