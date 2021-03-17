@@ -10,7 +10,7 @@ app.use(express.json())
 
 //ROUTES
 app.use(cors());
-app.use(userRouter);
+app.use('/user', userRouter);
 
 //LISTENER
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})

@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const fuelController = require('../controllers/fuelController.js');
 
-router.post('/fuel', fuelController.postFuel);
-router.get('/fuel/{id}', fuelController.getFuel);
-router.put('/fuel/{id}', fuelController.putFuel);
-router.delete('/fuel/{id}', fuelController.putFuel);
+router.post('/', fuelController.postFuel);
+router.get('/{id}', fuelController.getFuel);
+router.get('/', fuelController.getFuels);
+router.put('/{id}', fuelController.putFuel);
+router.delete('/{id}', fuelController.putFuel);
 
 module.exports = router;

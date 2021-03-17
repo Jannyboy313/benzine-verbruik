@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const rideController = require('../controllers/rideController.js');
 
-router.post('/ride', rideController.postRide);
-router.get('/ride/{id}', rideController.getRide);
-router.put('/ride/{id}', rideController.putRide);
-router.delete('/ride/{id}', rideController.putRide);
+router.post('/', rideController.postRide);
+router.get('/{id}', rideController.getRide);
+router.get('/', rideController.getRides);
+router.put('/{id}', rideController.putRide);
+router.delete('/{id}', rideController.putRide);
 
 module.exports = router;
