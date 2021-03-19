@@ -20,10 +20,6 @@ const FuelSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }
-}, { timestamps: {currentTime: () => {
-            let d = new Date();
-            return d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
-}}}
-)
+}, { timestamps: true });
 
 module.exports = mongoose.model('Fuel', FuelSchema);

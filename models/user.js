@@ -18,10 +18,6 @@ const UserSchema = new Schema({
         type: String,
         required: [true, 'Password is required']
     }
-}, { timestamps: {currentTime: () => {
-            let d = new Date();
-            return d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes();
-}}}
-)
+}, { timestamps: true });
 
 module.exports = mongoose.model('User', UserSchema);
