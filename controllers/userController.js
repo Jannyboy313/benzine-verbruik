@@ -1,6 +1,5 @@
 const User = require('../models/user.js')
-
-exports.postUser = (req, res, next) => {
+exports.postUser = (req, res) => {
     const user = new User(req.body);
     user.save()
         .then(result => {
@@ -9,6 +8,6 @@ exports.postUser = (req, res, next) => {
         })
         .catch(err => {
             const status = err.statusCode || 500;
-            res.status(status).json({message: err.message})
+            res.status(status).json({message: err})
 })
 }
