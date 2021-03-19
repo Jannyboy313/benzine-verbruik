@@ -1,15 +1,14 @@
 const User = require('../models/user.js')
 
-exports.postUser = (req, res) => {
+exports.postUser = (req, res, next) => {
     const user = new User(req.body);
     user.save()
         .then(result => {
             console.log("This works");
-            console.log(result);
+            res.send(result);
         })
         .catch(err => {
-            console.log("This doesn't work")
-            console.log(err)
-        })
-    res.end();
+            const status = err.statusCode || 500;
+            res.status(status).json({message: err.message})
+})
 }
