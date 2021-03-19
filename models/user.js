@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const email = require('../validators/emailValidator.js');
+const beautifyUnique = require('mongoose-beautiful-unique-validation');
 
 const UserSchema = new Schema({
     email: {
         type: String,
         required: [true, 'Email is required'],
-        unique: [true, 'Email does already exists'],
+        unique: "Email does already exist",
         lowercase: true,
         trime: true,
         validate: {
@@ -19,5 +20,7 @@ const UserSchema = new Schema({
         required: [true, 'Password is required']
     }
 }, { timestamps: true });
+
+UserSchema.plugin(beautifyUnique);
 
 module.exports = mongoose.model('User', UserSchema);

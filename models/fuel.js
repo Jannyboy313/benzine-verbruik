@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-var Float = require('mongoose-float').loadType(mongoose);
 const Schema = mongoose.Schema;
+var Float = require('mongoose-float').loadType(mongoose);
 
 const FuelSchema = new Schema({
     liters: {
