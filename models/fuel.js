@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 var Float = require('mongoose-float').loadType(mongoose);
 
 const FuelSchema = new Schema({
-    liters: {
+    liter: {
         type: Float,
         required: [true, 'Amount of fuel in liters is required']
     },
