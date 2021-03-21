@@ -54,7 +54,7 @@ exports.putRide = (req, res) => {
 
 exports.deleteRide = (req, res) => {
     const id = req.params.id;
-    Ride.deleteOne(id)
+    Ride.deleteOne({_id: id})
     .then(result => {
         res.status(200).send(result);
     })
