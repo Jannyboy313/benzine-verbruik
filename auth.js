@@ -3,7 +3,7 @@ const User = require('./models/user.js');
 require('dotenv').config()
 
 module.exports.createTokens = (user) => {
-    const createdAccessToken = jwt.sign({ user: user }, process.env.ACCESS_TOKEN, { expiresIn: "15m" });
+    const createdAccessToken = jwt.sign({ user: user }, process.env.ACCESS_TOKEN, { expiresIn: "3m" });
     const createdRefreshToken = jwt.sign({ user: user }, process.env.REFRESH_TOKEN, { expiresIn: "40d" });
 
     return Promise.all([createdAccessToken, createdRefreshToken]);
@@ -26,5 +26,5 @@ module.exports.refreshTokens = async (refreshToken) => {
     }
 
     const [newToken, newRefreshToken] = await this.createTokens(updatedUser);
-    return { token: newToken, refreshToken: newRefreshToken };
+    return { accesstoken: newToken, refreshToken: newRefreshToken };
 }
