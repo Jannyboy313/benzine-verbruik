@@ -9,15 +9,16 @@ module.exports = function(passport) {
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
         secretOrKey: process.env.ACCESS_TOKEN
     }, function (jwt_payload, done) {
-        User.findById(jwt_payload.data.user._id, (err, user) => {
-            if (err) {
-                return done(err, false);
-            }
-            if (user) {
-                return done(null, user);
+        User.findById(jwt_payload.data.user._id)
+        .then(result => {
+            if (result) {
+                return done(null, result);
             } else {
                 return done(null, false);
             }
+        })
+        .catch(err => {
+            return done(err, false);
         });
     }));
 }
