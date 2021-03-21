@@ -4,12 +4,12 @@ require('dotenv').config()
 
 module.exports.createTokens = (user) => {
     const createdAccessToken = jwt.sign({ user: user }, process.env.ACCESS_TOKEN, { expiresIn: "15m" });
-    const createdRefreshToken = jwt.sign({ user: user }, process.env.REFRESH_TOKEN, { expiresIn: "14d" });
+    const createdRefreshToken = jwt.sign({ user: user }, process.env.REFRESH_TOKEN, { expiresIn: "40d" });
 
     return Promise.all([createdAccessToken, createdRefreshToken]);
 }
 
-module.exports.refreshAccessToken = async (refreshToken) => {
+module.exports.refreshTokens = async (refreshToken) => {
     let user;
     try {
         user = jwt.decode(refreshToken);
@@ -25,6 +25,6 @@ module.exports.refreshAccessToken = async (refreshToken) => {
         return err;
     }
 
-    const createdAccessToken = jwt.sign({ user: updatedUser }, process.env.ACCESS_TOKEN, { expiresIn: "15m" });
-    return createdAccessToken;
+    const [newToken, newRefreshToken] = await this.createTokens(updatedUser);
+    return { token: newToken, refreshToken: newRefreshToken };
 }
