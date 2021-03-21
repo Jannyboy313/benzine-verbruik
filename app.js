@@ -11,7 +11,7 @@ const rideRouter = require('./routes/rideRouter.js');
 
 const app = express();
 
-app.use(exppress.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 app.use(cookieParser());
 app.use(express.json())
 
