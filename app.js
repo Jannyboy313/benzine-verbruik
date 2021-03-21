@@ -2,12 +2,21 @@ require('dotenv/config');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+
+require('./config/passport.js');
 const userRouter = require('./routes/userRouter.js');
 const rideRouter = require('./routes/rideRouter.js');
 
 const app = express();
 
+app.use(exppress.urlencoded({extended: true}))
+app.use(cookieParser());
 app.use(express.json())
+
+// passport middleware
+app.use(passport.initialize());
 
 //ROUTES
 app.use(cors());
