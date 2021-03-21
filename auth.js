@@ -6,7 +6,7 @@ module.exports.createTokens = (user) => {
     const createdAccessToken = jwt.sign({ user: user }, process.env.ACCESS_TOKEN, { expiresIn: "3m" });
     const createdRefreshToken = jwt.sign({ user: user }, process.env.REFRESH_TOKEN, { expiresIn: "40d" });
 
-    return Promise.all([createdAccessToken, createdRefreshToken]);
+    return [createdAccessToken, createdRefreshToken];
 }
 
 module.exports.refreshTokens = async (refreshToken) => {
@@ -25,6 +25,6 @@ module.exports.refreshTokens = async (refreshToken) => {
         return { error: true, message: err };
     }
 
-    const [newToken, newRefreshToken] = await this.createTokens(updatedUser);
+    const [newToken, newRefreshToken] = this.createTokens(updatedUser);
     return { accesstoken: newToken, refreshToken: newRefreshToken, error: false, user: updatedUser };
 }
