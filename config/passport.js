@@ -9,7 +9,7 @@ module.exports = function(passport) {
         jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
         secretOrKey: process.env.ACCESS_TOKEN
     }, function (jwt_payload, done) {
-        User.findById(jwt_payload.data._id, (err, user) => {
+        User.findById(jwt_payload.data.user._id, (err, user) => {
             if (err) {
                 return done(err, false);
             }
