@@ -26,5 +26,5 @@ module.exports.refreshTokens = async (refreshToken) => {
     }
 
     const [newToken, newRefreshToken] = await this.createTokens(updatedUser);
-    return { accesstoken: newToken, refreshToken: newRefreshToken, error: false };
+    return { accesstoken: newToken, refreshToken: newRefreshToken, error: false, user: updatedUser };
 }
