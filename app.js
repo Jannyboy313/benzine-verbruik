@@ -25,8 +25,8 @@ app.use('/ride', rideRouter);
 
 //LISTENER
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-    .then((result) => {
+    .then(result => {
         app.listen(process.env.PORT);
         console.log(`Running on port ${process.env.PORT}`);
     })
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
