@@ -31,7 +31,7 @@ exports.register = async (req, res) => {
 
     user.save()
     .then(result => {
-        const [accesstoken, refreshToken] = auth.createTokens(user);
+        const [accesstoken, refreshToken] = auth.createTokens(result);
         res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
         res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
         res.status(201).send(result);
