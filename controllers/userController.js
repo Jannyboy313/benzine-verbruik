@@ -1,14 +1,14 @@
 const User = require('../models/user.js');
-const hasher = require('../helper/hasher.js');
 const auth = require('../auth.js');
+const bcrypt = require('bcrypt');
 
 exports.login = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
     User.find({email: email})
-    .then( user => {
-        const isEqual = hasher.compareHash(password, user.password);
+    .then( async(user) => {
+        const isEqual = await bcrypt.compare(password, user.password)
 
         if (isEqual) {
             const [accesstoken, refreshToken] = auth.createTokens(user);
@@ -25,9 +25,9 @@ exports.login = async (req, res) => {
 }
 
 // Creating a new user and giving tokens for authentication
-exports.register = (req, res) => {
+exports.register = async(req, res) => {
+    req.body.password = await bcrypt.hash(req.body.password, 12);
     const user = new User(req.body);
-    user.password = hasher.getHash(user.password);
 
     user.save()
     .then(result => {
