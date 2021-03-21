@@ -14,7 +14,7 @@ module.exports.refreshTokens = async (refreshToken) => {
     try {
         user = jwt.decode(refreshToken);
     } catch (err) {
-        return err;
+        return { error: true, message: err };
     }
 
     const updatedUser = await User.findById(user.id);
@@ -22,9 +22,9 @@ module.exports.refreshTokens = async (refreshToken) => {
     try {
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN);
     } catch (err) {
-        return err;
+        return { error: true, message: err };
     }
 
     const [newToken, newRefreshToken] = await this.createTokens(updatedUser);
-    return { accesstoken: newToken, refreshToken: newRefreshToken };
+    return { accesstoken: newToken, refreshToken: newRefreshToken, error: false };
 }
