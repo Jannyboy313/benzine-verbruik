@@ -42,3 +42,14 @@ exports.register = (req, res) => {
     });
 }
 
+exports.getUser = (req, res) => {
+    const id = req.params.id;
+    User.findById(id).select('-password')
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(err => {
+        const status = err.statusCode || 500;
+        res.status(status).json({message: err})
+    });
+}
