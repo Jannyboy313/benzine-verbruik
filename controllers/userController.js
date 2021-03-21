@@ -25,7 +25,7 @@ exports.login = async (req, res) => {
 }
 
 // Creating a new user and giving tokens for authentication
-exports.register = async (req, res) => {
+exports.register = (req, res) => {
     const user = new User(req.body);
     user.password = hasher.getHash(user.password);
 
