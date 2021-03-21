@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('./models/user.js');
-require('dotenv').config()
+require('dotenv/config');
 
 module.exports.createTokens = (user) => {
     const createdAccessToken = jwt.sign({ user: user }, process.env.ACCESS_TOKEN, { expiresIn: "3m" });

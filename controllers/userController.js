@@ -16,12 +16,12 @@ exports.login = async (req, res) => {
             res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
             res.status(200).json(user);
         } else {
-            return res.status(401).json({ message: 'Password incorrect' })
+            return res.status(401).json({ message: 'Password incorrect' });
         }
     })
     .catch(err => {
-        return res.status(500).json({ message: err })
-    })
+        return res.status(500).json({ message: err });
+    });
 }
 
 // Creating a new user and giving tokens for authentication
@@ -38,8 +38,8 @@ exports.register = (req, res) => {
     })
     .catch(err => {
         const status = err.statusCode || 500;
-        res.status(status).json({message: err})
-    })
+        res.status(status).json({message: err});
+    });
 
 }
 

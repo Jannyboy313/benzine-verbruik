@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 const auth = require("../auth.js");
 
 module.exports = async (req, res, next) => {
-    if (!accesstoken) {
-        return res.status(401).json({ message: 'Access token is missing' })
+    if (!req.cookies['access-token']) {
+        return res.status(401).json({ message: 'Access token is missing' });
     }
 
     jwt.verify(req.cookies['access-token'], process.env.ACCESS_TOKEN_SECRET, (err, authorizedData) => {
@@ -15,11 +15,11 @@ module.exports = async (req, res, next) => {
                 res.locals.user = newTokens.user;
                 next();
             } else {
-                return res.status(401).json({ message: newTokens.message })
+                return res.status(401).json({ message: newTokens.message });
             }
         } else {
-            res.locals.user = authorizedData.user
+            res.locals.user = authorizedData.user;
             next();
         }
-    })
+    });
 }
