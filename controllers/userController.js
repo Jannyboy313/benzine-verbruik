@@ -7,12 +7,12 @@ exports.login = async (req, res) => {
     const password = req.body.password;
 
     User.find({email: email})
-    .then(user => {
+    .then( async(user) => {
         const isEqual = hasher.compareHash(password, user.password);
 
         if (isEqual) {
-            const [token, refreshToken] = await auth.createTokens(user);
-            res.cookie('access-token', token, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
+            const [accesstoken, refreshToken] = await auth.createTokens(user);
+            res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
             res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
             res.status(200).json(user);
         } else {
