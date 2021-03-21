@@ -12,8 +12,8 @@ exports.login = async (req, res) => {
 
         if (isEqual) {
             const [accesstoken, refreshToken] = auth.createTokens(user);
-            res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
-            res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
+            res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true, secure: true });
+            res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true, secure: true });
             user.password = null;
             res.status(200).json(user);
         } else {
@@ -33,8 +33,8 @@ exports.register = async(req, res) => {
     user.save()
     .then(result => {
         const [accesstoken, refreshToken] = auth.createTokens(result);
-        res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
-        res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
+        res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true, secure: true });
+        res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true, secure: true });
         result.password = null;
         res.status(201).send(result);
     })
