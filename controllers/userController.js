@@ -40,6 +40,5 @@ exports.register = (req, res) => {
         const status = err.statusCode || 500;
         res.status(status).json({message: err});
     });
-
 }
 
