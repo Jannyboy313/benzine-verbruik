@@ -8,7 +8,7 @@ exports.getHash = async (password) => {
 }
 
 // Hash is from the database
-exports.isEqual = async (password, hash) => {
+exports.compareHash = async (password, hash) => {
     bcrypt.compare(password, hash)
     .then(result => { return result })
     .catch(err => { return err })
