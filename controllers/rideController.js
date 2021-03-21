@@ -42,7 +42,6 @@ exports.putRide = (req, res) => {
         title: ride.title,
         description: ride.description,
         distance: ride.distance,
-        user: ride.user
      })
     .then(result => {
         res.status(200).send(result);
