@@ -5,7 +5,7 @@ const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 
-require('./config/passport.js');
+require('./config/passport.js')(passport);
 const userRouter = require('./routes/userRouter.js');
 const rideRouter = require('./routes/rideRouter.js');
 
