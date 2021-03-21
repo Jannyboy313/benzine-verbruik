@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRouter = require('./routes/userRouter.js');
+const rideRouter = require('./routes/rideRouter.js');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json())
 //ROUTES
 app.use(cors());
 app.use('/user', userRouter);
+app.use('/ride', rideRouter);
 
 //LISTENER
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
