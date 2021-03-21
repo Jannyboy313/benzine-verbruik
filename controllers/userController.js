@@ -14,6 +14,7 @@ exports.login = async (req, res) => {
             const [accesstoken, refreshToken] = auth.createTokens(user);
             res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
             res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
+            user.password = null;
             res.status(200).json(user);
         } else {
             return res.status(401).json({ message: 'Password incorrect' });
@@ -34,6 +35,7 @@ exports.register = async(req, res) => {
         const [accesstoken, refreshToken] = auth.createTokens(result);
         res.cookie('access-token', accesstoken, { maxAge: 60 * 60 * 24 * 7 * 1000 , httpOnly: true});
         res.cookie('refresh-token', refreshToken, { maxAge: 60 * 60 * 24 * 7 * 1000, httpOnly: true});
+        result.password = null;
         res.status(201).send(result);
     })
     .catch(err => {
