@@ -161,7 +161,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Cookies with tokens",
             "content": {
               "application/json": {
@@ -225,6 +225,9 @@
                       "location": {
                         "type": "string"
                       },
+                      "user": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string"
                       },
@@ -241,7 +244,7 @@
             }
           },
           "500": {
-            "description": "Fuel does not exists"
+            "description": "Fuels does not exists"
           }
         }
       }
@@ -275,12 +278,15 @@
                       "type": "string"
                     },
                     "liter": {
-                      "type": "float"
+                      "type": "number"
                     },
                     "price": {
-                      "type": "float"
+                      "type": "number"
                     },
                     "location": {
+                      "type": "string"
+                    },
+                    "user": {
                       "type": "string"
                     },
                     "createdAt": {
@@ -302,6 +308,169 @@
           }
         }
       }
+    },
+    "/fuel": {
+      "post": {
+        "summary": "Adds fuel to the database",
+        "tags": [
+          "Fuel"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "liter": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "location": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Receiving created fuel",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "liter": {
+                      "type": "number"
+                    },
+                    "price": {
+                      "type": "number"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "__v": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "validation error"
+          }
+        }
+      }
+    },
+    "/fuel/{id}": {
+      "put": {
+        "summary": "Updates fuel in the database",
+        "tags": [
+          "Fuel"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "liter": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "location": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Receiving updated fuel",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string"
+                    },
+                    "liter": {
+                      "type": "number"
+                    },
+                    "price": {
+                      "type": "number"
+                    },
+                    "location": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    },
+                    "__v": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "validation error"
+          }
+        }
+      }
+    },
+    "/ride/": {
+      "$ref": "#/paths/~1fuel~1"
+    },
+    "/ride/{id}/": {
+      "$ref": "#/paths/~1fuel~1%7Bid%7D~1"
+    },
+    "/ride": {
+      "$ref": "#/paths/~1fuel"
+    },
+    "/ride/{id}": {
+      "$ref": "#/paths/~1fuel~1%7Bid%7D"
     }
   }
 }
