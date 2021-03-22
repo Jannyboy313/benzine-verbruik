@@ -1,10 +1,10 @@
 get:
-  summary: Returns all the fuel of user.
+  summary: Returns all the rides of user.
   tags:
-    - Fuel
+    - Ride
   responses:
     '200':
-      description: Fuel object
+      description: Ride object
       content:
         application/json:
           schema:
@@ -14,11 +14,13 @@ get:
               properties:
                 _id:
                   type: string
-                liter:
+                title:
+                  type: string
+                description:
+                  type: string
+                distance:
                   type: number
-                price:
-                  type: number
-                location:
+                user:
                   type: string
                 createdAt:
                   type: string
@@ -28,4 +30,4 @@ get:
                   type: string
 
     '500':
-      description: Fuels does not exists
+      description: Rides does not exists

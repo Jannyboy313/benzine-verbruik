@@ -1,7 +1,7 @@
 post:
-  summary: Adds fuel to the database
+  summary: Adds ride to the database
   tags:
-    - Fuel
+    - Ride
   requestBody:
     required: true
     content:
@@ -9,15 +9,15 @@ post:
         schema:
           type: object
           properties:
-            liter:
-              type: number
-            price:
-              type: number
-            location:
+            title:
               type: string
+            description:
+              type: string
+            distance:
+              type: number
   responses:
     '201':
-      description: Receiving created fuel
+      description: Receiving created ride
       content:
         application/json:
           schema:
@@ -25,11 +25,13 @@ post:
             properties:
               _id:
                 type: string
-              liter:
-                type: float
-              price:
-                type: float
-              location:
+              title:
+                type: string
+              description:
+                type: string
+              distance:
+                type: number
+              user:
                 type: string
               createdAt:
                 type: string

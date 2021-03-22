@@ -1,7 +1,7 @@
 get:
-  summary: Returns the fuel by ID.
+  summary: Returns the ride by ID.
   tags:
-    - Fuel
+    - Ride
   parameters:
     - name: id
       in: path
@@ -11,7 +11,7 @@ get:
         minimum: 1
   responses:
     '200':
-      description: Fuel object
+      description: Ride object
       content:
         application/json:
           schema:
@@ -19,11 +19,13 @@ get:
             properties:
               _id:
                 type: string
-              liter:
-                type: float
-              price:
-                type: float
-              location:
+              title:
+                type: string
+              description:
+                type: string
+              distance:
+                type: number
+              user:
                 type: string
               createdAt:
                 type: string
@@ -32,4 +34,4 @@ get:
               __v:
                 type: string
     '500':
-      description: Fuel does not exists
+      description: Ride does not exists

@@ -1,7 +1,7 @@
-get:
-  summary: Deletes the fuel by ID.
+delete:
+  summary: Deletes the ride by ID.
   tags:
-    - Fuel
+    - Ride
   parameters:
     - name: id
       in: path
@@ -13,4 +13,4 @@ get:
     '200':
       description: Succes message
     '500':
-      description: Fuel does not exists
+      description: Ride does not exists

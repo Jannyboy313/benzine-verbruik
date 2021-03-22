@@ -1,7 +1,7 @@
 put:
-  summary: Updates fuel in the database
+  summary: Updates ride in the database
   tags:
-    - Fuel
+    - Ride
   parameters:
     - name: id
       in: path
@@ -16,15 +16,15 @@ put:
         schema:
           type: object
           properties:
-            liter:
-              type: number
-            price:
-              type: number
-            location:
+            title:
               type: string
+            description:
+              type: string
+            distance:
+              type: number
   responses:
     '200':
-      description: Receiving updated fuel
+      description: Receiving updated ride
       content:
         application/json:
           schema:
@@ -32,11 +32,13 @@ put:
             properties:
               _id:
                 type: string
-              liter:
-                type: float
-              price:
-                type: float
-              location:
+              title:
+                type: string
+              description:
+                type: string
+              distance:
+                type: number
+              user:
                 type: string
               createdAt:
                 type: string
