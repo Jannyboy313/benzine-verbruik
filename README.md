@@ -17,7 +17,7 @@ node app
 
 Generate swagger documentation
 ```bash
-swagger-cli bundle -o .\util\swagger.json .\documentation\swagger.yaml
+npm run docu
 ```
 
 ## License
