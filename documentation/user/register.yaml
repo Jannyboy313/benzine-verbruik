@@ -15,7 +15,7 @@ post:
             password:
               type: string
   responses:
-    '200':
+    '201':
       description: Cookies with tokens
       content:
         application/json:

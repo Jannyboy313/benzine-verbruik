@@ -1,0 +1,41 @@
+post:
+  summary: Adds fuel to the database
+  tags:
+    - Fuel
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            liter:
+              type: number
+            price:
+              type: number
+            location:
+              type: string
+  responses:
+    '201':
+      description: Receiving created fuel
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _id:
+                type: string
+              liter:
+                type: float
+              price:
+                type: float
+              location:
+                type: string
+              createdAt:
+                type: string
+              updatedAt:
+                type: string
+              __v:
+                type: string
+    '500':
+      description: validation error

@@ -1,0 +1,31 @@
+get:
+  summary: Returns all the fuel of user.
+  tags:
+    - Fuel
+  responses:
+    '200':
+      description: Fuel object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                _id:
+                  type: string
+                liter:
+                  type: number
+                price:
+                  type: number
+                location:
+                  type: string
+                createdAt:
+                  type: string
+                updatedAt:
+                  type: string
+                __v:
+                  type: string
+
+    '500':
+      description: Fuels does not exists
