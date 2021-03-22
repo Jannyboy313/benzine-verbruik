@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 
 require('./config/passport.js')(passport);
@@ -34,7 +33,6 @@ const swaggerOptions = {
     },
     apis: ['./routes/*.js'],
 };
-
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJsdoc(swaggerOptions)));
 
 // passport middleware
