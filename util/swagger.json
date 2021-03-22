@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/user/{userId}": {
+    "/user/{id}": {
       "get": {
         "summary": "Returns the user by ID.",
         "parameters": [
