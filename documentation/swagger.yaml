@@ -1,0 +1,14 @@
+openapi: 3.0.0
+info:
+  title: Benzine api
+  description: This api serves the benzine app.
+  version: 1.0.0
+
+servers:
+  - url: https://bezine-api.janvanoverbeek.nl/
+
+paths:
+  /user:
+    $ref: "./getUser.yaml"
+  /login:
+    $ref: ./login.yaml
