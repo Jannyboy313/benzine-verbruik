@@ -26,10 +26,10 @@ paths:
   /fuel/{id}:
     $ref: ./fuel/putFuel.yaml
   /ride/:
-    $ref: ./fuel/getFuels.yaml
+    $ref: ./ride/getRides.yaml
   /ride/{id}/:
-    $ref: ./fuel/getFuel.yaml
+    $ref: ./ride/getRide.yaml
   /ride:
-    $ref: ./fuel/postFuel.yaml
+    $ref: ./ride/postRide.yaml
   /ride/{id}:
-    $ref: ./fuel/putFuel.yaml
+    $ref: ./ride/putRide.yaml
