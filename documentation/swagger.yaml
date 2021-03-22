@@ -25,3 +25,11 @@ paths:
     $ref: ./fuel/postFuel.yaml
   /fuel/{id}:
     $ref: ./fuel/putFuel.yaml
+  /ride/:
+    $ref: ./fuel/getFuels.yaml
+  /ride/{id}/:
+    $ref: ./fuel/getFuel.yaml
+  /ride:
+    $ref: ./fuel/postFuel.yaml
+  /ride/{id}:
+    $ref: ./fuel/putFuel.yaml
