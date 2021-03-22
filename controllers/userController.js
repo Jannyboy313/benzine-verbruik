@@ -5,8 +5,7 @@ const bcrypt = require('bcrypt');
 exports.login = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-
-    User.find({email: email})
+    User.findOne({email: email})
     .then( async(user) => {
         const isEqual = await bcrypt.compare(password, user.password)
 
