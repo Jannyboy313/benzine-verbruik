@@ -32,7 +32,7 @@ const swaggerOptions = {
         email: "janvanoverbeek12@gmail.com"
       },
     },
-    apis: ['endpoints.js'],
+    apis: ['./routes/*.js'],
 };
 
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJsdoc(swaggerOptions)));
