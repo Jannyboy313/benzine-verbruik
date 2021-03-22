@@ -36,4 +36,4 @@ paths:
   /ride/{id}:
     $ref: ./ride/putRide.yaml
   /ride/{id}//:
-    $ref: ./fuel/deleteFuel.yaml
+    $ref: ./ride/deleteRide.yaml
