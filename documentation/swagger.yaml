@@ -8,7 +8,7 @@ tags:
   - name: Fuel
   - name: Ride
 servers:
-  - url: https://bezine-api.janvanoverbeek.nl/
+  - url: https://benzine-api.janvanoverbeek.nl/
 
 paths:
   /user/{id}:

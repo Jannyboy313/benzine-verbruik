@@ -18,7 +18,7 @@
   ],
   "servers": [
     {
-      "url": "https://bezine-api.janvanoverbeek.nl/"
+      "url": "https://benzine-api.janvanoverbeek.nl/"
     }
   ],
   "paths": {
