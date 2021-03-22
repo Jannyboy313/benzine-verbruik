@@ -13,7 +13,7 @@ exports.postRide = (req, res) => {
 }
 
 exports.getRides = (req, res) => {
-    Ride.find()
+    Ride.find({ user: res.locals.user._id })
     .then(result => {
         res.status(200).send(result);
     })
