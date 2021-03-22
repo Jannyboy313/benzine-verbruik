@@ -460,6 +460,33 @@
         }
       }
     },
+    "/fuel/{id}//": {
+      "delete": {
+        "summary": "Deletes the fuel by ID.",
+        "tags": [
+          "Fuel"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succes message"
+          },
+          "500": {
+            "description": "Fuel does not exists"
+          }
+        }
+      }
+    },
     "/ride/": {
       "get": {
         "summary": "Returns all the rides of user.",
@@ -722,6 +749,9 @@
           }
         }
       }
+    },
+    "/ride/{id}//": {
+      "$ref": "#/paths/~1fuel~1%7Bid%7D~1~1"
     }
   }
 }

@@ -25,6 +25,8 @@ paths:
     $ref: ./fuel/postFuel.yaml
   /fuel/{id}:
     $ref: ./fuel/putFuel.yaml
+  /fuel/{id}//:
+    $ref: ./fuel/deleteFuel.yaml
   /ride/:
     $ref: ./ride/getRides.yaml
   /ride/{id}/:
@@ -33,3 +35,5 @@ paths:
     $ref: ./ride/postRide.yaml
   /ride/{id}:
     $ref: ./ride/putRide.yaml
+  /ride/{id}//:
+    $ref: ./fuel/deleteFuel.yaml
