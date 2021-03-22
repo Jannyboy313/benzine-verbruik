@@ -33,9 +33,9 @@ put:
               _id:
                 type: string
               liter:
-                type: float
+                type: number
               price:
-                type: float
+                type: number
               location:
                 type: string
               user:
