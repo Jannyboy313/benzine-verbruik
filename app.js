@@ -5,8 +5,10 @@ const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
 
 require('./config/passport.js')(passport);
+const swaggerDocument = YAML.load('./documentation/swagger.yaml');
 const userRouter = require('./routes/userRouter.js');
 const rideRouter = require('./routes/rideRouter.js');
 const fuelRouter = require('./routes/fuelRouter.js');
@@ -18,22 +20,8 @@ app.use(express.urlencoded({extended: true}))
 app.use(cookieParser());
 app.use(express.json());
 
-// Documentation initializing
-const swaggerOptions = {
-    swaggerDefinition: {
-      info: {
-        title: 'Benzine API',
-        version: '1.0.0',
-        description: 'Api for the requests of the benzine app',
-      },
-      contact: {
-        name: "Jan van Overbeek",
-        email: "janvanoverbeek12@gmail.com"
-      },
-    },
-    apis: ['./routes/*.js'],
-};
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJsdoc(swaggerOptions)));
+// Documentation middleware
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 // passport middleware
 app.use(passport.initialize());
