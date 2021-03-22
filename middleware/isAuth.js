@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
         return res.status(401).json({ message: 'Access token is missing' });
     }
 
-    jwt.verify(req.cookies['access-token'], process.env.ACCESS_TOKEN_SECRET, (err, authorizedData) => {
+    jwt.verify(req.cookies['access-token'], process.env.ACCESS_TOKEN_SECRET, async(err, authorizedData) => {
         if(err) {
             const newTokens = await auth.refreshTokens(req.cookies['refresh-token']);
             if (!newTokens.error) {
