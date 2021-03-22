@@ -13,7 +13,7 @@ exports.postFuel = (req, res) => {
 }
 
 exports.getFuels = (req, res) => {
-    Fuel.find()
+    Fuel.find({ user: req.locals.user._id })
     .then(result => {
         res.status(200).send(result);
     })
