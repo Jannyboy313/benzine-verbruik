@@ -9,6 +9,8 @@ servers:
 
 paths:
   /user:
-    $ref: "./getUser.yaml"
+    $ref: ./user/getUser.yaml
   /login:
-    $ref: ./login.yaml
+    $ref: ./user/login.yaml
+  /register:
+    $ref: ./user/register.yaml
