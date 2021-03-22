@@ -8,9 +8,9 @@ servers:
   - url: https://bezine-api.janvanoverbeek.nl/
 
 paths:
-  /user:
+  /user/{userId}:
     $ref: ./user/getUser.yaml
-  /login:
+  /user/login:
     $ref: ./user/login.yaml
-  /register:
+  /user/register:
     $ref: ./user/register.yaml
