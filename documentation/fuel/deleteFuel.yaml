@@ -1,4 +1,4 @@
-get:
+delete:
   summary: Deletes the fuel by ID.
   tags:
     - Fuel
