@@ -38,6 +38,8 @@ put:
                 type: float
               location:
                 type: string
+              user:
+                type: string
               createdAt:
                 type: string
               updatedAt:
