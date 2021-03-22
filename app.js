@@ -29,7 +29,7 @@ app.use(passport.initialize());
 app.use(cors());
 app.use('/user', userRouter);
 app.use('/ride', isAuth, rideRouter);
-app.use('/fuel', fuelRouter)
+app.use('/fuel', isAuth, fuelRouter)
 
 //LISTENER
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
