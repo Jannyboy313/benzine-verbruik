@@ -3,7 +3,10 @@ info:
   title: Benzine api
   description: This api serves the benzine app.
   version: 1.0.0
-
+tags:
+  - name: User
+  - name: Fuel
+  - name: Ride
 servers:
   - url: https://bezine-api.janvanoverbeek.nl/
 

@@ -5,6 +5,17 @@
     "description": "This api serves the benzine app.",
     "version": "1.0.0"
   },
+  "tags": [
+    {
+      "name": "User"
+    },
+    {
+      "name": "Fuel"
+    },
+    {
+      "name": "Ride"
+    }
+  ],
   "servers": [
     {
       "url": "https://bezine-api.janvanoverbeek.nl/"
@@ -14,6 +25,9 @@
     "/user/{id}": {
       "get": {
         "summary": "Returns the user by ID.",
+        "tags": [
+          "User"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -62,6 +76,9 @@
     "/user/login": {
       "post": {
         "summary": "Logs the user in and gives an access- & refreshtoken",
+        "tags": [
+          "User"
+        ],
         "description": "User gets authenticated and gets 2 tokens inside a cookie httponly secret",
         "requestBody": {
           "required": true,
@@ -121,6 +138,9 @@
     "/user/register": {
       "post": {
         "summary": "Registers the user and gives an access- & refreshtoken",
+        "tags": [
+          "User"
+        ],
         "description": "User gets registered and authenticated gets 2 tokens inside a cookie httponly secret",
         "requestBody": {
           "required": true,

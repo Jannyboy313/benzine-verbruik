@@ -1,5 +1,7 @@
 post:
   summary: Registers the user and gives an access- & refreshtoken
+  tags:
+    - User
   description: User gets registered and authenticated gets 2 tokens inside a cookie httponly secret
   requestBody:
     required: true
