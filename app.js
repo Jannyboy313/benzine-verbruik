@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 require('./config/passport.js')(passport);
 const userRouter = require('./routes/userRouter.js');
 const rideRouter = require('./routes/rideRouter.js');
+const fuelRouter = require('./routes/fuelRouter.js');
+const isAuth = require('./middleware/isAuth.js');
 
 const app = express();
 
@@ -21,7 +23,8 @@ app.use(passport.initialize());
 //ROUTES
 app.use(cors());
 app.use('/user', userRouter);
-app.use('/ride', rideRouter);
+app.use('/ride', isAuth, rideRouter);
+app.use('/fuel', isAuth, fuelRouter)
 
 //LISTENER
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
