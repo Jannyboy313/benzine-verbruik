@@ -5,10 +5,9 @@ const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const swaggerUI = require('swagger-ui-express');
-const YAML = require('yamljs');
 
 require('./config/passport.js')(passport);
-const swaggerDocument = YAML.load('./documentation/swagger.yaml');
+const swaggerDocument = require('./util/swagger.json');
 const userRouter = require('./routes/userRouter.js');
 const rideRouter = require('./routes/rideRouter.js');
 const fuelRouter = require('./routes/fuelRouter.js');
