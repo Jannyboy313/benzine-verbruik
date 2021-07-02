@@ -4,7 +4,7 @@ Its a REST api that uses mongoose for the connection with mongodb.
 
 ## Installation
 
-Install the node modules (Needs to be done inside both folders)
+Install the node modules
 ```bash
 npm install
 ```
@@ -21,5 +21,18 @@ Generate swagger documentation
 npm run docu
 ```
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
+# Benzine usage pwa
+
+## Installation
+
+Install the node modules
+```bash
+npm install
+```
+
+## Usage
+
+Start angular pwa
+```bash
+ng serve
+```
