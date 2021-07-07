@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ErrorSpanComponent implements OnInit {
   @Input() errorMessage: String = ''
-  @Output() error = new EventEmitter<Boolean>();
+  @Output() isError = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -15,6 +15,6 @@ export class ErrorSpanComponent implements OnInit {
   }
 
   close():void {
-    this.error.emit(false);
+    this.isError.emit(false);
   }
 }
