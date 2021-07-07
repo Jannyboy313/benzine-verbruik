@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form-input',
@@ -7,9 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormInputComponent implements OnInit {
   @Input() formName: String = '';
-
   @Input() isError: boolean = false;
-
+  
   constructor() {
   }
 
