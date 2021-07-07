@@ -9,7 +9,8 @@ import { LoginInputComponent } from './login-input/login-input.component';
 
 @NgModule({
   declarations: [
-    LoginInputComponent
+    LoginInputComponent,
+    LoginScreenComponent
   ],
   imports: [
     CommonModule,
