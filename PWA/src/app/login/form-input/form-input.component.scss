@@ -1,0 +1,52 @@
+@import '../../../util/styles/colors.scss';
+@import '../../../util/styles/text.scss';
+@import 'material-icons/iconfont/filled.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    &:focus-within label {
+        color: $grey;
+    }
+
+    &:focus-within span {
+        color: $grey;
+    }
+}
+
+label {
+    color: transparent;
+    margin-top: 10px;
+}
+
+.input {
+    position: relative;
+}
+
+input {
+    margin-top: 5px;
+    width: 65%;
+    border: none;
+    border-bottom: 1px solid $grey-light;
+    font-size: medium;
+    padding: 5px;
+
+    &:focus {
+        border-bottom: 2px solid $primary-color;
+        outline: 2px solid transparent;
+    }
+
+    &::placeholder {
+        color: $grey;
+        opacity: 0.8;
+    }
+}
+
+span {
+    color: $grey-light;
+    position: absolute;
+    top: 5px;
+    left: 243px;
+}
+
