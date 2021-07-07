@@ -20,7 +20,6 @@ export class LoginScreenComponent implements OnInit {
   }
 
   onSubmit(): void {
-
   }
 
   setEmail(email: String) {
