@@ -9,10 +9,25 @@ import { FormInputComponent } from '../form-input/form-input.component';
 export class LoginScreenComponent implements OnInit {
 
   isError: boolean = false;
+  isLoading: boolean = false;
+  email: String = '';
+  password: String = '';
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): void {
+
+  }
+
+  setEmail(email: String) {
+    this.email = email;
+  }
+
+  setPassword(password: String) {
+    this.password = password;
   }
 
 }

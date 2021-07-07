@@ -8,11 +8,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class FormInputComponent implements OnInit {
   @Input() formName: String = '';
   @Input() isError: boolean = false;
-  
+
+  @Output() formData = new EventEmitter<String>();
+
   constructor() {
   }
 
   ngOnInit(): void {
+  }
+
+  emitFormData(event: any) {
+    this.formData.emit(event.target.value);
   }
 
   getEnglishName(): String {

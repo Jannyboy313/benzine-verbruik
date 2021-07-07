@@ -1,4 +1,11 @@
 <form>
-    <app-form-input [formName]="'Email'" [isError]="isError"></app-form-input>
-    <app-form-input [formName]="'Wachtwoord'" [isError]="isError"></app-form-input>
+    <app-form-input [formName]="'Email'" [isError]="isError" (formData)="setEmail($event)"></app-form-input>
+    <app-form-input [formName]="'Wachtwoord'" [isError]="isError" (formData)="setPassword($event)"></app-form-input>
+        <button
+        (click)="onSubmit()"
+        class="btn float-right"
+        [disabled]="isLoading"
+        >
+        Inloggen
+      </button>
 </form>
