@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private db: Db) {}
 
-  getUser(id: string): Observable<User> {
+  getUser(id: String): Observable<User> {
     return this.db.sendGetRequest(`user/${id}`)
     .pipe(map((response: User) => {
       return response;
@@ -20,7 +20,7 @@ export class UserService {
     return this.db.sendPostRequest('user/register', payload);
   }
 
-  login(email: string, password: string): Observable<User> {
+  login(email: String, password: String): Observable<User> {
         return this.db.sendPostRequest('user/login', {
             email: email,
             password: password
