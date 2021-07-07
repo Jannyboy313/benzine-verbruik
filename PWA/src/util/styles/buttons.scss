@@ -21,8 +21,7 @@
 
     &:disabled {
         pointer-events: none;
-        filter:opacity(40%);
-        filter:grayscale(60%);
+        filter:grayscale(85%);
     }
 
     &:active {
