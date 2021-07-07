@@ -23,7 +23,24 @@ export class LoginScreenComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.error.isError = false;
+    this.setError(false, '');
+    this.isLoading = true;
+
+    if (this.email === '' || this.password === '') {
+      this.setError(true, "Niet alle velden zijn ingevuld");
+      this.error.isError = true;
+    }
+
+    this.login();
+  }
+
+  setError(isError: boolean, message: String): void {
+      this.error.isError = isError;
+      this.error.message = message;
+  }
+
+  login() {
+
   }
 
   setEmail(email: String) {
@@ -33,6 +50,7 @@ export class LoginScreenComponent implements OnInit {
   setPassword(password: String) {
     this.password = password;
   }
+
 
   closeError(isError: boolean) {
     this.error.isError = isError;
