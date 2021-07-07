@@ -18,9 +18,14 @@ p {
 
 header {
     h1 {
+        font-family: 'Inter', sans-serif;
         font-size: 32px;
-        background: $primary-gradient;
+        font-weight: 900;
+        background-image: $primary-gradient;
         background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        letter-spacing: -0.02em;
+        display: inline-block;
     }
 }
