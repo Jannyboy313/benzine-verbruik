@@ -1,11 +1,11 @@
 @import '../../../util/styles/buttons.scss';
+@import '../../../util/styles/error.scss';
 
 article {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // height: 90vh;
 
     header {
         margin-top: 5vh;
@@ -26,5 +26,9 @@ article {
 
     button {
         @include button;
+    }
+
+    .error {
+        @extend .error;
     }
 }

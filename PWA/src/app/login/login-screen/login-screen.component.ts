@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormInputComponent } from '../form-input/form-input.component';
+import { ErrorSpanComponent } from 'src/shared/components/error-span/error-span.component';
 
 @Component({
   selector: 'app-login-screen',
@@ -28,6 +29,10 @@ export class LoginScreenComponent implements OnInit {
 
   setPassword(password: String) {
     this.password = password;
+  }
+
+  closeError(isError: boolean) {
+    this.isError = isError;
   }
 
 }
