@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Error } from '../../../shared/models/error.model';
+import { UserService } from 'src/shared/Services/db/user.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -17,7 +18,7 @@ export class LoginScreenComponent implements OnInit {
   email: String = '';
   password: String = '';
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -29,9 +30,10 @@ export class LoginScreenComponent implements OnInit {
     if (this.email === '' || this.password === '') {
       this.setError(true, "Niet alle velden zijn ingevuld");
       this.error.isError = true;
+    } else {
+      this.login();
     }
 
-    this.login();
   }
 
   setError(isError: boolean, message: String): void {
@@ -40,7 +42,19 @@ export class LoginScreenComponent implements OnInit {
   }
 
   login() {
-
+    this.userService.login(this.email, this.password)
+    .subscribe(
+      () => {
+        this.isLoading = false;
+        // navigate to homescreen
+        // Store user login information (id)
+        // Create guard
+      },
+      () => {
+        this.isLoading = false;
+        this.setError(true, "Email or password is incorrect");
+      }
+    )
   }
 
   setEmail(email: String) {
