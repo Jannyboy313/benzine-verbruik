@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Error } from '../../../shared/models/error.model';
 
 @Component({
   selector: 'app-login-screen',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginScreenComponent implements OnInit {
 
-  error: any = {
+  error: Error = {
     isError: false,
     message: ''
   }
