@@ -9,7 +9,7 @@ export class User {
   constructor(private db: Db) {}
 
   getUser(id): Observable<User> {
-    return this.db.sendGetRequest('user/' + id);
+    return this.db.sendGetRequest(`user/${id}`);
   }
 
   createUser(payload: object): Observable<User> {
