@@ -30,7 +30,7 @@ input {
     border: none;
     border-bottom: 1px solid $grey-light;
     font-size: medium;
-    padding: 5px;
+    padding: 5px 5px 5px 0;
 
     &:focus {
         border-bottom: 2px solid $primary-color;
@@ -48,5 +48,14 @@ span {
     position: absolute;
     top: 5px;
     left: 68vw;
+}
+
+.invalid-input {
+    border-bottom: 2px solid $error-color;
+
+    &:focus {
+        border-bottom: 3px solid $error-color;
+        outline: 3px solid transparent;
+    }
 }
 
