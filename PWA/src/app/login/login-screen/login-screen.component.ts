@@ -8,6 +8,8 @@ import { FormInputComponent } from '../form-input/form-input.component';
 })
 export class LoginScreenComponent implements OnInit {
 
+  isError: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

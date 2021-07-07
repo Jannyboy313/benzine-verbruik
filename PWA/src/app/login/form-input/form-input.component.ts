@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FormInputComponent implements OnInit {
   @Input() formName: String = '';
 
-  isError: boolean = false;
+  @Input() isError: boolean = false;
 
   constructor() {
   }
