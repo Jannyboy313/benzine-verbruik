@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginScreenComponent implements OnInit {
 
-  isError: boolean = false;
+  error: any = {
+    isError: false,
+    message: ''
+  }
+
   isLoading: boolean = false;
   email: String = '';
   password: String = '';
@@ -18,6 +22,7 @@ export class LoginScreenComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.error.isError = false;
   }
 
   setEmail(email: String) {
@@ -29,7 +34,7 @@ export class LoginScreenComponent implements OnInit {
   }
 
   closeError(isError: boolean) {
-    this.isError = isError;
+    this.error.isError = isError;
   }
 
 }

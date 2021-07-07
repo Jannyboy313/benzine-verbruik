@@ -3,11 +3,11 @@
         <h1>Login</h1>
     </header>
 
-    <app-error-span *ngIf="isError" class="error" [errorMessage]="'Email of wachtwoord onjuist'" (isError)="closeError($event)"></app-error-span>
+    <app-error-span *ngIf="error.isError" class="error" [errorMessage]="error.message" (isError)="closeError($event)"></app-error-span>
 
     <form>
-        <app-form-input [formName]="'Email'" [isError]="isError" (formData)="setEmail($event)"></app-form-input>
-        <app-form-input [formName]="'Wachtwoord'" [isError]="isError" (formData)="setPassword($event)"></app-form-input>
+        <app-form-input [formName]="'Email'" [isError]="error.isError" (formData)="setEmail($event)"></app-form-input>
+        <app-form-input [formName]="'Wachtwoord'" [isError]="error.isError" (formData)="setPassword($event)"></app-form-input>
         <button
             id="loginButton"
             (click)="onSubmit()"
