@@ -1,5 +1,30 @@
 @import '../../../util/styles/buttons.scss';
 
-button {
-    @include button;
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // height: 90vh;
+
+    header {
+        margin-top: 5vh;
+        margin-bottom: 10vh;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        #loginButton {
+            margin-top: 10vh;
+        }
+    }
+
+    button {
+        @include button;
+    }
 }
