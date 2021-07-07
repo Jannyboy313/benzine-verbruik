@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 
 @Injectable()
-export class User {
+export class UserService {
 
   constructor(private db: Db) {}
 
