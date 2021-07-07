@@ -8,7 +8,7 @@ export class User {
 
   constructor(private db: Db) {}
 
-  getUser(id): Observable<User> {
+  getUser(id: string): Observable<User> {
     return this.db.sendGetRequest(`user/${id}`);
   }
 
