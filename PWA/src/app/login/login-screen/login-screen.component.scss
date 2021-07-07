@@ -1,0 +1,5 @@
+@import '../../../util/styles/buttons.scss';
+
+button {
+    @include button;
+}

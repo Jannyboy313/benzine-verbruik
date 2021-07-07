@@ -1,0 +1,43 @@
+@import 'colors.scss';
+@import 'text.scss';
+@import 'effects.scss';
+
+@mixin button {
+    height: 44px;
+    width: 65%;
+    margin: 10px;
+    background-image: $secondary-gradient;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgba($color: $black, $alpha: 0.25);
+    transition: opacity .2s ease-in-out;
+
+    &:disabled {
+        cursor: initial;
+        filter:opacity(40%);
+        filter:grayscale(60%);
+
+        &:hover {
+            filter: none;
+        }
+    }
+
+    &:active {
+		background-color: $secondary-color;
+        color: $grey;
+		box-shadow: none;
+	}
+
+    &:hover {
+        filter: opacity(80%);
+        cursor: pointer;
+    }
+}
+
