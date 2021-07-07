@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-error-span',
@@ -7,10 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ErrorSpanComponent implements OnInit {
   @Input() errorMessage: String = ''
+  @Output() error = new EventEmitter<Boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  close():void {
+    this.error.emit(false);
+  }
 }
