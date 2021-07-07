@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormInputComponent } from '../form-input/form-input.component';
 
 @Component({
   selector: 'app-login-screen',

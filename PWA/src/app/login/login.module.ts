@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 
 import { LoginScreenComponent } from './login-screen/login-screen.component';
-import { LoginInputComponent } from './login-input/login-input.component';
+import { FormInputComponent } from './form-input/form-input.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginInputComponent,
-    LoginScreenComponent
+    LoginScreenComponent,
+    FormInputComponent
   ],
   imports: [
     CommonModule,
