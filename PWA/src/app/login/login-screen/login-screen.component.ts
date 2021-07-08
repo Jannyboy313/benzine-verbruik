@@ -35,7 +35,7 @@ export class LoginScreenComponent implements OnInit {
 
     if (this.email === '' || this.password === '') {
       this.setError(true, "Niet alle velden zijn ingevuld");
-      this.error.isError = true;
+      this.isLoading = false;
     } else {
       this.login();
     }
@@ -55,9 +55,9 @@ export class LoginScreenComponent implements OnInit {
         this.router.navigate(['/rides']);
         this.dataStorageService.storeData('user_id', result._id);
       },
-      () => {
+      err => {
         this.isLoading = false;
-        this.setError(true, "Email or password is incorrect");
+        this.setError(true, err.error.message);
       }
     )
   }
