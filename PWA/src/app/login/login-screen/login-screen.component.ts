@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Error } from '../../../shared/models/error.model';
 import { UserService } from 'src/shared/Services/db/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-screen',
@@ -18,7 +19,7 @@ export class LoginScreenComponent implements OnInit {
   email: String = '';
   password: String = '';
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -46,7 +47,7 @@ export class LoginScreenComponent implements OnInit {
     .subscribe(
       () => {
         this.isLoading = false;
-        // navigate to homescreen
+        this.router.navigate(['/rides'])
         // Store user login information (id)
         // Create guard
       },
