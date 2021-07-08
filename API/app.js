@@ -26,7 +26,10 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use(passport.initialize());
 
 //ROUTES
-app.use(cors());
+app.use(cors({ origin: [`http://localhost:4200`],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials:true,
+}));
 app.use('/user', userRouter);
 app.use('/ride', isAuth, rideRouter);
 app.use('/fuel', isAuth, fuelRouter)
