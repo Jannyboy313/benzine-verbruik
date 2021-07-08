@@ -16,11 +16,11 @@ exports.login = async (req, res) => {
             user.password = null;
             return res.status(200).json(user);
         } else {
-            return res.status(401).json({ message: 'Password incorrect' });
+            return res.status(401).json({ message: 'Email or password incorrect' });
         }
     })
     .catch(err => {
-        return res.status(500).json({ message: err });
+        return res.status(401).json({ message: 'Email or password incorrect' });
     });
 }
 
