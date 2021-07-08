@@ -6,10 +6,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./form-input.component.scss']
 })
 export class FormInputComponent implements OnInit {
-  @Input() formName: String = '';
+  @Input() formName: string = '';
   @Input() isError: boolean = false;
 
-  @Output() formData = new EventEmitter<String>();
+  @Output() formData = new EventEmitter<string>();
 
   constructor() {
   }
@@ -21,7 +21,7 @@ export class FormInputComponent implements OnInit {
     this.formData.emit(event.target.value);
   }
 
-  getEnglishName(): String {
+  getEnglishName(): string {
     if (this.formName.toLowerCase() !== 'wachtwoord') {
       return 'email';
     }

@@ -16,8 +16,8 @@ export class LoginScreenComponent implements OnInit {
   }
 
   isLoading: boolean = false;
-  email: String = '';
-  password: String = '';
+  email: string = '';
+  password: string = '';
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -37,7 +37,7 @@ export class LoginScreenComponent implements OnInit {
 
   }
 
-  setError(isError: boolean, message: String): void {
+  setError(isError: boolean, message: string): void {
       this.error.isError = isError;
       this.error.message = message;
   }
@@ -58,11 +58,11 @@ export class LoginScreenComponent implements OnInit {
     )
   }
 
-  setEmail(email: String) {
+  setEmail(email: string) {
     this.email = email;
   }
 
-  setPassword(password: String) {
+  setPassword(password: string) {
     this.password = password;
   }
 
