@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Error } from '../../../shared/models/error.model';
 import { UserService } from 'src/shared/Services/db/user.service';
 import { Router } from '@angular/router';
+import { DataStorageService } from 'src/shared/Services/data-storage.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -19,7 +20,11 @@ export class LoginScreenComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private dataStorageService: DataStorageService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -45,10 +50,10 @@ export class LoginScreenComponent implements OnInit {
   login() {
     this.userService.login(this.email, this.password)
     .subscribe(
-      () => {
+      result => {
         this.isLoading = false;
-        this.router.navigate(['/rides'])
-        // Store user login information (id)
+        this.router.navigate(['/rides']);
+        this.dataStorageService.storeData('user_id', result._id);
         // Create guard
       },
       () => {
