@@ -1,6 +1,6 @@
 export class User {
-    _id?: string;
-    email?: string;
+    _id: string;
+    email: string;
     createdAt?: Date;
     updatedAt?: Date;
 
