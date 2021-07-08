@@ -54,7 +54,6 @@ export class LoginScreenComponent implements OnInit {
         this.isLoading = false;
         this.router.navigate(['/rides']);
         this.dataStorageService.storeData('user_id', result._id);
-        // Create guard
       },
       () => {
         this.isLoading = false;
