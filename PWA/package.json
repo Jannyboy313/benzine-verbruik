@@ -20,6 +20,7 @@
     "@angular/router": "~12.1.1",
     "material-icons": "^0.7.4",
     "rxjs": "~6.6.0",
+    "spinners-angular": "^0.0.4",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
