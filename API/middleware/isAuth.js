@@ -2,8 +2,8 @@ const jwt = require("jsonwebtoken");
 const auth = require("../auth.js");
 
 module.exports = async (req, res, next) => {
-    if (!req.cookies['access-token']) {
-        return res.status(401).json({ message: 'Access token is missing' });
+    if (!req.cookies['access-token'] && !req.cookies['refresh-token']) {
+        return res.status(401).json({ message: 'Authentication tokens are missing' });
     }
 
     jwt.verify(req.cookies['access-token'], process.env.ACCESS_TOKEN_SECRET, async(err, authorizedData) => {
