@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Error } from '../../../shared/models/error.model';
+import { UserService } from 'src/shared/Services/db/user.service';
+import { Router } from '@angular/router';
+import { DataStorageService } from 'src/shared/Services/data-storage.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -7,9 +11,68 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginScreenComponent implements OnInit {
 
-  constructor() { }
+  error: Error = {
+    isError: false,
+    message: ''
+  }
+
+  isLoading: boolean = false;
+  email: string = '';
+  password: string = '';
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private dataStorageService: DataStorageService
+    ) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(): void {
+    this.setError(false, '');
+    this.isLoading = true;
+
+    if (this.email === '' || this.password === '') {
+      this.setError(true, "Niet alle velden zijn ingevuld");
+      this.isLoading = false;
+    } else {
+      this.login();
+    }
+
+  }
+
+  setError(isError: boolean, message: string): void {
+      this.error.isError = isError;
+      this.error.message = message;
+  }
+
+  login() {
+    this.userService.login(this.email, this.password)
+    .subscribe(
+      result => {
+        this.isLoading = false;
+        this.router.navigate(['/rides']);
+        this.dataStorageService.storeData('user_id', result._id);
+      },
+      err => {
+        this.isLoading = false;
+        this.setError(true, err.error.message);
+      }
+    )
+  }
+
+  setEmail(email: string) {
+    this.email = email;
+  }
+
+  setPassword(password: string) {
+    this.password = password;
+  }
+
+
+  closeError(isError: boolean) {
+    this.error.isError = isError;
   }
 
 }
