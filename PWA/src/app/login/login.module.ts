@@ -6,6 +6,9 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { FormInputComponent } from './form-input/form-input.component';
 import { ErrorSpanComponent } from 'src/shared/components/error-span/error-span.component';
 
+import { UserService } from 'src/shared/Services/db/user.service';
+import { DataStorageService } from 'src/shared/Services/data-storage.service';
+
 
 
 @NgModule({
@@ -17,6 +20,11 @@ import { ErrorSpanComponent } from 'src/shared/components/error-span/error-span.
   imports: [
     CommonModule,
     LoginRoutingModule
+  ],
+  providers: [
+    UserService,
+    DataStorageService
+
   ]
 })
 export class LoginModule { }
