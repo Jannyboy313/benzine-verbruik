@@ -14,8 +14,8 @@
             class="btn float-right"
             [disabled]="isLoading"
             >
-            <app-spinner></app-spinner>
-            <p>LOG IN</p>
+            <app-spinner *ngIf="isLoading"></app-spinner>
+            <span *ngIf="!isLoading">LOG IN</span>
         </button>
         <button
             class="btn float-right"
