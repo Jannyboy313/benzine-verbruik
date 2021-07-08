@@ -8,7 +8,7 @@ import { LoginService } from '../Services/login.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   /**
    * @param next The activatedroute
@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
       if (this.loginService.isLoggedIn()) {
         return true;
       }
-      window.alert('You need to be logged in to view this page');
+      this.router.navigate(['/home'])
       return false;
   }
 
