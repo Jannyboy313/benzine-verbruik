@@ -10,16 +10,16 @@ export class RideService {
   constructor(private db: Db) {}
 
     getRides(): Observable<Ride[]> {
-    return this.db.sendGetRequest(`ride`)
-    .pipe(map((response: Ride[]) => {
-      return response;
-    }));
+        return this.db.sendGetRequest(`ride`)
+        .pipe(map((response: Ride[]) => {
+            return response;
+        }));
   }
 
-  getRide(id: string): Observable<Ride> {
-    return this.db.sendGetRequest(`ride/${id}`)
-    .pipe(map((response: Ride) => {
-      return response;
-    }));
+    getRide(id: string): Observable<Ride> {
+        return this.db.sendGetRequest(`ride/${id}`)
+        .pipe(map((response: Ride) => {
+            return response;
+        }));
   }
 }
