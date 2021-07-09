@@ -1,9 +1,11 @@
-<div *ngIf="!isLoading && ridesExist()">
-    <app-ride-card *ngFor="let ride of rides"></app-ride-card>
-</div>
+<article>
+    <div *ngIf="!isLoading && ridesExist()">
+        <app-ride-card *ngFor="let ride of rides"></app-ride-card>
+    </div>
 
-<div *ngIf="!isLoading && !ridesExist()">
-    <p>No rides are existing</p>
-</div>
+    <div *ngIf="!isLoading && !ridesExist()">
+        <p>No rides are existing</p>
+    </div>
 
-<app-spinner *ngIf="isLoading"></app-spinner>
+    <app-spinner *ngIf="!isLoading"></app-spinner>
+</article>

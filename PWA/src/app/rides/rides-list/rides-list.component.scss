@@ -1,0 +1,14 @@
+@import '../../../util/styles/colors.scss';
+
+article {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+app-spinner {
+    display: inherit;
+    justify-content: center;
+}
