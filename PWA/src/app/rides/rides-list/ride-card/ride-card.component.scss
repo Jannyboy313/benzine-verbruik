@@ -12,6 +12,9 @@ article {
     margin: auto;
     display: flex;
     flex-direction: column;
+    box-shadow: $box-shadow;
+    border-radius: 16px;
+    padding: 10px
 }
 
 .top-card {
