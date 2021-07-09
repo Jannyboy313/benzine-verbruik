@@ -10,8 +10,8 @@ module.exports = async (req, res, next) => {
         if(err) {
             const newTokens = await auth.refreshTokens(req.cookies['refresh-token']);
             if (!newTokens.error) {
-                res.cookie('access-token', newTokens.accesstoken, { maxAge: 3 * 60 * 60 * 1000 , httpOnly: true, secure: true });
-                res.cookie('refresh-token', newTokens.refreshToken, { maxAge: 60 * 60 * 24 * 40 * 1000 , httpOnly: true, secure: true });
+                res.cookie('access-token', newTokens.accesstoken, { maxAge: 3 * 60 * 60 * 1000 , httpOnly: true, secure: false });
+                res.cookie('refresh-token', newTokens.refreshToken, { maxAge: 60 * 60 * 24 * 40 * 1000 , httpOnly: true, secure: false });
                 res.locals.user = newTokens.user;
                 return next();
             } else {
