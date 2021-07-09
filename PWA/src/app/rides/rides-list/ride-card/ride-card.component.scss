@@ -1,16 +1,11 @@
 @import '../../../../util/styles/colors.scss';
+@import '../../../../util/styles/buttons.scss';
 
-h1 {
-    margin: 0;
-}
+h1 { margin: 0; }
 
-h2 {
-    margin: 0;
-}
+h2 { margin: 0; }
 
-p {
-    margin: 0;
-}
+p { margin: 0; }
 
 article {
     width: 90%;
@@ -23,6 +18,7 @@ article {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin: 10px;
 
     div {
         display: flex;
@@ -36,8 +32,6 @@ article {
         }
     }
 }
-
-
 
 .desc {
 
@@ -58,8 +52,39 @@ article {
         }
     }
 
-    p {
-        width: 70%;
+    p { width: 70%; }
+
+}
+
+.bottom-card {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+
+    div {
+        width: 50%;
+        display: inherit;
+        align-self: center;
     }
 
+    .buttons {
+        display: inherit;
+        justify-content: flex-end;
+        align-content: flex-end;
+
+        button {
+            @extend .round-button;
+            margin: 0 7px;
+            height: 42px;
+
+            span {
+                font-size: 23px;
+                padding: 4px;
+            }
+        }
+
+        .delete {
+            background-color: $delete-color;
+        }
+    }
 }
