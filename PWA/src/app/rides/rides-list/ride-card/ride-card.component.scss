@@ -1,0 +1,65 @@
+@import '../../../../util/styles/colors.scss';
+
+h1 {
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+article {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 5px;
+
+        span {
+            margin-right: 8px;
+            color: $primary-color;
+        }
+    }
+}
+
+
+
+.desc {
+
+    .dots {
+        display: flex;
+        flex-direction: column;
+        margin-right: 8px;
+
+        .dot {
+            margin: 5px 9px;
+            height: 4px;
+            width: 4px;
+            background-color: $primary-color;
+            filter:opacity(40%);
+
+            border-radius: 50%;
+            display: inline-block;
+        }
+    }
+
+    p {
+        width: 70%;
+    }
+
+}
