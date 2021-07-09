@@ -11,7 +11,7 @@ export class UserService {
 
     getRides(id: string): Observable<Ride[]> {
     return this.db.sendGetRequest(`ride`)
-    .pipe(map((response: Ride) => {
+    .pipe(map((response: Ride[]) => {
       return response;
     }));
   }
