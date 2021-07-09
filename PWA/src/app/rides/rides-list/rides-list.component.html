@@ -1,1 +1,3 @@
-<app-ride-card></app-ride-card>
+<div *ngIf="!isLoading && ridesExist()">
+    <app-ride-card *ngFor="let ride of rides"></app-ride-card>
+</div>
