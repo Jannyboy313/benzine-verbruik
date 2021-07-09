@@ -2,7 +2,7 @@
     <app-ride-card *ngFor="let ride of rides"></app-ride-card>
 </div>
 
-<div>
+<div *ngIf="!isLoading && !ridesExist()">
     <p>No rides are existing</p>
 </div>
 
