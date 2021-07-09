@@ -5,7 +5,7 @@ import { map } from "rxjs/operators";
 import { Ride } from '../../models/ride.model';
 
 @Injectable()
-export class UserService {
+export class RideService {
 
   constructor(private db: Db) {}
 
