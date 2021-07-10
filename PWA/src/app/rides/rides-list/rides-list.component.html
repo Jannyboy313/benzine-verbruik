@@ -8,4 +8,6 @@
     </div>
 
     <app-spinner *ngIf="!isLoading"></app-spinner>
+
+    <app-error-span *ngIf="error.isError" class="error" [errorMessage]="error.message" (isError)="closeError($event)"></app-error-span>
 </article>

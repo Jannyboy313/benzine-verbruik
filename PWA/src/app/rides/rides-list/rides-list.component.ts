@@ -14,7 +14,7 @@ export class RidesListComponent implements OnInit {
 
   error: Error = {
     isError: false,
-    message: ''
+    message: 'There has been an error while trying to load the rides'
   }
 
   rides: Ride[] = [];
@@ -26,7 +26,7 @@ export class RidesListComponent implements OnInit {
   }
 
   getRides() {
-    this.setError(false, '');
+    this.setError(false, 'There has been an error while trying to load the rides');
     this.isLoading = true;
     this.rideService.getRides()
     .subscribe(
@@ -46,6 +46,10 @@ export class RidesListComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  closeError(isError: boolean) {
+    this.error.isError = isError;
   }
 
   private setError(isError: boolean, message: string): void {
