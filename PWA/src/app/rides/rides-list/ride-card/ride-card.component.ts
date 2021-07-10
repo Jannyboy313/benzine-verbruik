@@ -26,4 +26,12 @@ export class RideCardComponent implements OnInit {
     return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1).replace(/\./g, "");
   }
 
+  showDot(size: number): boolean {
+    const wordCount = this.ride.description.split(' ').length;
+    if (wordCount < 10 * size) {
+      return false;
+    }
+    return true;
+  }
+
 }
