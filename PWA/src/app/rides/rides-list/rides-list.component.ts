@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { Ride } from 'src/shared/models/ride.model';
+import { Error } from '../../../shared/models/error.model';
 
 @Component({
   selector: 'app-rides-list',
@@ -10,6 +11,12 @@ import { Ride } from 'src/shared/models/ride.model';
 export class RidesListComponent implements OnInit {
 
   isLoading: boolean = true;
+
+  error: Error = {
+    isError: false,
+    message: ''
+  }
+
   rides: Ride[] = [];
 
   constructor(private rideService: RideService) { }
@@ -19,6 +26,7 @@ export class RidesListComponent implements OnInit {
   }
 
   getRides() {
+    this.setError(false, '');
     this.isLoading = true;
     this.rideService.getRides()
     .subscribe(
@@ -27,6 +35,7 @@ export class RidesListComponent implements OnInit {
         this.rides = result;
       },
       err => {
+        this.setError(true, err.error.message);
         this.isLoading = false;
       }
     )
@@ -37,6 +46,11 @@ export class RidesListComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  private setError(isError: boolean, message: string): void {
+      this.error.isError = isError;
+      this.error.message = message;
   }
 
 }
