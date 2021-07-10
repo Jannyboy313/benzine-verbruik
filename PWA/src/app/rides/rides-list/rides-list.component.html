@@ -3,11 +3,11 @@
         <app-ride-card *ngFor="let ride of rides"></app-ride-card>
     </div>
 
-    <div *ngIf="!isLoading && !ridesExist()">
+    <div *ngIf="!isLoading && !ridesExist() && !error.isError">
         <p>No rides are existing</p>
     </div>
 
-    <app-spinner *ngIf="!isLoading"></app-spinner>
+    <app-spinner *ngIf="!isLoading && !error.isError"></app-spinner>
 
     <app-error-span *ngIf="error.isError" class="error" [errorMessage]="error.message" (isError)="closeError($event)"></app-error-span>
 </article>
