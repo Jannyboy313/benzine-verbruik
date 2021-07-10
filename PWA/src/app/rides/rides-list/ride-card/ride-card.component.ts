@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Ride } from 'src/shared/models/ride.model';
+import Dialog from '@bit/mui-org.material-ui.dialog';
+import MuiDialogTitle from '@bit/mui-org.material-ui.dialog-title';
+
 import * as moment from 'moment';
 
 @Component({
