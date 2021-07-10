@@ -1,6 +1,6 @@
 <article>
     <div *ngIf="!isLoading && ridesExist()">
-        <app-ride-card *ngFor="let ride of rides"></app-ride-card>
+        <app-ride-card *ngFor="let ride of rides" [ride]="ride"></app-ride-card>
     </div>
 
     <div *ngIf="!isLoading && !ridesExist() && !error.isError">
