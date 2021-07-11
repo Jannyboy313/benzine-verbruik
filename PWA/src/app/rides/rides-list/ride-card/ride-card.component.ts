@@ -3,8 +3,6 @@ import { Ride } from 'src/shared/models/ride.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/shared/components/confirm-dialog/confirm-dialog.component';
 import { RideService } from 'src/shared/Services/db/ride.service';
-
-
 import * as moment from 'moment';
 
 @Component({
