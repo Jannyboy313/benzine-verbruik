@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Ride } from 'src/shared/models/ride.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/shared/components/confirm-dialog/confirm-dialog.component';
 
 import * as moment from 'moment';
 
@@ -16,7 +18,7 @@ export class RideCardComponent implements OnInit {
     distance: 0
   };
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +35,18 @@ export class RideCardComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  openConfirmDialog(): void {
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { title: "Weet u het zeker?", message: "Wanneer u het verwijdert is er geen mogelijkheid het terug te krijgen", name: "Verwijderen"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // delete ride
+      }
+    })
   }
 
 }
