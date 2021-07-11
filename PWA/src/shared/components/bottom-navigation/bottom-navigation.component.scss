@@ -1,38 +1,38 @@
 @import '../../../util/styles/colors.scss';
 
 nav {
-    padding: 8px 15px 4px 15px;
-    background-color: $primary-color !important;
+	padding: 8px 15px 4px 15px;
+	background-color: $primary-color !important;
 }
 
 .nav-list {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
 
-    .nav-link {
-        display: inherit;
-        flex-direction: column;
-        align-content: center;
-        text-align: center;
+	.nav-link {
+		display: inherit;
+		flex-direction: column;
+		align-content: center;
+		text-align: center;
 
-        color: $white;
-        padding: 0 5px;
+		color: $white;
+		padding: 0 5px;
 
-        span {
-            font-size: 30px;
-            opacity: 0.7;
-        }
+		span {
+			font-size: 30px;
+			opacity: 0.7;
+		}
 
-        p {
-            margin: 0;
-            color: $white;
-            font-size: 12px;
-            opacity: 0.7;
-        }
-    }
+		p {
+			margin: 0;
+			color: $white;
+			font-size: 12px;
+			opacity: 0.7;
+		}
+	}
 }
 
 .is-active {
-    opacity: 1 !important;
+	opacity: 1 !important;
 }

@@ -11,22 +11,21 @@ import { AppComponent } from './app.component';
 import { LogoBannerComponent } from 'src/shared/components/logo-banner/logo-banner.component';
 import { BottomNavigationComponent } from 'src/shared/components/bottom-navigation/bottom-navigation.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogoBannerComponent,
-    BottomNavigationComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    LoginModule,
-    RidesModule,
-    SharedModule
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		LogoBannerComponent,
+		BottomNavigationComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		AppRoutingModule,
+		HttpClientModule,
+		LoginModule,
+		RidesModule,
+		SharedModule
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

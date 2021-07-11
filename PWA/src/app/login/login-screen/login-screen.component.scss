@@ -2,39 +2,39 @@
 @import '../../../util/styles/error.scss';
 
 article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
-    header {
-        margin-top: 5vh;
-        margin-bottom: 10vh;
-    }
+	header {
+		margin-top: 5vh;
+		margin-bottom: 10vh;
+	}
 
-    form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+	form {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 
-        #loginButton {
-            margin-top: 10vh;
-        }
-    }
+		#loginButton {
+			margin-top: 10vh;
+		}
+	}
 
-    button {
-        @include button;
-    }
+	button {
+		@include button;
+	}
 
-    .error {
-        @extend .error;
-    }
+	.error {
+		@extend .error;
+	}
 }
 
 mat-spinner {
-    stroke: $white;
-    margin: auto;
-    width: 50%;
+	stroke: $white;
+	margin: auto;
+	width: 50%;
 }

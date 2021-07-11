@@ -1,39 +1,60 @@
 <nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-
-    <div class="nav-list">
-
-        <a class="nav-link" routerLink="/rides">
-            <span *ngIf="isActive('/rides')" class="material-icons"              routerLinkActive="is-active">directions_car</span>
-            <span
-             *ngIf="!isActive('/rides')"
-             class="material-icons-outlined"
-
-             >directions_car</span>
-            <p routerLinkActive="is-active" >Ritten</p>
-        </a>
-        <a class="nav-link" routerLink="/fuel">
-            <span *ngIf="isActive('/fuel')" class="material-icons"              routerLinkActive="is-active">local_gas_station</span>
-            <span
-            *ngIf="!isActive('/fuel')"
-            class="material-icons-outlined"
-
-            >local_gas_station</span>
-            <p routerLinkActive="is-active" >Tanken</p>
-        </a>
-        <a class="nav-link" routerLink="/dashboard">
-            <span *ngIf="isActive('/dashboard')" class="material-icons"              routerLinkActive="is-active">poll</span>
-            <span *ngIf="!isActive('/dashboard')" class="material-icons-outlined"
->poll</span>
-            <p routerLinkActive="is-active" >Dashboard</p>
-        </a>
-        <a class="nav-link" routerLink="/account">
-            <span *ngIf="isActive('/account')" class="material-icons"              routerLinkActive="is-active">person</span>
-            <span *ngIf="!isActive('/account')" class="material-icons-outlined"
->person</span>
-            <p routerLinkActive="is-active" >Account</p>
-        </a>
-
-    </div>
-  </div>
+	<div class="container-fluid">
+		<div class="nav-list">
+			<a class="nav-link" routerLink="/rides">
+				<span
+					*ngIf="isActive('/rides')"
+					class="material-icons"
+					routerLinkActive="is-active"
+					>directions_car</span
+				>
+				<span
+					*ngIf="!isActive('/rides')"
+					class="material-icons-outlined"
+					>directions_car</span
+				>
+				<p routerLinkActive="is-active">Ritten</p>
+			</a>
+			<a class="nav-link" routerLink="/fuel">
+				<span
+					*ngIf="isActive('/fuel')"
+					class="material-icons"
+					routerLinkActive="is-active"
+					>local_gas_station</span
+				>
+				<span *ngIf="!isActive('/fuel')" class="material-icons-outlined"
+					>local_gas_station</span
+				>
+				<p routerLinkActive="is-active">Tanken</p>
+			</a>
+			<a class="nav-link" routerLink="/dashboard">
+				<span
+					*ngIf="isActive('/dashboard')"
+					class="material-icons"
+					routerLinkActive="is-active"
+					>poll</span
+				>
+				<span
+					*ngIf="!isActive('/dashboard')"
+					class="material-icons-outlined"
+					>poll</span
+				>
+				<p routerLinkActive="is-active">Dashboard</p>
+			</a>
+			<a class="nav-link" routerLink="/account">
+				<span
+					*ngIf="isActive('/account')"
+					class="material-icons"
+					routerLinkActive="is-active"
+					>person</span
+				>
+				<span
+					*ngIf="!isActive('/account')"
+					class="material-icons-outlined"
+					>person</span
+				>
+				<p routerLinkActive="is-active">Account</p>
+			</a>
+		</div>
+	</div>
 </nav>

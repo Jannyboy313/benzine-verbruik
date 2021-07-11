@@ -1,20 +1,19 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-error-span',
-  templateUrl: './error-span.component.html',
-  styleUrls: ['./error-span.component.scss']
+	selector: 'app-error-span',
+	templateUrl: './error-span.component.html',
+	styleUrls: ['./error-span.component.scss']
 })
 export class ErrorSpanComponent implements OnInit {
-  @Input() errorMessage: string = ''
-  @Output() isError = new EventEmitter<boolean>();
+	@Input() errorMessage: string = '';
+	@Output() isError = new EventEmitter<boolean>();
 
-  constructor() { }
+	constructor() {}
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {}
 
-  close(): void {
-    this.isError.emit(false);
-  }
+	close(): void {
+		this.isError.emit(false);
+	}
 }

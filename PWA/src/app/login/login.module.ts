@@ -10,22 +10,14 @@ import { UserService } from 'src/shared/Services/db/user.service';
 import { DataStorageService } from 'src/shared/Services/data-storage.service';
 import { SharedModule } from 'src/shared/shared.module';
 
-
-
 @NgModule({
-  declarations: [
-    LoginScreenComponent,
-    FormInputComponent
-  ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    SharedModule,
-    MatProgressSpinnerModule
-  ],
-  providers: [
-    UserService,
-    DataStorageService
-  ]
+	declarations: [LoginScreenComponent, FormInputComponent],
+	imports: [
+		CommonModule,
+		LoginRoutingModule,
+		SharedModule,
+		MatProgressSpinnerModule
+	],
+	providers: [UserService, DataStorageService]
 })
-export class LoginModule { }
+export class LoginModule {}
