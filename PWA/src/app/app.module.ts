@@ -4,17 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/shared/shared.module';
-
+import { BottomNavModule } from 'ngx-bottom-nav';
+import { RidesModule } from './rides/rides.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { LogoBannerComponent } from 'src/shared/components/logo-banner/logo-banner.component';
-import { RidesModule } from './rides/rides.module';
+import { BottomNavigationComponent } from 'src/shared/components/bottom-navigation/bottom-navigation.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LogoBannerComponent,
+    BottomNavigationComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,9 @@ import { RidesModule } from './rides/rides.module';
     HttpClientModule,
     LoginModule,
     RidesModule,
-    SharedModule
+    SharedModule,
+    BottomNavModule,
+    MatIconModule
   ],
   bootstrap: [AppComponent]
 })
