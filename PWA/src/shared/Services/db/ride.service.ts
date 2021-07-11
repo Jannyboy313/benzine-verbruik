@@ -22,4 +22,8 @@ export class RideService {
             return response;
         }));
   }
+
+  deleteRide(id: string): Observable<any> {
+    return this.db.sendDeleteRequest(`ride/${id}`);
+  }
 }
