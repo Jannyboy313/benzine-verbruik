@@ -4,20 +4,34 @@
     <div class="nav-list">
 
         <a class="nav-link" routerLink="/rides">
-            <span class="material-icons">directions_car</span>
-            <p>Ritten</p>
+            <span *ngIf="isActive('/rides')" class="material-icons"              routerLinkActive="is-active">directions_car</span>
+            <span
+             *ngIf="!isActive('/rides')"
+             class="material-icons-outlined"
+
+             >directions_car</span>
+            <p routerLinkActive="is-active" >Ritten</p>
         </a>
         <a class="nav-link" routerLink="/fuel">
-            <span class="material-icons">local_gas_station</span>
-            <p>Tanken</p>
+            <span *ngIf="isActive('/fuel')" class="material-icons"              routerLinkActive="is-active">local_gas_station</span>
+            <span
+            *ngIf="!isActive('/fuel')"
+            class="material-icons-outlined"
+
+            >local_gas_station</span>
+            <p routerLinkActive="is-active" >Tanken</p>
         </a>
         <a class="nav-link" routerLink="/dashboard">
-            <span class="material-icons">poll</span>
-            <p>Dashboard</p>
+            <span *ngIf="isActive('/dashboard')" class="material-icons"              routerLinkActive="is-active">poll</span>
+            <span *ngIf="!isActive('/dashboard')" class="material-icons-outlined"
+>poll</span>
+            <p routerLinkActive="is-active" >Dashboard</p>
         </a>
         <a class="nav-link" routerLink="/account">
-            <span class="material-icons">person</span>
-            <p>Account</p>
+            <span *ngIf="isActive('/account')" class="material-icons"              routerLinkActive="is-active">person</span>
+            <span *ngIf="!isActive('/account')" class="material-icons-outlined"
+>person</span>
+            <p routerLinkActive="is-active" >Account</p>
         </a>
 
     </div>

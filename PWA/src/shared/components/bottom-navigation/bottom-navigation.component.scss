@@ -21,12 +21,18 @@ nav {
 
         span {
             font-size: 30px;
+            opacity: 0.7;
         }
 
         p {
             margin: 0;
             color: $white;
             font-size: 12px;
+            opacity: 0.7;
         }
     }
+}
+
+.is-active {
+    opacity: 1 !important;
 }
