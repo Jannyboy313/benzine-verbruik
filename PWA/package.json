@@ -23,6 +23,7 @@
     "hammerjs": "^2.0.8",
     "material-icons": "^0.7.4",
     "moment": "^2.29.1",
+    "ngx-bottom-nav": "^11.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
