@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-root',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'benzine-pwa';
+
+	constructor(private router: Router) {}
+
+	isLogin() {
+		const routerPath = this.router.url.split('/')[1];
+		if (routerPath === 'home') {
+			return true;
+		}
+		return false;
+	}
 }
