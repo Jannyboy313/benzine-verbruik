@@ -39,7 +39,7 @@ export class RideCardComponent implements OnInit {
 
   openConfirmDialog(): void {
     let dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { title: "Weet u het zeker?", message: "Wanneer u het verwijdert is er geen mogelijkheid het terug te krijgen", name: "Verwijderen"}
+      data: { title: `${this.ride.title} verwijderen?`, message: `Weet u zeker dat u ${this.ride.title} wilt verwijderen?`, name: "Verwijderen"}
     });
 
     dialogRef.afterClosed().subscribe(result => {
