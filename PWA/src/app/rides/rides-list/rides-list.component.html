@@ -7,7 +7,8 @@
         <p>No rides are existing</p>
     </div>
 
-    <app-spinner *ngIf="!isLoading && !error.isError"></app-spinner>
+    <mat-spinner [mode]="'indeterminate'" [diameter]="45"></mat-spinner>
+    <p>Loading...</p>
 
     <app-error-span *ngIf="error.isError" class="error" [errorMessage]="error.message" (isError)="closeError($event)"></app-error-span>
 </article>

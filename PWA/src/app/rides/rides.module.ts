@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RidesRoutingModule } from './rides-routing.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { RidesScreenComponent } from './rides-screen/rides-screen.component';
 import { RidesListComponent } from './rides-list/rides-list.component';
@@ -19,7 +20,8 @@ import { SharedModule } from 'src/shared/shared.module';
   imports: [
     CommonModule,
     RidesRoutingModule,
-    SharedModule
+    SharedModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     RideService
