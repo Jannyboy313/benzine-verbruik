@@ -1,17 +1,25 @@
-<ngx-bottom-nav>
-  <button ngx-bottom-nav label="Ritten" routerLink="/rides">
-    <mat-icon ngxBottomNavIcon>directions_car</mat-icon>
-  </button>
+<nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
 
-  <button ngx-bottom-nav label="Tanken" routerLink="/fuel">
-    <mat-icon ngxBottomNavIcon>local_gas_station</mat-icon>
-  </button>
+    <div class="nav-list">
 
-  <button ngx-bottom-nav label="Dashboard" routerLink="/dashboard">
-    <mat-icon ngxBottomNavIcon>poll</mat-icon>
-  </button>
+        <a class="nav-link" routerLink="/rides">
+            <span class="material-icons">directions_car</span>
+            <p>Ritten</p>
+        </a>
+        <a class="nav-link" routerLink="/fuel">
+            <span class="material-icons">local_gas_station</span>
+            <p>Tanken</p>
+        </a>
+        <a class="nav-link" routerLink="/dashboard">
+            <span class="material-icons">poll</span>
+            <p>Dashboard</p>
+        </a>
+        <a class="nav-link" routerLink="/account">
+            <span class="material-icons">person</span>
+            <p>Account</p>
+        </a>
 
-    <button ngx-bottom-nav label="Account" routerLink="/account">
-    <mat-icon ngxBottomNavIcon>person</mat-icon>
-  </button>
-</ngx-bottom-nav>
+    </div>
+  </div>
+</nav>

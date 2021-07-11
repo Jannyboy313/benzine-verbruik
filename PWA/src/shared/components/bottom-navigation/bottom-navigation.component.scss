@@ -1,26 +1,32 @@
 @import '../../../util/styles/colors.scss';
 
-ngx-bottom-nav {
-    background-color: $primary-color;
-    border-radius: 2px;
-
-    button {
-        color: $white;
-        margin: 8px;
-
-        .label {
-            font-size: 20px;
-            line-height: 5px;
-        }
-
-        mat-icon {
-            font-size: 30px;
-            width: 100%;
-        }
-    }
+nav {
+    padding: 8px 15px 4px 15px;
+    background-color: $primary-color !important;
 }
 
-.label {
-    font-size: 20px;
-    line-height: 5px;
+.nav-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .nav-link {
+        display: inherit;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+
+        color: $white;
+        padding: 0 5px;
+
+        span {
+            font-size: 30px;
+        }
+
+        p {
+            margin: 0;
+            color: $white;
+            font-size: 12px;
+        }
+    }
 }
