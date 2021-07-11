@@ -32,3 +32,9 @@ article {
         @extend .error;
     }
 }
+
+mat-spinner {
+    stroke: $white;
+    margin: auto;
+    width: 50%;
+}

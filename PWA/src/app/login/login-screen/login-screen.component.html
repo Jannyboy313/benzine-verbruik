@@ -14,7 +14,7 @@
             class="btn float-right"
             [disabled]="isLoading"
             >
-            <app-spinner *ngIf="isLoading"></app-spinner>
+            <mat-spinner *ngIf="isLoading" [mode]="'indeterminate'" [diameter]="30" [strokeWidth]="4"></mat-spinner>
             <span *ngIf="!isLoading">LOG IN</span>
         </button>
         <button

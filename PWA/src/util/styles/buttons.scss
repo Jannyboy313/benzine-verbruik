@@ -36,3 +36,37 @@
     }
 }
 
+.round-button {
+    height: 46px;
+
+    background-color: $primary-color;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: $white;
+    border: none;
+    border-radius: 100%;
+    box-shadow: 0 4px 4px rgba($color: $black, $alpha: 0.25);
+    transition: opacity .2s ease-in-out;
+
+    display: inline-block;
+
+    &:disabled {
+        pointer-events: none;
+        filter:brightness(80%);
+    }
+
+    &:active {
+        backdrop-filter: brightness(70%);
+        color: $grey;
+		box-shadow: none;
+	}
+
+    &:hover {
+        filter: opacity(80%);
+        cursor: pointer;
+    }
+}
