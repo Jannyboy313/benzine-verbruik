@@ -4,27 +4,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/shared/shared.module';
-
+import { RidesModule } from './rides/rides.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LogoBannerComponent } from 'src/shared/components/logo-banner/logo-banner.component';
-import { RidesModule } from './rides/rides.module';
+import { BottomNavigationComponent } from 'src/shared/components/bottom-navigation/bottom-navigation.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogoBannerComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    LoginModule,
-    RidesModule,
-    SharedModule
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		LogoBannerComponent,
+		BottomNavigationComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		AppRoutingModule,
+		HttpClientModule,
+		LoginModule,
+		RidesModule,
+		SharedModule
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

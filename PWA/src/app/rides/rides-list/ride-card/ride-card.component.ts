@@ -6,47 +6,51 @@ import { RideService } from 'src/shared/Services/db/ride.service';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'app-ride-card',
-  templateUrl: './ride-card.component.html',
-  styleUrls: ['./ride-card.component.scss']
+	selector: 'app-ride-card',
+	templateUrl: './ride-card.component.html',
+	styleUrls: ['./ride-card.component.scss']
 })
 export class RideCardComponent implements OnInit {
+	@Input() ride: Ride = {
+		title: 'Naam van rit',
+		description: 'Dit is de beschrijving van de rit',
+		distance: 0
+	};
 
-  @Input() ride: Ride = {
-    title: 'Naam van rit',
-    description: 'Dit is de beschrijving van de rit',
-    distance: 0
-  };
+	constructor(public dialog: MatDialog, private rideService: RideService) {}
 
-  constructor(public dialog: MatDialog, private rideService: RideService) { }
+	ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
+	formatDate(date: Date | undefined) {
+		moment.locale('nl');
+		let formattedDate = moment(date).format('ddd DD MMM YYYY HH:mm'); // Woe 17 Mrt 2021 14:31
+		return (
+			formattedDate.charAt(0).toUpperCase() +
+			formattedDate.slice(1).replace(/\./g, '')
+		);
+	}
 
-  formatDate(date: Date | undefined) {
-    moment.locale('nl');
-    let formattedDate = moment(date).format('ddd DD MMM YYYY HH:mm'); // Woe 17 Mrt 2021 14:31
-    return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1).replace(/\./g, "");
-  }
+	showDot(size: number): boolean {
+		const wordCount = this.ride.description.split(' ').length;
+		if (wordCount < 10 * size) {
+			return false;
+		}
+		return true;
+	}
 
-  showDot(size: number): boolean {
-    const wordCount = this.ride.description.split(' ').length;
-    if (wordCount < 10 * size) {
-      return false;
-    }
-    return true;
-  }
+	openConfirmDialog(): void {
+		let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+			data: {
+				title: `${this.ride.title} verwijderen?`,
+				message: `Weet u zeker dat u ${this.ride.title} wilt verwijderen?`,
+				name: 'Verwijderen'
+			}
+		});
 
-  openConfirmDialog(): void {
-    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { title: `${this.ride.title} verwijderen?`, message: `Weet u zeker dat u ${this.ride.title} wilt verwijderen?`, name: "Verwijderen"}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.rideService.deleteRide(this.ride._id);
-      }
-    })
-  }
-
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.rideService.deleteRide(this.ride._id);
+			}
+		});
+	}
 }

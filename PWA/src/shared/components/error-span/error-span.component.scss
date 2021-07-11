@@ -1,21 +1,21 @@
 @import '../../../util/styles/colors.scss';
 
 div {
-    padding: 15px;
-    border: 1px solid;
-    border-radius: 4px;
-    width: 75vw;
-    text-align: center;
+	padding: 15px;
+	border: 1px solid;
+	border-radius: 4px;
+	width: 75vw;
+	text-align: center;
 }
 
 a {
-    text-decoration: none;
-    color: $grey-light;
-    font-weight: 600;
-    font-size: 20px;
-    float: right;
-    position: relative;
-    top: -4px;
-    right: -2px;
-    margin-bottom: 10px;
+	text-decoration: none;
+	color: $grey-light;
+	font-weight: 600;
+	font-size: 20px;
+	float: right;
+	position: relative;
+	top: -4px;
+	right: -2px;
+	margin-bottom: 10px;
 }
