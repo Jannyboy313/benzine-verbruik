@@ -10,11 +10,10 @@ article {
 	justify-content: center;
 }
 
-mat-spinner {
-	display: inherit;
-	stroke: $primary-color;
-	align-self: center;
-	opacity: 0.7;
+.spinner-border {
+    margin: auto;
+    border-color: $primary-color;
+    border-left-color: $white;
 }
 
 .error {

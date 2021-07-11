@@ -7,12 +7,11 @@
 		<p>No rides are existing</p>
 	</div>
 
-	<mat-spinner
+	<span
 		*ngIf="isLoading"
-		[mode]="'indeterminate'"
-		[diameter]="45"
-	></mat-spinner>
-	<p *ngIf="isLoading">Loading...</p>
+		class="spinner-border spinner-border-mm mr-1"
+	></span>
+	<p *ngIf="isLoading">Loading..</p>
 
 	<app-error-span
 		*ngIf="error.isError"

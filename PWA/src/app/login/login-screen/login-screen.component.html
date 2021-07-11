@@ -27,12 +27,10 @@
 			class="btn float-right"
 			[disabled]="isLoading"
 		>
-			<mat-spinner
+			<span
 				*ngIf="isLoading"
-				[mode]="'indeterminate'"
-				[diameter]="30"
-				[strokeWidth]="4"
-			></mat-spinner>
+				class="spinner-border spinner-border-mm mr-1"
+			></span>
 			<span *ngIf="!isLoading">LOG IN</span>
 		</button>
 		<button class="btn float-right" [disabled]="true">REGISTREREN</button>
