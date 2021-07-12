@@ -27,6 +27,15 @@ export class RidesListService {
 		this.ridesSubject.next(this.rides);
 	}
 
+    updateRide(ride: Ride): void {
+		for (let i = 0; i < this.rides.length; i++) {
+			if (this.rides[i]._id === ride._id) {
+				this.rides[i] = ride;
+				return this.ridesSubject.next(this.rides);
+			}
+		}
+    }
+
 	deleteRide(ride: Ride): void {
 		for (let i = 0; i < this.rides.length; i++) {
 			if (this.rides[i]._id === ride._id) {
