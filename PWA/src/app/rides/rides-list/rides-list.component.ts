@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { Ride } from 'src/shared/models/ride.model';
 import { Error } from '../../../shared/models/error.model';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-rides-list',
@@ -9,6 +10,8 @@ import { Error } from '../../../shared/models/error.model';
 	styleUrls: ['./rides-list.component.scss']
 })
 export class RidesListComponent implements OnInit {
+	@Input() reloadRidesList: Subject<boolean> = new Subject<boolean>();
+
 	isLoading: boolean = true;
 
 	error: Error = {
@@ -21,6 +24,11 @@ export class RidesListComponent implements OnInit {
 	constructor(private rideService: RideService) {}
 
 	ngOnInit(): void {
+		this.reloadRidesList.subscribe(response => {
+			if (response) {
+				this.getRides();
+			}
+		});
 		this.getRides();
 	}
 
@@ -34,6 +42,7 @@ export class RidesListComponent implements OnInit {
 			result => {
 				this.isLoading = false;
 				this.rides = result;
+				this.reloadRidesList.next(false);
 			},
 			err => {
 				this.setError(true, err.error.message);
