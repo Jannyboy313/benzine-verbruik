@@ -28,6 +28,10 @@ export class RideService {
 		);
 	}
 
+	putRide(ride: Ride): Observable<Ride> {
+		return this.db.sendPostRequest(`ride/${ride._id}`, ride);
+	}
+
 	deleteRide(id: string | undefined): Observable<any> {
 		return this.db.sendDeleteRequest(`ride/${id}`);
 	}
