@@ -92,7 +92,6 @@ export class RideModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-        console.log(err)
 				this.setError(true, err.error.message.message);
 			}
 		);
