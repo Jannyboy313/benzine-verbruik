@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
+import { RideService } from 'src/shared/Services/db/ride.service';
+import { Error } from 'src/shared/models/error.model';
+import { Ride } from 'src/shared/models/ride.model';
 
 @Component({
 	selector: 'app-ride-modal',
@@ -8,7 +11,10 @@ import { FormGroup, FormControl } from '@angular/forms';
 	styleUrls: ['./ride-modal.component.scss']
 })
 export class RideModalComponent implements OnInit {
-	isError: boolean = false;
+	error: Error = {
+		isError: false,
+		message: ''
+	};
 
 	form: FormGroup = new FormGroup({
 		title: new FormControl(''),
@@ -18,10 +24,12 @@ export class RideModalComponent implements OnInit {
 
 	constructor(
 		public dialogRef: MatDialogRef<any>,
+		private rideService: RideService,
 		@Inject(MAT_DIALOG_DATA)
 		public data: any = {
 			header: 'Aanmaken nieuwe rit',
-			title: ''
+			title: '',
+			_id: ''
 		}
 	) {}
 
@@ -37,7 +45,7 @@ export class RideModalComponent implements OnInit {
 		}
 	}
 
-	onNoClick(): void {
+	closeDialog(): void {
 		this.dialogRef.close();
 	}
 
@@ -45,7 +53,53 @@ export class RideModalComponent implements OnInit {
 		return this.data.header.split(' ')[0];
 	}
 
-  onSubmit(): void {
+	onSubmit(): void {
+		if (!this.isValid()) {
+			return this.setError(true, 'Niet alle velden zijn goed ingevuld');
+		}
 
-  }
+		const ride: Ride = {
+			title: this.form.controls['title'].value,
+			description: this.form.controls['description'].value,
+			distance: this.form.controls['distance'].value,
+			_id: this.data._id
+		};
+
+		this.saveRide(ride);
+	}
+
+	isValid(): boolean {
+		// Add regex or validators to form<<<
+		return true;
+	}
+
+	saveRide(ride: Ride): void {
+		if (this.data._id !== '') {
+			return this.putRide(ride);
+		}
+		this.postRide(ride);
+	}
+
+	private postRide(ride: Ride): void {
+		this.rideService.postRide(ride).subscribe(
+			result => {
+				this.closeDialog();
+			},
+			err => {}
+		);
+	}
+
+	private putRide(ride: Ride): void {
+		this.rideService.putRide(ride).subscribe(
+			result => {
+				this.closeDialog();
+			},
+			err => {}
+		);
+	}
+
+	setError(isError: boolean, message: string): void {
+		this.error.isError = isError;
+		this.error.message = message;
+	}
 }

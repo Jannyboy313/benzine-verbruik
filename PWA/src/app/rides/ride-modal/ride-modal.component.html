@@ -9,7 +9,7 @@
 					placeholder="Invullen titel"
 					formControlName="title"
 					required
-					[ngClass]="{ 'invalid-input': isError }"
+					[ngClass]="{ 'invalid-input': error.isError }"
 					class="input"
 					autofocus
 					autocapitalize="on"
@@ -23,7 +23,7 @@
 					placeholder="Invullen beschrijving"
 					formControlName="description"
 					required
-					[ngClass]="{ 'invalid-input': isError }"
+					[ngClass]="{ 'invalid-input': error.isError }"
 					class="input"
 					autocapitalize="on"
                     rows="3"
@@ -38,7 +38,7 @@
 					placeholder="Invullen afstand in km"
 					formControlName="distance"
 					required
-					[ngClass]="{ 'invalid-input': isError }"
+					[ngClass]="{ 'invalid-input': error.isError }"
 					class="input"
 				/>
 			</div>
@@ -47,8 +47,8 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-	<button class="dismiss" (click)="onNoClick()">Annuleren</button>
-	<button class="accept" [mat-dialog-close]="true" cdkFocusInitial>
+	<button class="dismiss" (click)="closeDialog()">Annuleren</button>
+	<button class="accept" (click)="onSubmit()" cdkFocusInitial>
 		{{ getActionName() }}
 	</button>
 </mat-dialog-actions>
