@@ -33,7 +33,7 @@ export class RideService {
 	}
 
 	putRide(ride: Ride): Observable<Ride> {
-		return this.db.sendPostRequest(`ride/${ride._id}`, ride);
+		return this.db.sendPutRequest(`ride/${ride._id}`, ride);
 	}
 
 	deleteRide(id: string | undefined): Observable<any> {
