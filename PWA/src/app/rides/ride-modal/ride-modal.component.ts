@@ -29,7 +29,8 @@ export class RideModalComponent implements OnInit {
 		private rideService: RideService,
 		@Inject(MAT_DIALOG_DATA)
 		public data: any = {
-			header: 'Aanmaken nieuwe rit'
+			header: 'Aanmaken nieuwe rit',
+      edit: false
 		}
 	) {}
 
@@ -38,7 +39,7 @@ export class RideModalComponent implements OnInit {
 	}
 
 	setInputValues() {
-		if (this.data.title !== '') {
+		if (this.data.edit) {
 			this.form.controls['title'].setValue(this.data.ride.title);
 			this.form.controls['description'].setValue(this.data.ride.description);
 			this.form.controls['distance'].setValue(this.data.ride.distance);
@@ -63,8 +64,7 @@ export class RideModalComponent implements OnInit {
 		const ride: Ride = {
 			title: this.form.controls['title'].value,
 			description: this.form.controls['description'].value,
-			distance: this.form.controls['distance'].value,
-			_id: this.data.ride._id
+			distance: this.form.controls['distance'].value
 		};
 
 		this.saveRide(ride);
@@ -76,7 +76,7 @@ export class RideModalComponent implements OnInit {
 	}
 
 	private saveRide(ride: Ride): void {
-		if (this.data.ride._id) {
+		if (this.data.edit) {
 			return this.putRide(ride);
 		}
 		this.postRide(ride);
@@ -96,6 +96,7 @@ export class RideModalComponent implements OnInit {
 	}
 
 	private putRide(ride: Ride): void {
+    ride['_id'] = this.data.ride._id;
 		this.rideService.putRide(ride).subscribe(
 			() => {
 				this.isLoading = false;

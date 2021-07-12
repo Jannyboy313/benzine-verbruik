@@ -73,7 +73,8 @@ export class RideCardComponent implements OnInit {
 			maxWidth: '85vw',
 			data: {
 				header: `Wijzigen nieuwe rit`,
-				ride: this.ride
+				ride: this.ride,
+				edit: true
 			}
 		});
 
