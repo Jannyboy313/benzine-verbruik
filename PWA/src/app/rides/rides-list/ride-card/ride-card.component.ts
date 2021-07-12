@@ -49,7 +49,14 @@ export class RideCardComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			if (result) {
-				this.rideService.deleteRide(this.ride._id);
+				this.rideService.deleteRide(this.ride._id).subscribe (
+					result => {
+						console.log("Deleted succesful")
+					},
+					err => {
+						console.log(err)
+					}
+				);
 			}
 		});
 	}
