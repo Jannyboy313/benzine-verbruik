@@ -12,7 +12,7 @@ export class ConfirmDialogComponent {
 		@Inject(MAT_DIALOG_DATA) public data: any
 	) {}
 
-	onNoClick(): void {
-		this.dialogRef.close();
+	closeDialog(succes: boolean): void {
+		this.dialogRef.close(succes);
 	}
 }

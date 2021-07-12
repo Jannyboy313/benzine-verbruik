@@ -3,8 +3,8 @@
 	<p>{{ data.message }}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
-	<button class="dismiss" (click)="onNoClick()">Annuleren</button>
-	<button class="accept" [mat-dialog-close]="true" cdkFocusInitial>
+	<button class="dismiss" (click)="closeDialog(false)">Annuleren</button>
+	<button class="accept" (click)="closeDialog(true)" cdkFocusInitial>
 		{{ data.name }}
 	</button>
 </mat-dialog-actions>
