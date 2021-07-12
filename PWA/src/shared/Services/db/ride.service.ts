@@ -8,6 +8,14 @@ import { Ride } from '../../models/ride.model';
 export class RideService {
 	constructor(private db: Db) {}
 
+	postRide(ride: Ride): Observable<Ride> {
+		return this.db.sendPostRequest(`ride`, ride).pipe(
+			map((response: Ride) => {
+				return response;
+			})
+		);
+	}
+
 	getRides(): Observable<Ride[]> {
 		return this.db.sendGetRequest(`ride`).pipe(
 			map((response: Ride[]) => {
@@ -22,6 +30,10 @@ export class RideService {
 				return response;
 			})
 		);
+	}
+
+	putRide(ride: Ride): Observable<Ride> {
+		return this.db.sendPutRequest(`ride/${ride._id}`, ride);
 	}
 
 	deleteRide(id: string | undefined): Observable<any> {

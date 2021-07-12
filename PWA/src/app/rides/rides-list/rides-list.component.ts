@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { RidesListService } from './../../../shared/Services/rides-list-service';
+import { Component, OnInit, Output } from '@angular/core';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { Ride } from 'src/shared/models/ride.model';
 import { Error } from '../../../shared/models/error.model';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-rides-list',
@@ -18,9 +20,15 @@ export class RidesListComponent implements OnInit {
 
 	rides: Ride[] = [];
 
-	constructor(private rideService: RideService) {}
+	constructor(
+		private rideService: RideService,
+		private ridesListService: RidesListService
+	) {}
 
 	ngOnInit(): void {
+		this.ridesListService.getRidesSubject().subscribe(result => {
+			this.rides = result;
+		});
 		this.getRides();
 	}
 
@@ -33,7 +41,7 @@ export class RidesListComponent implements OnInit {
 		this.rideService.getRides().subscribe(
 			result => {
 				this.isLoading = false;
-				this.rides = result;
+				this.ridesListService.setRides(result);
 			},
 			err => {
 				this.setError(true, err.error.message);
