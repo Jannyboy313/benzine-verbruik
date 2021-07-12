@@ -14,6 +14,8 @@ export class RidesScreenComponent implements OnInit {
 
 	openCreateModal(): void {
 		let dialogRef = this.dialog.open(RideModalComponent, {
+			width: '85vw',
+			maxWidth: '85vw',
 			data: {
 				header: `Aanmaken nieuwe rit`
 			}
