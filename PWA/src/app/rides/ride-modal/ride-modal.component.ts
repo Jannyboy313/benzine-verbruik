@@ -98,9 +98,9 @@ export class RideModalComponent implements OnInit {
 	private putRide(ride: Ride): void {
     ride['_id'] = this.data.ride._id;
 		this.rideService.putRide(ride).subscribe(
-			() => {
+			result => {
 				this.isLoading = false;
-				this.closeDialog(ride);
+				this.closeDialog(result);
 			},
 			err => {
 				this.isLoading = false;
