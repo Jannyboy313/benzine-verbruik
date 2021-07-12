@@ -21,8 +21,7 @@ export class RideModalComponent implements OnInit {
 		@Inject(MAT_DIALOG_DATA)
 		public data: any = {
 			header: 'Aanmaken nieuwe rit',
-			title: '',
-			description: ''
+			title: ''
 		}
 	) {}
 
@@ -47,6 +46,6 @@ export class RideModalComponent implements OnInit {
 	}
 
   onSubmit(): void {
-    
+
   }
 }
