@@ -78,7 +78,7 @@ export class RideModalComponent implements OnInit {
 	}
 
 	private saveRide(ride: Ride): void {
-		if (this.data._id !== '') {
+		if (this.data._id) {
 			return this.putRide(ride);
 		}
 		this.postRide(ride);
@@ -92,7 +92,8 @@ export class RideModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message);
+        console.log(err)
+				this.setError(true, err.error.message.message);
 			}
 		);
 	}
