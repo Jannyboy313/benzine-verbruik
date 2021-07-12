@@ -1,4 +1,11 @@
 <h1 mat-dialog-title>{{ data.header }}</h1>
+	<app-error-span
+		*ngIf="error.isError"
+		class="error"
+		[errorMessage]="error.message"
+		(isError)="closeError($event)"
+	></app-error-span>
+
 <mat-dialog-content>
 	<form [formGroup]="form">
 		<div class="container">

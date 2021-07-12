@@ -13,7 +13,7 @@ import { Ride } from 'src/shared/models/ride.model';
 export class RideModalComponent implements OnInit {
 	error: Error = {
 		isError: false,
-		message: ''
+		message: 'Iets is fout gegaan'
 	};
 
 	isLoading = false;
@@ -92,6 +92,7 @@ export class RideModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
+				this.setError(true, err.error.message);
 			}
 		);
 	}
@@ -104,6 +105,7 @@ export class RideModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
+				this.setError(true, err.error.message);
 			}
 		);
 	}
@@ -111,5 +113,9 @@ export class RideModalComponent implements OnInit {
 	private setError(isError: boolean, message: string): void {
 		this.error.isError = isError;
 		this.error.message = message;
+	}
+
+	closeError(isError: boolean) {
+		this.error.isError = isError;
 	}
 }

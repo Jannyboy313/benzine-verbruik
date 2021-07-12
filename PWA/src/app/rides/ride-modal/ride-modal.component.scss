@@ -3,6 +3,7 @@
 @import '../../../util/styles/text.scss';
 @import '../../../util/styles/effects.scss';
 @import 'material-icons/iconfont/filled.scss';
+@import '../../../util/styles/error.scss';
 
 .container {
 	display: flex;
@@ -46,7 +47,7 @@ label {
 }
 
 textarea {
-    resize: unset;
+	resize: unset;
 }
 
 span {
@@ -79,10 +80,10 @@ mat-dialog-actions {
 	justify-content: space-between;
 	margin-top: 20px;
 
-    p {
-        margin: 0;
-        color: $white;
-    }
+	p {
+		margin: 0;
+		color: $white;
+	}
 }
 
 .dismiss {
@@ -98,6 +99,10 @@ mat-dialog-actions {
 }
 
 .spinner-border {
-    position: initial;
-    color: $white;
+	position: initial;
+	color: $white;
+}
+
+.error {
+	@extend .error;
 }
