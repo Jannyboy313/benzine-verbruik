@@ -22,11 +22,11 @@ label {
 	margin-top: 10px;
 }
 
-.input {
+.input-container {
 	position: relative;
 }
 
-input {
+.input {
 	margin-top: 5px;
 	width: 65vw;
 	border: none;
@@ -43,6 +43,10 @@ input {
 		color: $grey;
 		opacity: 0.8;
 	}
+}
+
+textarea {
+    resize: unset;
 }
 
 span {

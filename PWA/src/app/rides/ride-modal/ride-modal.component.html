@@ -3,37 +3,43 @@
 	<form [formGroup]="form">
 		<div class="container">
 			<label>Titel</label>
-			<div class="input">
+			<div class="input-container">
 				<input
 					type="text"
 					placeholder="Invullen titel"
 					formControlName="title"
 					required
 					[ngClass]="{ 'invalid-input': isError }"
+					class="input"
+					autofocus
+					autocapitalize="on"
 				/>
 			</div>
 		</div>
 		<div class="container">
 			<label>Beschrijving</label>
-			<div class="input">
-				<input
-					type="text"
+			<div class="input-container">
+				<textarea
 					placeholder="Invullen beschrijving"
 					formControlName="description"
 					required
 					[ngClass]="{ 'invalid-input': isError }"
-				/>
+					class="input"
+					autocapitalize="on"
+                    rows="3"
+				></textarea>
 			</div>
 		</div>
 		<div class="container">
 			<label>Afstand</label>
-			<div class="input">
+			<div class="input-container">
 				<input
 					type="number"
-					placeholder="Invullen afstand bijv: 10"
+					placeholder="Invullen afstand in km"
 					formControlName="distance"
 					required
 					[ngClass]="{ 'invalid-input': isError }"
+					class="input"
 				/>
 			</div>
 		</div>
