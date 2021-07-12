@@ -1,1 +1,47 @@
-<p>ride-modal works!</p>
+<h1 mat-dialog-title>{{ data.header }}</h1>
+<mat-dialog-content>
+	<form [formGroup]="form">
+		<div class="container">
+			<label>Titel</label>
+			<div class="input">
+				<input
+					type="text"
+					placeholder="Invullen titel"
+					formControlName="title"
+					required
+					[ngClass]="{ 'invalid-input': isError }"
+				/>
+			</div>
+		</div>
+		<div class="container">
+			<label>Beschrijving</label>
+			<div class="input">
+				<input
+					type="text"
+					placeholder="Invullen beschrijving"
+					formControlName="description"
+					required
+					[ngClass]="{ 'invalid-input': isError }"
+				/>
+			</div>
+		</div>
+		<div class="container">
+			<label>Afstand</label>
+			<div class="input">
+				<input
+					type="number"
+					placeholder="Invullen afstand bijv: 10"
+					formControlName="distance"
+					required
+					[ngClass]="{ 'invalid-input': isError }"
+				/>
+			</div>
+		</div>
+	</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+	<button class="dismiss" (click)="onNoClick()">Annuleren</button>
+	<button class="accept" [mat-dialog-close]="true" cdkFocusInitial>
+		{{ getActionName() }}
+	</button>
+</mat-dialog-actions>
