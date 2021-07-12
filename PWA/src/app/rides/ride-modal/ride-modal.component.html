@@ -47,14 +47,14 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-	<button class="dismiss" (click)="closeDialog(false)" disabled="isLoading">
+	<button class="dismiss" (click)="closeDialog(false)" [disabled]="isLoading">
 		Annuleren
 	</button>
 	<button
 		class="accept"
 		(click)="onSubmit()"
 		cdkFocusInitial
-		disabled="isLoading"
+		[disabled]="isLoading"
 	>
 		<p *ngIf="!isLoading">{{ getActionName() }}</p>
 
