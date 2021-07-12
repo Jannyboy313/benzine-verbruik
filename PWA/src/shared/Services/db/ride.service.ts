@@ -8,6 +8,10 @@ import { Ride } from '../../models/ride.model';
 export class RideService {
 	constructor(private db: Db) {}
 
+	postRide(ride: Ride): Observable<Ride> {
+		return this.db.sendPostRequest(`ride`, ride);
+	}
+
 	getRides(): Observable<Ride[]> {
 		return this.db.sendGetRequest(`ride`).pipe(
 			map((response: Ride[]) => {
