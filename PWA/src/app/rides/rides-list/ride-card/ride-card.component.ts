@@ -5,6 +5,7 @@ import { ConfirmDialogComponent } from 'src/shared/components/confirm-dialog/con
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { RidesListService } from 'src/shared/Services/rides-list-service';
 import * as moment from 'moment';
+import { RideModalComponent } from '../../ride-modal/ride-modal.component';
 
 @Component({
 	selector: 'app-ride-card',
@@ -62,6 +63,23 @@ export class RideCardComponent implements OnInit {
 						console.log(err);
 					}
 				);
+			}
+		});
+	}
+
+	openEditModal(): void {
+		let dialogRef = this.dialog.open(RideModalComponent, {
+			width: '85vw',
+			maxWidth: '85vw',
+			data: {
+				header: `Wijzigen nieuwe rit`,
+				ride: this.ride
+			}
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.ridesListService.updateRide(result);
 			}
 		});
 	}
