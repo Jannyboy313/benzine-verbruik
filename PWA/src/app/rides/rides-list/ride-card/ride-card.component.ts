@@ -3,6 +3,7 @@ import { Ride } from 'src/shared/models/ride.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/shared/components/confirm-dialog/confirm-dialog.component';
 import { RideService } from 'src/shared/Services/db/ride.service';
+import { RidesListService } from 'src/shared/Services/rides-list-service';
 import * as moment from 'moment';
 
 @Component({
@@ -17,7 +18,11 @@ export class RideCardComponent implements OnInit {
 		distance: 0
 	};
 
-	constructor(public dialog: MatDialog, private rideService: RideService) {}
+	constructor(
+		public dialog: MatDialog,
+		private rideService: RideService,
+		private ridesListService: RidesListService
+	) {}
 
 	ngOnInit(): void {}
 
@@ -49,12 +54,12 @@ export class RideCardComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			if (result) {
-				this.rideService.deleteRide(this.ride._id).subscribe (
-					result => {
-						console.log("Deleted succesful")
+				this.rideService.deleteRide(this.ride._id).subscribe(
+					() => {
+						this.ridesListService.deleteRide(this.ride);
 					},
 					err => {
-						console.log(err)
+						console.log(err);
 					}
 				);
 			}

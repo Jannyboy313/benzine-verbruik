@@ -1,7 +1,9 @@
+import { RidesListService } from './../../../shared/Services/rides-list-service';
 import { RideModalComponent } from './../ride-modal/ride-modal.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
+import { Ride } from 'src/shared/models/ride.model';
 
 @Component({
 	selector: 'app-rides-screen',
@@ -9,9 +11,10 @@ import { Subject } from 'rxjs';
 	styleUrls: ['./rides-screen.component.scss']
 })
 export class RidesScreenComponent implements OnInit {
-	reloadRidesList: Subject<boolean> = new Subject<boolean>();
-
-	constructor(public dialog: MatDialog) {}
+	constructor(
+		public dialog: MatDialog,
+		private ridesListService: RidesListService
+	) {}
 
 	ngOnInit(): void {}
 
@@ -26,7 +29,7 @@ export class RidesScreenComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			if (result) {
-				this.reloadRidesList.next(true);
+				this.ridesListService.addRide(result);
 			}
 		});
 	}
