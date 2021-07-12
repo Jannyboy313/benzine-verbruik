@@ -16,6 +16,8 @@ export class RideModalComponent implements OnInit {
 		message: ''
 	};
 
+	isLoading = false;
+
 	form: FormGroup = new FormGroup({
 		title: new FormControl(''),
 		description: new FormControl(''),
@@ -45,8 +47,8 @@ export class RideModalComponent implements OnInit {
 		}
 	}
 
-	closeDialog(): void {
-		this.dialogRef.close();
+	closeDialog(succes: boolean): void {
+		this.dialogRef.close(succes);
 	}
 
 	getActionName(): string {
@@ -54,7 +56,9 @@ export class RideModalComponent implements OnInit {
 	}
 
 	onSubmit(): void {
+		this.isLoading = true;
 		if (!this.isValid()) {
+			this.isLoading = false;
 			return this.setError(true, 'Niet alle velden zijn goed ingevuld');
 		}
 
@@ -68,12 +72,12 @@ export class RideModalComponent implements OnInit {
 		this.saveRide(ride);
 	}
 
-	isValid(): boolean {
+	private isValid(): boolean {
 		// Add regex or validators to form<<<
 		return true;
 	}
 
-	saveRide(ride: Ride): void {
+	private saveRide(ride: Ride): void {
 		if (this.data._id !== '') {
 			return this.putRide(ride);
 		}
@@ -83,22 +87,28 @@ export class RideModalComponent implements OnInit {
 	private postRide(ride: Ride): void {
 		this.rideService.postRide(ride).subscribe(
 			result => {
-				this.closeDialog();
+				this.closeDialog(true);
+				this.isLoading = false;
 			},
-			err => {}
+			err => {
+				this.isLoading = false;
+			}
 		);
 	}
 
 	private putRide(ride: Ride): void {
 		this.rideService.putRide(ride).subscribe(
 			result => {
-				this.closeDialog();
+				this.closeDialog(true);
+				this.isLoading = false;
 			},
-			err => {}
+			err => {
+				this.isLoading = false;
+			}
 		);
 	}
 
-	setError(isError: boolean, message: string): void {
+	private setError(isError: boolean, message: string): void {
 		this.error.isError = isError;
 		this.error.message = message;
 	}

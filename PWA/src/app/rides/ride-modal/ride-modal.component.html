@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="container">
-			<label style="margin-top: 15px;">Beschrijving</label>
+			<label style="margin-top: 15px">Beschrijving</label>
 			<div class="input-container">
 				<textarea
 					placeholder="Invullen beschrijving"
@@ -26,7 +26,7 @@
 					[ngClass]="{ 'invalid-input': error.isError }"
 					class="input"
 					autocapitalize="on"
-                    rows="3"
+					rows="3"
 				></textarea>
 			</div>
 		</div>
@@ -47,8 +47,20 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-	<button class="dismiss" (click)="closeDialog()">Annuleren</button>
-	<button class="accept" (click)="onSubmit()" cdkFocusInitial>
-		{{ getActionName() }}
+	<button class="dismiss" (click)="closeDialog(false)" disabled="isLoading">
+		Annuleren
+	</button>
+	<button
+		class="accept"
+		(click)="onSubmit()"
+		cdkFocusInitial
+		disabled="isLoading"
+	>
+		<p *ngIf="!isLoading">{{ getActionName() }}</p>
+
+		<span
+			*ngIf="isLoading"
+			class="spinner-border spinner-border-mm mr-1"
+		></span>
 	</button>
 </mat-dialog-actions>
