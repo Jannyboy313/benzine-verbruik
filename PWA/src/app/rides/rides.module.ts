@@ -9,9 +9,10 @@ import { RidesListComponent } from './rides-list/rides-list.component';
 import { RideCardComponent } from './rides-list/ride-card/ride-card.component';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { SharedModule } from 'src/shared/shared.module';
+import { RideModalComponent } from './ride-modal/ride-modal.component';
 
 @NgModule({
-	declarations: [RidesScreenComponent, RidesListComponent, RideCardComponent],
+	declarations: [RidesScreenComponent, RidesListComponent, RideCardComponent, RideModalComponent],
 	imports: [CommonModule, RidesRoutingModule, SharedModule, MatDialogModule],
 	providers: [RideService]
 })
