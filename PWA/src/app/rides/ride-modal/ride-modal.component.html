@@ -60,7 +60,6 @@
 	<button
 		class="accept"
 		(click)="onSubmit()"
-		cdkFocusInitial
 		[disabled]="isLoading"
 	>
 		<p *ngIf="!isLoading">{{ getActionName() }}</p>
