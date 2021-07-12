@@ -47,7 +47,7 @@ export class RideModalComponent implements OnInit {
 		}
 	}
 
-	closeDialog(succes: boolean): void {
+	closeDialog(succes: boolean | Ride): void {
 		this.dialogRef.close(succes);
 	}
 
@@ -86,9 +86,9 @@ export class RideModalComponent implements OnInit {
 
 	private postRide(ride: Ride): void {
 		this.rideService.postRide(ride).subscribe(
-			() => {
+			result => {
 				this.isLoading = false;
-				this.closeDialog(true);
+				this.closeDialog(result);
 			},
 			err => {
 				this.isLoading = false;
@@ -101,7 +101,7 @@ export class RideModalComponent implements OnInit {
 		this.rideService.putRide(ride).subscribe(
 			() => {
 				this.isLoading = false;
-				this.closeDialog(true);
+				this.closeDialog(ride);
 			},
 			err => {
 				this.isLoading = false;

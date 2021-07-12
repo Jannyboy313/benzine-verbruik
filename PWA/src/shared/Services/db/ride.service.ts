@@ -9,7 +9,11 @@ export class RideService {
 	constructor(private db: Db) {}
 
 	postRide(ride: Ride): Observable<Ride> {
-		return this.db.sendPostRequest(`ride`, ride);
+		return this.db.sendPostRequest(`ride`, ride).pipe(
+			map((response: Ride) => {
+				return response;
+			})
+		);
 	}
 
 	getRides(): Observable<Ride[]> {
