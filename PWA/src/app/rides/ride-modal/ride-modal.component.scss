@@ -79,10 +79,10 @@ mat-dialog-actions {
 	background-image: none;
 	background-color: $white;
 	color: $black;
-	border: $primary-color solid 2px;
+	border: $secondary-color solid 2px;
 	box-shadow: 0 4px 4px rgba($color: $black, $alpha: 0.15);
 }
 
 .accept {
-	background-image: $primary-gradient;
+	background-image: $secondary-gradient;
 }
