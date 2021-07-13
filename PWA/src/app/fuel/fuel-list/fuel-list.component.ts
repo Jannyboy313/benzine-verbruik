@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Error } from 'src/shared/models/error.model';
+import { FuelService } from 'src/shared/Services/db/fuel.service';
 
 @Component({
 	selector: 'app-fuel-list',
@@ -13,7 +14,7 @@ export class FuelListComponent implements OnInit {
 		message: 'Network error'
 	};
 
-	constructor() {}
+	constructor(private fuelService: FuelService) {}
 
 	ngOnInit(): void {}
 
