@@ -5,6 +5,7 @@ import { Fuel } from 'src/shared/models/fuel.model';
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/shared/components/confirm-dialog/confirm-dialog.component';
+import { FuelModalComponent } from '../../fuel-modal/fuel-modal.component';
 
 @Component({
 	selector: 'app-fuel-card',
@@ -21,7 +22,7 @@ export class FuelCardComponent implements OnInit {
 	constructor(
 		public dialog: MatDialog,
 		private fuelService: FuelService,
-    private fuelListService: FuelListService
+		private fuelListService: FuelListService
 	) {}
 
 	ngOnInit(): void {}
@@ -54,6 +55,24 @@ export class FuelCardComponent implements OnInit {
 						console.log(err);
 					}
 				);
+			}
+		});
+	}
+
+	openEditModal(): void {
+		let dialogRef = this.dialog.open(FuelModalComponent, {
+			width: '85vw',
+			maxWidth: '85vw',
+			data: {
+				header: `Wijzigen van tankbeurt`,
+				fuel: this.fuel,
+				edit: true
+			}
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.fuelListService.updateFuel(result);
 			}
 		});
 	}
