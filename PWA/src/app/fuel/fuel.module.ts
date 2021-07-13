@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FuelscreenComponent } from './fuelscreen/fuelscreen.component';
-
+import { FuelRoutingModule } from './fuel-routing.module';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { FuelscreenComponent } from './fuelscreen/fuelscreen.component';
     FuelscreenComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FuelRoutingModule
   ]
 })
 export class FuelModule { }
