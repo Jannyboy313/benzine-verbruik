@@ -1,1 +1,41 @@
-<p>fuel-card works!</p>
+<article>
+	<section class="top-card">
+		<div class="liter">
+			<h3></h3>
+			<h1>10.98</h1>
+		</div>
+
+		<div class="price">
+			<h3></h3>
+			<h1>&euro; 20,19</h1>
+		</div>
+
+		<div class="location">
+			<h3></h3>
+			<h1>&euro; 20,19</h1>
+		</div>
+
+		<div>
+			<span class="material-icons">radio_button_checked</span>
+			<h2>{{ ride.distance }} Km Gereden</h2>
+		</div>
+	</section>
+
+	<hr />
+
+	<section class="bottom-card">
+		<div class="date">
+			<p>{{ formatDate(fuel.createdAt) }}</p>
+		</div>
+
+		<div class="buttons">
+			<button class="delete" (click)="openConfirmDialog()">
+				<span class="material-icons">delete</span>
+			</button>
+
+			<button (click)="openEditModal()">
+				<span class="material-icons">edit</span>
+			</button>
+		</div>
+	</section>
+</article>
