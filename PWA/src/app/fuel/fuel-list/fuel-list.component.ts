@@ -7,7 +7,7 @@ import { Error } from 'src/shared/models/error.model';
 	styleUrls: ['./fuel-list.component.scss']
 })
 export class FuelListComponent implements OnInit {
-	isLoading: boolean = true;
+	isLoading: boolean = false;
 	error: Error = {
 		isError: false,
 		message: 'Network error'
