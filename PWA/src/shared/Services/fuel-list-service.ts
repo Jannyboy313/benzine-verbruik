@@ -13,21 +13,21 @@ export class FuelListService {
 		this.fuelSubject.next([]);
 	}
 
-	getRidesSubject(): Subject<Fuel[]> {
+	getFuelSubject(): Subject<Fuel[]> {
 		return this.fuelSubject;
 	}
 
-	setRides(fuelList: Fuel[]): void {
+	setFuel(fuelList: Fuel[]): void {
 		this.fuelList = fuelList;
 		this.fuelSubject.next(fuelList);
 	}
 
-	addRide(fuel: Fuel): void {
+	addFuel(fuel: Fuel): void {
 		this.fuelList.push(fuel);
 		this.fuelSubject.next(this.fuelList);
 	}
 
-	updateRide(fuel: Fuel): void {
+	updateFuel(fuel: Fuel): void {
 		for (let i = 0; i < this.fuelList.length; i++) {
 			if (this.fuelList[i]._id === fuel._id) {
 				this.fuelList[i] = fuel;
@@ -36,7 +36,7 @@ export class FuelListService {
 		}
 	}
 
-	deleteRide(fuel: Fuel): void {
+	deleteFuel(fuel: Fuel): void {
 		for (let i = 0; i < this.fuelList.length; i++) {
 			if (this.fuelList[i]._id === fuel._id) {
 				this.fuelList.splice(i, 1);
