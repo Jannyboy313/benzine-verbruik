@@ -41,7 +41,7 @@ exports.putFuel = (req, res) => {
 	Fuel.findOneAndUpdate(
 		{ _id: id },
 		{
-			litre: fuel.liter,
+			litre: fuel.litre,
 			price: fuel.price,
 			gas_station: fuel.price,
 			location: fuel.location
