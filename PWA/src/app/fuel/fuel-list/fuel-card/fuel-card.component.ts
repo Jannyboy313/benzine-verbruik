@@ -1,6 +1,10 @@
+import { FuelService } from './../../../../shared/Services/db/fuel.service';
+import { FuelListService } from './../../../../shared/Services/fuel-list-service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Fuel } from 'src/shared/models/fuel.model';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
 	selector: 'app-fuel-card',
@@ -9,12 +13,16 @@ import * as moment from 'moment';
 })
 export class FuelCardComponent implements OnInit {
 	@Input() fuel: Fuel = {
-    litre: 0,
-    price: 0,
-    gas_station: '',
-    location: ''
-  };
-	constructor() {}
+		litre: 0,
+		price: 0,
+		gas_station: '',
+		location: ''
+	};
+	constructor(
+		public dialog: MatDialog,
+		private fuelService: FuelService,
+    private fuelListService: FuelListService
+	) {}
 
 	ngOnInit(): void {}
 
@@ -25,5 +33,28 @@ export class FuelCardComponent implements OnInit {
 			formattedDate.charAt(0).toUpperCase() +
 			formattedDate.slice(1).replace(/\./g, '')
 		);
+	}
+
+	openConfirmDialog(): void {
+		let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+			data: {
+				title: `Tankbeurt verwijderen?`,
+				message: `Weet u zeker dat u ${this.fuel.gas_station} uit ${this.fuel.location} wilt verwijderen?`,
+				name: 'Verwijderen'
+			}
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (result) {
+				this.fuelService.deleteFuel(this.fuel._id).subscribe(
+					() => {
+						this.fuelListService.deleteFuel(this.fuel);
+					},
+					err => {
+						console.log(err);
+					}
+				);
+			}
+		});
 	}
 }
