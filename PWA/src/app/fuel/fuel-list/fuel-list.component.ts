@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { Error } from 'src/shared/models/error.model';
 
 @Component({
-  selector: 'app-fuel-list',
-  templateUrl: './fuel-list.component.html',
-  styleUrls: ['./fuel-list.component.scss']
+	selector: 'app-fuel-list',
+	templateUrl: './fuel-list.component.html',
+	styleUrls: ['./fuel-list.component.scss']
 })
 export class FuelListComponent implements OnInit {
+	isLoading: boolean = true;
+	error: Error = {
+		isError: false,
+		message: 'Network error'
+	};
 
-  constructor() { }
+	constructor() {}
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {}
 
+	fuelExist(): boolean {
+		return true;
+	}
+
+	closeError(isError: boolean) {
+		this.error.isError = isError;
+	}
 }
