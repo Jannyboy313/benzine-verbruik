@@ -1,0 +1,90 @@
+@import '../../../../util/styles/colors.scss';
+@import '../../../../util/styles/buttons.scss';
+
+h1 {
+	margin: 0;
+}
+
+h2 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+article {
+	width: 90vw;
+	margin: auto auto 20px auto;
+	display: flex;
+	flex-direction: column;
+	box-shadow: $box-shadow;
+	border-radius: 16px;
+}
+
+.top-card {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	margin: 20px 20px 10px 20px;
+
+	.item {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 15px;
+        margin-left: 15px;
+
+		span {
+			margin-right: 8px;
+			color: $primary-color;
+		}
+	}
+}
+
+
+hr {
+	border: none;
+	height: 1px;
+	color: #eceeef;
+	background-color: #eceeef;
+	width: 100%;
+	margin: 0;
+}
+
+.bottom-card {
+	display: flex;
+	flex-direction: row;
+	margin: 15px 20px 15px 20px;
+
+	div {
+		width: 50%;
+		display: inherit;
+		align-self: center;
+	}
+
+	.date {
+		margin-left: 8px;
+	}
+
+	.buttons {
+		display: inherit;
+		justify-content: flex-end;
+		align-content: flex-end;
+
+		button {
+			@extend .round-button;
+			margin: 0 7px;
+			height: 42px;
+
+			span {
+				font-size: 23px;
+				padding: 4px;
+			}
+		}
+
+		.delete {
+			background-color: $delete-color;
+		}
+	}
+}
