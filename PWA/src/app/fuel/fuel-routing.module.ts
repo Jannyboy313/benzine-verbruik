@@ -1,11 +1,11 @@
-import { FuelscreenComponent } from './fuelscreen/fuelscreen.component';
+import { FuelScreenComponent } from './fuel-screen/fuel-screen.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: FuelscreenComponent
+		component: FuelScreenComponent
 	}
 ];
 
