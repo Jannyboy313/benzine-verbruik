@@ -1,0 +1,44 @@
+<article>
+	<section class="top-card">
+		<section>
+			<div class="item">
+				<h2>Liter</h2>
+				<h1>{{fuel.litre}} L</h1>
+			</div>
+			<div class="item">
+				<h2>Tankstation</h2>
+				<p>{{fuel.gas_station}}</p>
+			</div>
+		</section>
+
+		<section style="margin-left: 30px;">
+			<div class="item">
+				<h2>Prijs</h2>
+				<h1>&euro; {{fuel.price}}</h1>
+			</div>
+
+			<div class="item">
+				<h2>Locatie</h2>
+				<p>{{fuel.location}}</p>
+			</div>
+		</section>
+	</section>
+
+	<hr />
+
+	<section class="bottom-card">
+		<div class="date">
+			<p>Woe 1 Jun 12:09</p>
+		</div>
+
+		<div class="buttons">
+			<button class="delete" (click)="openConfirmDialog()">
+				<span class="material-icons">delete</span>
+			</button>
+
+			<button (click)="openEditModal()">
+				<span class="material-icons">edit</span>
+			</button>
+		</div>
+	</section>
+</article>

@@ -1,0 +1,22 @@
+<article>
+	<div *ngIf="!isLoading && fuelExist()">
+		<app-fuel-card *ngFor="let fuel of fuelList" [fuel]="fuel"></app-fuel-card>
+	</div>
+
+	<div *ngIf="!isLoading && !fuelExist() && !error.isError">
+		<p>No fuel is existing</p>
+	</div>
+
+	<span
+		*ngIf="isLoading"
+		class="spinner-border spinner-border-mm mr-1"
+	></span>
+	<p *ngIf="isLoading">Loading..</p>
+
+	<app-error-span
+		*ngIf="error.isError"
+		class="error"
+		[errorMessage]="error.message"
+		(isError)="closeError($event)"
+	></app-error-span>
+</article>

@@ -2,8 +2,6 @@ import { RidesListService } from './../../../shared/Services/rides-list-service'
 import { RideModalComponent } from './../ride-modal/ride-modal.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subject } from 'rxjs';
-import { Ride } from 'src/shared/models/ride.model';
 
 @Component({
 	selector: 'app-rides-screen',

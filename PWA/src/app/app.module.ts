@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/shared/shared.module';
 import { RidesModule } from './rides/rides.module';
+import { FuelModule } from './fuel/fuel.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -24,7 +25,8 @@ import { BottomNavigationComponent } from 'src/shared/components/bottom-navigati
 		HttpClientModule,
 		LoginModule,
 		RidesModule,
-		SharedModule
+		SharedModule,
+		FuelModule
 	],
 	bootstrap: [AppComponent]
 })
