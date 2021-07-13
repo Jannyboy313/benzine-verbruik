@@ -1,9 +1,8 @@
 import { RidesListService } from './../../../shared/Services/rides-list-service';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { Ride } from 'src/shared/models/ride.model';
 import { Error } from '../../../shared/models/error.model';
-import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-rides-list',
