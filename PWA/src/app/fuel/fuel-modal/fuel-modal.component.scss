@@ -5,6 +5,14 @@
 @import 'material-icons/iconfont/filled.scss';
 @import '../../../util/styles/error.scss';
 
+section {
+	display: flex;
+	flex-direction: row;
+	.input {
+		width: 28vw;
+	}
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
