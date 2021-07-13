@@ -39,7 +39,7 @@ export class FuelCardComponent implements OnInit {
 		let dialogRef = this.dialog.open(ConfirmDialogComponent, {
 			data: {
 				title: `Tankbeurt verwijderen?`,
-				message: `Weet u zeker dat u ${this.fuel.gas_station} uit ${this.fuel.location} wilt verwijderen?`,
+				message: `Weet u zeker dat u de tankbeurt van ${this.fuel.gas_station} uit ${this.fuel.location} wilt verwijderen?`,
 				name: 'Verwijderen'
 			}
 		});
