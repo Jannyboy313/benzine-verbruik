@@ -1,6 +1,6 @@
 <article>
 	<div *ngIf="!isLoading && fuelExist()">
-		<app-fuel-card *ngFor="let fuel of fuels" [fuel]="fuel"></app-fuel-card>
+		<app-fuel-card *ngFor="let fuel of fuelList" [fuel]="fuel"></app-fuel-card>
 	</div>
 
 	<div *ngIf="!isLoading && !fuelExist() && !error.isError">
