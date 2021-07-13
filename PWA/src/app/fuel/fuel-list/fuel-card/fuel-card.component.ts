@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Fuel } from 'src/shared/models/fuel.model';
 import * as moment from 'moment';
 
 @Component({
@@ -7,6 +8,12 @@ import * as moment from 'moment';
 	styleUrls: ['./fuel-card.component.scss']
 })
 export class FuelCardComponent implements OnInit {
+	@Input() fuel: Fuel = {
+    litre: 0,
+    price: 0,
+    gas_station: '',
+    location: ''
+  };
 	constructor() {}
 
 	ngOnInit(): void {}
