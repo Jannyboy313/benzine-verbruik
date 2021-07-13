@@ -12,6 +12,11 @@ const routes: Routes = [
 		path: 'rides',
 		loadChildren: () =>
 			import(`./rides/rides.module`).then(m => m.RidesModule)
+	},
+	{
+		path: 'fuel',
+		loadChildren: () =>
+			import(`./fuel/fuel.module`).then(m => m.FuelModule)
 	}
 ];
 
