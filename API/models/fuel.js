@@ -4,9 +4,9 @@ var Float = require('mongoose-float').loadType(mongoose);
 
 const FuelSchema = new Schema(
 	{
-		liter: {
+		litre: {
 			type: Float,
-			required: [true, 'Amount of fuel in liters is required']
+			required: [true, 'Amount of fuel in litres is required']
 		},
 		price: {
 			type: Float,
