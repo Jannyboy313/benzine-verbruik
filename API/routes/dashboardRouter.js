@@ -4,5 +4,8 @@ const addUserId = require('../middleware/addUserId.js');
 const dashboardController = require('../controllers/dashboardController.js');
 
 router.get('/', addUserId, dashboardController);
+// router.get('/day/:id', addUserId, dashboardController);
+// router.get('/month/:id', addUserId, dashboardController);
+// router.get('/year/:id', addUserId, dashboardController);
 
 module.exports = router;
