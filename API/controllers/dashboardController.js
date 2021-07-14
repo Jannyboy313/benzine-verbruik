@@ -8,6 +8,7 @@ exports.getDashboardData = async (req, res) => {
 	const fuelCosts = await getFuelCosts(res.locals.user._id);
 	const distance = await getDistance(res.locals.user._id);
 	const balance = getBalance(fuelCosts[0].Prices, distance[0].Distance);
+    res.status(200).json({ litres: fuelCosts[0].Litres, prices: fuelCosts[0].Prices, distance: distance[0].Distance, balance: balance });
 };
 
 getBalance = (price, distance) => {
