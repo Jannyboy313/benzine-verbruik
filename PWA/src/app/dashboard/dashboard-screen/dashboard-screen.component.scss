@@ -1,9 +1,15 @@
+@import '../../../util/styles/colors.scss';
+
 article {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-header {
-    margin-bottom: 30px;
+span {
+	text-align: end;
+	width: 85%;
+	margin-bottom: 20px;
+	color: $grey;
+	font-size: 30px;
 }
