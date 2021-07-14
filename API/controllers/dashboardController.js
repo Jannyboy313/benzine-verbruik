@@ -6,9 +6,14 @@ const Types = mongoose.Types;
 
 exports.getDashboardData = async (req, res) => {
 	const fuelCosts = await getFuelCosts(res.locals.user._id);
-	console.log(fuelCosts);
-    const distance = await getDistance(res.locals.user._id);
-    console.log(distance[0].Distance);
+	const distance = await getDistance(res.locals.user._id);
+	const balance = getBalance(fuelCosts[0].Prices, distance[0].Distance);
+};
+
+getBalance = (price, distance) => {
+	let distanceMoney = distance * 0.1;
+	distanceMoney = Math.round(distanceMoney * 100) / 100;
+	return price - distanceMoney;
 };
 
 getFuelCosts = id => {
@@ -29,15 +34,15 @@ getFuelCosts = id => {
 				Litres: {
 					$sum: '$litre'
 				},
-                Prices : {
-                    $sum: '$price'
-                }
+				Prices: {
+					$sum: '$price'
+				}
 			}
 		}
 	]);
 };
 
-getDistance = (id) => {
+getDistance = id => {
 	return Ride.aggregate([
 		{
 			$lookup: {
@@ -58,4 +63,4 @@ getDistance = (id) => {
 			}
 		}
 	]);
-}
+};
