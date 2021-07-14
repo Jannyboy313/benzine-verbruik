@@ -11,6 +11,7 @@ const swaggerDocument = require('./util/swagger.json');
 const userRouter = require('./routes/userRouter.js');
 const rideRouter = require('./routes/rideRouter.js');
 const fuelRouter = require('./routes/fuelRouter.js');
+const dashboardRouter = require('./routes/dashboardRouter.js');
 const isAuth = require('./middleware/isAuth.js');
 
 const app = express();
@@ -36,6 +37,7 @@ app.use(
 app.use('/user', userRouter);
 app.use('/ride', isAuth, rideRouter);
 app.use('/fuel', isAuth, fuelRouter);
+app.use('/dashboard', isAuth, dashboardRouter);
 
 //LISTENER
 mongoose
