@@ -15,7 +15,7 @@ const isAuth = require('./middleware/isAuth.js');
 
 const app = express();
 
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
 
@@ -26,18 +26,26 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use(passport.initialize());
 
 //ROUTES
-app.use(cors({ origin: [`http://localhost:4200`],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials:true,
-}));
+app.use(
+	cors({
+		origin: [`http://localhost:4200`],
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+		credentials: true
+	})
+);
 app.use('/user', userRouter);
 app.use('/ride', isAuth, rideRouter);
-app.use('/fuel', isAuth, fuelRouter)
+app.use('/fuel', isAuth, fuelRouter);
 
 //LISTENER
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
-    .then(result => {
-        app.listen(process.env.PORT);
-        console.log(`Running on port ${process.env.PORT}`);
-    })
-    .catch(err => console.log(err));
+mongoose
+	.connect(process.env.DATABASE_URL, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true
+	})
+	.then(result => {
+		app.listen(process.env.PORT);
+		console.log(`Running on port ${process.env.PORT}`);
+	})
+	.catch(err => console.log(err));
