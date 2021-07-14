@@ -7,6 +7,8 @@ const Types = mongoose.Types;
 exports.getDashboardData = async (req, res) => {
 	const litres = await getLitres(res.locals.user._id);
 	console.log(litres[0].Litres);
+    const distance = await getDistance(res.locals.user._id);
+    console.log(distance[0].Distance);
 };
 
 getLitres = id => {
@@ -31,3 +33,26 @@ getLitres = id => {
 		}
 	]);
 };
+
+getDistance = (id) => {
+	return Ride.aggregate([
+		{
+			$lookup: {
+				from: User.collection.name,
+				localField: 'user',
+				foreignField: '_id',
+				as: 'user'
+			}
+		},
+		{ $unwind: '$user' },
+		{ $match: { 'user._id': Types.ObjectId(id) } },
+		{
+			$group: {
+				_id: null,
+				Distance: {
+					$sum: '$distance'
+				}
+			}
+		}
+	]);
+}
