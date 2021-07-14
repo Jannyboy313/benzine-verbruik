@@ -15,8 +15,11 @@ const routes: Routes = [
 	},
 	{
 		path: 'fuel',
-		loadChildren: () =>
-			import(`./fuel/fuel.module`).then(m => m.FuelModule)
+		loadChildren: () => import(`./fuel/fuel.module`).then(m => m.FuelModule)
+	},
+	{
+		path: 'dashboard',
+		loadChildren: () => import(`./dashboard/dashboard.module`).then(m => m.DashboardModule)
 	}
 ];
 
