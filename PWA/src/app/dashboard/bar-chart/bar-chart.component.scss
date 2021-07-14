@@ -2,10 +2,33 @@
 @import '../../../util/styles/effects.scss';
 
 article {
-	width: 95%;
+	width: 90vw;
 	margin: auto auto 20px auto;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	box-shadow: $box-shadow;
 	border-radius: 16px;
+    padding: 20px;
+}
+
+.number {
+    margin: 0;
+    display: inherit;
+    align-self: center;
+    justify-content: flex-end;
+    margin-left: 25px;
+}
+
+section {
+    width: 75%;
+    display: inherit;
+    flex-direction: column;
+
+    .progress {
+        background-color: transparent;
+        .progress-bar {
+            background: $secondary-gradient;
+            width: 40%;
+        }
+    }
 }
