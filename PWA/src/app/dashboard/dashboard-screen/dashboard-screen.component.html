@@ -11,5 +11,12 @@
 	></span>
 	<p *ngIf="isLoading">Loading..</p>
 
+	<app-error-span
+		*ngIf="error.isError"
+		class="error"
+		[errorMessage]="error.message"
+		(isError)="closeError($event)"
+	></app-error-span>
+
 	<!-- <app-bar-chart></app-bar-chart> -->
 </article>
