@@ -24,7 +24,9 @@ export class DashboardScreenComponent implements OnInit {
 
 	constructor(private dashboardService: DashboardService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+    this.getDashboardData();
+  }
 
 	getDashboardData() {
 		this.setError(false, 'Network error');
