@@ -5,10 +5,19 @@ const mongoose = require('mongoose');
 const Types = mongoose.Types;
 
 exports.getDashboardData = async (req, res) => {
-	const fuelCosts = await getFuelCosts(res.locals.user._id);
-	const distance = await getDistance(res.locals.user._id);
-	const balance = getBalance(fuelCosts[0].Prices, distance[0].Distance);
-    res.status(200).json({ litres: fuelCosts[0].Litres, prices: fuelCosts[0].Prices, distance: distance[0].Distance, balance: balance });
+	try {
+		const fuelCosts = await getFuelCosts(res.locals.user._id);
+		const distance = await getDistance(res.locals.user._id);
+		const balance = getBalance(fuelCosts[0].Prices, distance[0].Distance);
+		res.status(200).json({
+			litres: fuelCosts[0].Litres,
+			prices: fuelCosts[0].Prices,
+			distance: distance[0].Distance,
+			balance: balance
+		});
+	} catch (err) {
+		res.status(500).json({ message: 'Something went wrong' });
+	}
 };
 
 getBalance = (price, distance) => {
