@@ -18,9 +18,9 @@
 		(isError)="closeError($event)"
 	></app-error-span>
 
-	<app-bar-chart [name]="'Liter'" [value]="dashboardData.litres"></app-bar-chart>
-	<app-bar-chart [name]="'Afstand'" [value]="dashboardData.distance"></app-bar-chart>
-	<app-bar-chart [name]="'Prijs'" [value]="dashboardData.prices"></app-bar-chart>
-	<app-bar-chart [name]="'Balans'" [value]="dashboardData.balance"></app-bar-chart>
+	<app-bar-chart [name]="'Liter'" [value]="{amount: dashboardData.litres}"></app-bar-chart>
+	<app-bar-chart [name]="'Afstand'" [value]="{amount:dashboardData.distance}"></app-bar-chart>
+	<app-bar-chart [name]="'Prijs'" [value]="{amount:dashboardData.prices}"></app-bar-chart>
+	<app-bar-chart [name]="'Balans'" [value]="{amount:dashboardData.balance}"></app-bar-chart>
 
 </article>
