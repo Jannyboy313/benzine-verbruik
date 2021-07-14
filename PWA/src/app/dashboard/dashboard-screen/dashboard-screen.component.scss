@@ -13,3 +13,9 @@ article {
 	color: $grey;
 	font-size: 30px;
 }
+
+.spinner-border {
+    margin: auto;
+    border-color: $secondary-color;
+    border-left-color: $white;
+}

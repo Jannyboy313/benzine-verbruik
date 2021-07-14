@@ -3,7 +3,13 @@
 		<h1>Dashboard</h1>
 	</header>
 
-	<span class="material-icons">filter_alt</span>
+	<span class="material-icons filter">filter_alt</span>
 
-	<app-bar-chart></app-bar-chart>
+	<span
+		*ngIf="isLoading"
+		class="spinner-border spinner-border-mm mr-1"
+	></span>
+	<p *ngIf="isLoading">Loading..</p>
+
+	<!-- <app-bar-chart></app-bar-chart> -->
 </article>
