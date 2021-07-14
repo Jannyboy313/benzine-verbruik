@@ -1,6 +1,7 @@
 import { DashboardService } from './../../../shared/Services/db/dashboard.service';
 import { Component, OnInit } from '@angular/core';
 import { Error } from 'src/shared/models/error.model';
+import { Dashboard } from 'src/shared/models/dashboard.model';
 
 @Component({
 	selector: 'app-dashboard-screen',
@@ -10,7 +11,7 @@ import { Error } from 'src/shared/models/error.model';
 export class DashboardScreenComponent implements OnInit {
 	isLoading: boolean = true;
 
-	dashboardData: any = {
+	dashboardData: Dashboard = {
 		litres: 0,
 		prices: 0,
 		distance: 0,
@@ -25,8 +26,8 @@ export class DashboardScreenComponent implements OnInit {
 	constructor(private dashboardService: DashboardService) {}
 
 	ngOnInit(): void {
-    this.getDashboardData();
-  }
+		this.getDashboardData();
+	}
 
 	getDashboardData() {
 		this.setError(false, 'Network error');
@@ -34,7 +35,7 @@ export class DashboardScreenComponent implements OnInit {
 		this.dashboardService.getDashboardData().subscribe(
 			result => {
 				this.isLoading = false;
-				this.dashboardData = result;
+				this.dashboardData = result
 			},
 			err => {
 				this.isLoading = false;
