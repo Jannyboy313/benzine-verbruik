@@ -1,0 +1,15 @@
+{
+  "name": "benzine-pwa",
+  "short_name": "benzine-pwa",
+  "theme_color": "#1a73e9",
+  "background_color": "#fefefe",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icons/Logo_with_text.svg",
+      "type": "svg"
+    }
+  ]
+}
