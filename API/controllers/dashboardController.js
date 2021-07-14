@@ -5,13 +5,13 @@ const mongoose = require('mongoose');
 const Types = mongoose.Types;
 
 exports.getDashboardData = async (req, res) => {
-	const litres = await getLitres(res.locals.user._id);
-	console.log(litres[0].Litres);
+	const fuelCosts = await getFuelCosts(res.locals.user._id);
+	console.log(fuelCosts);
     const distance = await getDistance(res.locals.user._id);
     console.log(distance[0].Distance);
 };
 
-getLitres = id => {
+getFuelCosts = id => {
 	return Fuel.aggregate([
 		{
 			$lookup: {
@@ -28,7 +28,10 @@ getLitres = id => {
 				_id: null,
 				Litres: {
 					$sum: '$litre'
-				}
+				},
+                Prices : {
+                    $sum: '$price'
+                }
 			}
 		}
 	]);
