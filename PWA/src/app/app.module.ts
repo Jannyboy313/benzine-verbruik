@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LogoBannerComponent } from 'src/shared/components/logo-banner/logo-banner.component';
 import { BottomNavigationComponent } from 'src/shared/components/bottom-navigation/bottom-navigation.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [
@@ -28,7 +30,13 @@ import { BottomNavigationComponent } from 'src/shared/components/bottom-navigati
 		RidesModule,
 		SharedModule,
 		FuelModule,
-		DashboardModule
+		DashboardModule,
+  ServiceWorkerModule.register('ngsw-worker.js', {
+    enabled: environment.production,
+    // Register the ServiceWorker as soon as the app is stable
+    // or after 30 seconds (whichever comes first).
+    registrationStrategy: 'registerWhenStable:30000'
+  })
 	],
 	bootstrap: [AppComponent]
 })
