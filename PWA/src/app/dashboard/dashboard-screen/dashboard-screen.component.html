@@ -1,0 +1,26 @@
+<article>
+	<header>
+		<h1>Dashboard</h1>
+	</header>
+
+	<span class="material-icons filter">filter_alt</span>
+
+	<span
+		*ngIf="isLoading"
+		class="spinner-border spinner-border-mm mr-1"
+	></span>
+	<p *ngIf="isLoading">Loading..</p>
+
+	<app-error-span
+		*ngIf="error.isError"
+		class="error"
+		[errorMessage]="error.message"
+		(isError)="closeError($event)"
+	></app-error-span>
+
+	<app-bar-chart [name]="'Liter'" [value]="{amount: dashboardData.litres}"></app-bar-chart>
+	<app-bar-chart [name]="'Afstand'" [value]="{amount:dashboardData.distance}"></app-bar-chart>
+	<app-bar-chart [name]="'Prijs'" [value]="{amount:dashboardData.prices}"></app-bar-chart>
+	<app-bar-chart [name]="'Balans'" [value]="{amount:dashboardData.balance}"></app-bar-chart>
+
+</article>
