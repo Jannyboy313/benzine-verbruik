@@ -18,7 +18,7 @@ export class BarChartComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit(): void {
-    this.percentage = this.calcPercentage();
+    // this.percentage = this.calcPercentage();
   }
 
   calcPercentage(): number {
