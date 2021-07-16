@@ -18,9 +18,22 @@
 		(isError)="closeError($event)"
 	></app-error-span>
 
-	<app-bar-chart [name]="'Liter'" [value]="{amount: dashboardData.litres}"></app-bar-chart>
-	<app-bar-chart [name]="'Afstand'" [value]="{amount:dashboardData.distance}"></app-bar-chart>
-	<app-bar-chart [name]="'Prijs'" [value]="{amount:dashboardData.prices}"></app-bar-chart>
-	<app-bar-chart [name]="'Balans'" [value]="{amount:dashboardData.balance}"></app-bar-chart>
-
+	<div *ngIf="!isLoading && !error.isError">
+		<app-bar-chart
+			[name]="'Liter'"
+			[value]="{ amount: dashboardData.litres }"
+		></app-bar-chart>
+		<app-bar-chart
+			[name]="'Afstand'"
+			[value]="{ amount: dashboardData.distance }"
+		></app-bar-chart>
+		<app-bar-chart
+			[name]="'Prijs'"
+			[value]="{ amount: dashboardData.prices }"
+		></app-bar-chart>
+		<app-bar-chart
+			[name]="'Balans'"
+			[value]="{ amount: dashboardData.balance }"
+		></app-bar-chart>
+	</div>
 </article>
