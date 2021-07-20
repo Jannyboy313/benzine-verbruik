@@ -67,8 +67,9 @@ export class RideModalComponent implements OnInit {
 	}
 
 	onSubmit(): void {
+		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
-		if (!this.isValid()) {
+		if (!this.form.valid) {
 			this.isLoading = false;
 			return this.error.setError(
 				true,
@@ -85,9 +86,8 @@ export class RideModalComponent implements OnInit {
 		this.saveRide(ride);
 	}
 
-	private isValid(): boolean {
-		// Add regex or validators to form<<<
-		return true;
+	isValid(formController: string): boolean {
+		return !this.form.controls[formController].invalid;
 	}
 
 	private saveRide(ride: Ride): void {
