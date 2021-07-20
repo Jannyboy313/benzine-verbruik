@@ -56,10 +56,6 @@ export class RidesListComponent implements OnInit {
 		return false;
 	}
 
-	closeError(isError: boolean) {
-		this.error.isError = isError;
-	}
-
 	private setError(isError: boolean, message: string): void {
 		this.error.isError = isError;
 		this.error.message = message;
