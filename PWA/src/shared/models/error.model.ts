@@ -3,4 +3,10 @@ export class Error {
 	message: string = 'Network error';
 
 	constructor() {}
+
+	public setError(isError: boolean, message: string): void {
+		this.isError = isError;
+		if (message !== '')
+			this.message = message;
+	}
 }
