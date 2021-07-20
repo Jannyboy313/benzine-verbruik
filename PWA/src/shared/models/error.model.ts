@@ -1,6 +1,6 @@
 export class Error {
 	isError: boolean = false;
-	message: string = 'Network error';
+	message: string = 'There has been a network error';
 
 	constructor() {}
 
