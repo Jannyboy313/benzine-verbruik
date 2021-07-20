@@ -27,8 +27,4 @@ article {
 	button {
 		@include button;
 	}
-
-	.error {
-		@extend .error;
-	}
 }

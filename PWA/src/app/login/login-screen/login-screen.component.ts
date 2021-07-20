@@ -65,8 +65,4 @@ export class LoginScreenComponent implements OnInit {
 	setPassword(password: string) {
 		this.password = password;
 	}
-
-	closeError(isError: boolean) {
-		this.error.isError = isError;
-	}
 }
