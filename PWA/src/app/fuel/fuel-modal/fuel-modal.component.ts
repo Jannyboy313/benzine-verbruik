@@ -100,7 +100,7 @@ export class FuelModalComponent implements OnInit {
 	}
 
 	isValid(formController: string): boolean {
-		return this.form.controls[formController].invalid;
+		return !this.form.controls[formController].invalid;
 	}
 
 	private saveFuel(fuel: Fuel): void {
