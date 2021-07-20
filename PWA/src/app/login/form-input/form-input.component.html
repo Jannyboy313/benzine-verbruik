@@ -1,0 +1,15 @@
+<div class="container">
+	<label>Invullen {{ formName }}</label>
+	<div class="input">
+		<input
+			type="{{ getEnglishName() }}"
+			placeholder="Invullen {{ formName }}"
+			name="{{ getEnglishName() }}"
+			required
+			(change)="emitFormData($event)"
+			[ngClass]="{ 'invalid-input': isError }"
+		/>
+		<span *ngIf="isEmail()" class="material-icons">email</span>
+		<span *ngIf="!isEmail()" class="material-icons">lock</span>
+	</div>
+</div>

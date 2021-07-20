@@ -1,0 +1,31 @@
+@import 'colors.scss';
+@import 'effects.scss';
+
+h1 {
+	color: $black;
+	font-size: 20px;
+}
+
+h2 {
+	color: $grey;
+	font-size: 15px;
+}
+
+p {
+	color: $grey-light;
+	font-size: 15px;
+}
+
+header {
+	h1 {
+		font-family: 'Inter', sans-serif;
+		font-size: 32px;
+		font-weight: 900;
+		background-image: $primary-gradient;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		letter-spacing: -0.02em;
+		display: inline-block;
+	}
+}

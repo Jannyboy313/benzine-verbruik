@@ -1,0 +1,110 @@
+@import '../../../util/styles/colors.scss';
+@import '../../../util/styles/buttons.scss';
+@import '../../../util/styles/effects.scss';
+@import '../../../util/styles/error.scss';
+
+section {
+	display: flex;
+	flex-direction: row;
+	.input {
+		width: 28vw;
+	}
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+
+	&:focus-within label {
+		color: $grey;
+	}
+
+	&:focus-within span {
+		color: $grey;
+	}
+}
+
+label {
+	color: transparent;
+	margin-top: 10px;
+}
+
+.input-container {
+	position: relative;
+}
+
+.input {
+	margin-top: 5px;
+	width: 65vw;
+	border: none;
+	border-bottom: 1px solid $grey-light;
+	font-size: medium;
+	padding: 5px 5px 5px 0;
+
+	&:focus {
+		border-bottom: 2px solid $primary-color;
+		outline: 2px solid transparent;
+	}
+
+	&::placeholder {
+		color: $grey;
+		opacity: 0.8;
+	}
+}
+
+span {
+	color: $grey-light;
+	position: absolute;
+	top: 5px;
+	left: 68vw;
+}
+
+.invalid-input {
+	border-bottom: 2px solid $error-color;
+
+	&:focus {
+		border-bottom: 3px solid $error-color;
+		outline: 3px solid transparent;
+	}
+}
+
+h1 {
+	margin: 0;
+}
+
+button {
+	@include button;
+	width: 40%;
+}
+
+mat-dialog-actions {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+
+	p {
+		margin: 0;
+		color: $white;
+	}
+}
+
+.dismiss {
+	background-image: none;
+	background-color: $white;
+	color: $black;
+	border: $secondary-color solid 2px;
+	box-shadow: 0 4px 4px rgba($color: $black, $alpha: 0.15);
+}
+
+.accept {
+	background-image: $secondary-gradient;
+}
+
+.spinner-border {
+	position: initial;
+	color: $white;
+}
+
+.error {
+	@extend .error;
+}

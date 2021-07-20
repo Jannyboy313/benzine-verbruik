@@ -1,0 +1,21 @@
+@import 'colors.scss';
+
+$primary-gradient: linear-gradient(
+	270deg,
+	rgba(26, 115, 233, 1),
+	rgba(108, 146, 244, 1)
+);
+$secondary-gradient: linear-gradient(
+	270deg,
+	rgba(0, 149, 172, 1),
+	rgba(0, 199, 230, 1)
+);
+$box-shadow: 0 4px 15px
+	rgba(
+		$color: $black,
+		$alpha: 0.10
+	);
+
+/*$primary-gradient: rgb(26,115,233) linear-gradient(270deg, rgba(26,115,233,1) 0%, rgba(108,146,244,1) 100%);
+$secondary-gradient: rgb(0,149,172) linear-gradient(270deg, rgba(0,149,172,0.8) 0%, rgba(0,199,230,1) 100%);
+*/

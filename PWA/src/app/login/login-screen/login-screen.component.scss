@@ -1,0 +1,34 @@
+@import '../../../util/styles/buttons.scss';
+@import '../../../util/styles/error.scss';
+
+article {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	header {
+		margin-top: 5vh;
+		margin-bottom: 10vh;
+	}
+
+	form {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		#loginButton {
+			margin-top: 10vh;
+		}
+	}
+
+	button {
+		@include button;
+	}
+
+	.error {
+		@extend .error;
+	}
+}

@@ -1,0 +1,27 @@
+.error {
+	color: $error-color;
+	background: #f2dede;
+	border-color: #ebccd1;
+	margin-bottom: 10px;
+}
+
+.success {
+	color: #3c763d;
+	background: #dff0d8;
+	border-color: #d6e9c6;
+	margin-bottom: 10px;
+}
+
+.info {
+	color: #31708f;
+	background: #d9edf7;
+	border-color: #bce8f1;
+	margin-bottom: 10px;
+}
+
+.warning {
+	color: #8a6d3b;
+	background: #fcf8e3;
+	border-color: #faebcc;
+	margin-bottom: 10px;
+}

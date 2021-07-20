@@ -18,6 +18,8 @@ get:
                   type: number
                 price:
                   type: number
+                gas_station:
+                  type: string
                 location:
                   type: string
                 user:

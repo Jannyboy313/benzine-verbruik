@@ -222,6 +222,9 @@
                       "price": {
                         "type": "number"
                       },
+                      "gas_station": {
+                        "type": "string"
+                      },
                       "location": {
                         "type": "string"
                       },
@@ -277,11 +280,14 @@
                     "_id": {
                       "type": "string"
                     },
-                    "liter": {
+                    "litre": {
                       "type": "number"
                     },
                     "price": {
                       "type": "number"
+                    },
+                    "gas_station": {
+                      "type": "string"
                     },
                     "location": {
                       "type": "string"
@@ -328,6 +334,9 @@
                   "price": {
                     "type": "number"
                   },
+                  "gas_station": {
+                    "type": "string"
+                  },
                   "location": {
                     "type": "string"
                   }
@@ -352,6 +361,9 @@
                     },
                     "price": {
                       "type": "number"
+                    },
+                    "gas_station": {
+                      "type": "string"
                     },
                     "location": {
                       "type": "string"
@@ -409,6 +421,9 @@
                   "price": {
                     "type": "number"
                   },
+                  "gas_station": {
+                    "type": "string"
+                  },
                   "location": {
                     "type": "string"
                   }
@@ -433,6 +448,9 @@
                     },
                     "price": {
                       "type": "number"
+                    },
+                    "gas_station": {
+                      "type": "string"
                     },
                     "location": {
                       "type": "string"

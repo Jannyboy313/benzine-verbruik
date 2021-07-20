@@ -1,0 +1,82 @@
+<h1 mat-dialog-title>{{ data.header }}</h1>
+<app-error-span
+	*ngIf="error.isError"
+	class="error"
+	[errorMessage]="error.message"
+	(isError)="closeError($event)"
+></app-error-span>
+
+<mat-dialog-content>
+	<form [formGroup]="form">
+		<section>
+			<div class="container">
+				<label>Liter</label>
+				<div class="input-container">
+					<input
+						type="number"
+						placeholder="Liter"
+						formControlName="litre"
+						required
+						[ngClass]="{ 'invalid-input': error.isError }"
+						class="input"
+						autofocus
+					/>
+				</div>
+			</div>
+			<div class="container">
+				<label>Prijs</label>
+				<div class="input-container">
+					<input
+						type="number"
+						placeholder="Prijs"
+						formControlName="price"
+						required
+						[ngClass]="{ 'invalid-input': error.isError }"
+						class="input"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<div class="container">
+			<label>Tankstation</label>
+			<div class="input-container">
+				<input
+					type="text"
+					placeholder="Invullen tankstation"
+					formControlName="gas_station"
+					required
+					[ngClass]="{ 'invalid-input': error.isError }"
+					class="input"
+				/>
+			</div>
+		</div>
+		<div class="container">
+			<label>Locatie</label>
+			<div class="input-container">
+				<input
+					type="text"
+					placeholder="Invullen locatie"
+					formControlName="location"
+					required
+					[ngClass]="{ 'invalid-input': error.isError }"
+					class="input"
+				/>
+			</div>
+		</div>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<button class="dismiss" (click)="closeDialog(false)" [disabled]="isLoading">
+		Annuleren
+	</button>
+	<button class="accept" (click)="onSubmit()" [disabled]="isLoading">
+		<p *ngIf="!isLoading">{{ getActionName() }}</p>
+
+		<span
+			*ngIf="isLoading"
+			class="spinner-border spinner-border-mm mr-1"
+		></span>
+	</button>
+</mat-dialog-actions>

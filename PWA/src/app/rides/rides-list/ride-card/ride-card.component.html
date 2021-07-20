@@ -1,0 +1,43 @@
+<article>
+	<section class="top-card">
+		<div>
+			<span class="material-icons">radio_button_checked</span>
+			<h1>{{ ride.title }}</h1>
+		</div>
+
+		<div class="desc">
+			<div class="dots">
+				<span class="dot"></span>
+				<span class="dot"></span>
+				<span class="dot"></span>
+				<span class="dot" *ngIf="showDot(1)"></span>
+				<span class="dot" *ngIf="showDot(2)"></span>
+			</div>
+
+			<p>{{ ride.description }}</p>
+		</div>
+
+		<div>
+			<span class="material-icons">radio_button_checked</span>
+			<h2>{{ ride.distance }} Km Gereden</h2>
+		</div>
+	</section>
+
+	<hr />
+
+	<section class="bottom-card">
+		<div class="date">
+			<p>{{ formatDate(ride.createdAt) }}</p>
+		</div>
+
+		<div class="buttons">
+			<button class="delete" (click)="openConfirmDialog()">
+				<span class="material-icons">delete</span>
+			</button>
+
+			<button (click)="openEditModal()">
+				<span class="material-icons">edit</span>
+			</button>
+		</div>
+	</section>
+</article>

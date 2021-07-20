@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>{{ data.header }}</h1>
+	<app-error-span
+		*ngIf="error.isError"
+		class="error"
+		[errorMessage]="error.message"
+		(isError)="closeError($event)"
+	></app-error-span>
+
+<mat-dialog-content>
+	<form [formGroup]="form">
+		<div class="container">
+			<label>Titel</label>
+			<div class="input-container">
+				<input
+					type="text"
+					placeholder="Invullen titel"
+					formControlName="title"
+					required
+					[ngClass]="{ 'invalid-input': error.isError }"
+					class="input"
+					autofocus
+					autocapitalize="on"
+				/>
+			</div>
+		</div>
+		<div class="container">
+			<label style="margin-top: 15px">Beschrijving</label>
+			<div class="input-container">
+				<textarea
+					placeholder="Invullen beschrijving"
+					formControlName="description"
+					required
+					[ngClass]="{ 'invalid-input': error.isError }"
+					class="input"
+					autocapitalize="on"
+					rows="3"
+				></textarea>
+			</div>
+		</div>
+		<div class="container">
+			<label>Afstand</label>
+			<div class="input-container">
+				<input
+					type="number"
+					placeholder="Invullen afstand in km"
+					formControlName="distance"
+					required
+					[ngClass]="{ 'invalid-input': error.isError }"
+					class="input"
+				/>
+			</div>
+		</div>
+	</form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<button class="dismiss" (click)="closeDialog(false)" [disabled]="isLoading">
+		Annuleren
+	</button>
+	<button
+		class="accept"
+		(click)="onSubmit()"
+		[disabled]="isLoading"
+	>
+		<p *ngIf="!isLoading">{{ getActionName() }}</p>
+
+		<span
+			*ngIf="isLoading"
+			class="spinner-border spinner-border-mm mr-1"
+		></span>
+	</button>
+</mat-dialog-actions>

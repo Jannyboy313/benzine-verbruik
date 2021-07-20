@@ -1,0 +1,59 @@
+@import '../../../util/styles/colors.scss';
+@import '../../../util/styles/text.scss';
+
+.container {
+	display: flex;
+	flex-direction: column;
+
+	&:focus-within label {
+		color: $grey;
+	}
+
+	&:focus-within span {
+		color: $grey;
+	}
+}
+
+label {
+	color: transparent;
+	margin-top: 10px;
+}
+
+.input {
+	position: relative;
+}
+
+input {
+	margin-top: 5px;
+	width: 73vw;
+	border: none;
+	border-bottom: 1px solid $grey-light;
+	font-size: medium;
+	padding: 5px 5px 5px 0;
+
+	&:focus {
+		border-bottom: 2px solid $primary-color;
+		outline: 2px solid transparent;
+	}
+
+	&::placeholder {
+		color: $grey;
+		opacity: 0.8;
+	}
+}
+
+span {
+	color: $grey-light;
+	position: absolute;
+	top: 5px;
+	left: 68vw;
+}
+
+.invalid-input {
+	border-bottom: 2px solid $error-color;
+
+	&:focus {
+		border-bottom: 3px solid $error-color;
+		outline: 3px solid transparent;
+	}
+}

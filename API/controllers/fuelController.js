@@ -1,65 +1,70 @@
-const Fuel = require('../models/fuel.js')
+const Fuel = require('../models/fuel.js');
 
 exports.postFuel = (req, res) => {
-    const fuel = new Fuel(req.body);
-    fuel.save()
-    .then(result => {
-        res.status(201).send(result);
-    })
-    .catch(err => {
-        const status = err.statusCode || 500;
-        res.status(status).json({message: err})
-    });
-}
+	const fuel = new Fuel(req.body);
+	fuel.save()
+		.then(result => {
+			res.status(201).send(result);
+		})
+		.catch(err => {
+			const status = err.statusCode || 500;
+			res.status(status).json({ message: err });
+		});
+};
 
 exports.getFuels = (req, res) => {
-    Fuel.find({ user: req.locals.user._id })
-    .then(result => {
-        res.status(200).send(result);
-    })
-    .catch(err => {
-        const status = err.statusCode || 500;
-        res.status(status).json({message: err})
-    });
-}
+	Fuel.find({ user: res.locals.user._id })
+		.then(result => {
+			res.status(200).send(result);
+		})
+		.catch(err => {
+			const status = err.statusCode || 500;
+			res.status(status).json({ message: err });
+		});
+};
 
 exports.getFuel = (req, res) => {
-    const id = req.params.id;
-    Fuel.findById(id)
-    .then(result => {
-        res.status(200).send(result);
-    })
-    .catch(err => {
-        const status = err.statusCode || 500;
-        res.status(status).json({message: err})
-    });
-}
+	const id = req.params.id;
+	Fuel.findById(id)
+		.then(result => {
+			res.status(200).send(result);
+		})
+		.catch(err => {
+			const status = err.statusCode || 500;
+			res.status(status).json({ message: err });
+		});
+};
 
 exports.putFuel = (req, res) => {
-    const id = req.params.id;
-    const fuel = new Fuel(req.body);
-    Fuel.updateOne({ _id: id }, {
-        liter: fuel.liter,
-        price: fuel.price,
-        location: fuel.location,
-     })
-    .then(result => {
-        res.status(200).send(result);
-    })
-    .catch(err => {
-        const status = err.statusCode || 500;
-        res.status(status).json({message: err})
-    });
-}
+	const id = req.params.id;
+	const fuel = new Fuel(req.body);
+	Fuel.findOneAndUpdate(
+		{ _id: id },
+		{
+			litre: fuel.litre,
+			price: fuel.price,
+			gas_station: fuel.price,
+			location: fuel.location
+		},
+		{ new: true }
+	)
+		.then(result => {
+			res.status(200).send(result);
+		})
+		.catch(err => {
+			const status = err.statusCode || 500;
+			res.status(status).json({ message: err });
+		});
+};
 
 exports.deleteFuel = (req, res) => {
-    const id = req.params.id;
-    Fuel.deleteOne({_id: id})
-    .then(result => {
-        res.status(200).send(result);
-    })
-    .catch(err => {
-        const status = err.statusCode || 500;
-        res.status(status).json({message: err})
-    });
-}
+	const id = req.params.id;
+	Fuel.deleteOne({ _id: id })
+		.then(result => {
+			res.status(200).send(result);
+		})
+		.catch(err => {
+			const status = err.statusCode || 500;
+			res.status(status).json({ message: err });
+		});
+};

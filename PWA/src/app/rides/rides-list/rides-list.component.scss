@@ -1,0 +1,21 @@
+@import '../../../util/styles/colors.scss';
+@import '../../../util/styles/effects.scss';
+@import '../../../util/styles/error.scss';
+
+article {
+	width: 100%;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.spinner-border {
+    margin: auto;
+    border-color: $primary-color;
+    border-left-color: $white;
+}
+
+.error {
+	@extend .error;
+}

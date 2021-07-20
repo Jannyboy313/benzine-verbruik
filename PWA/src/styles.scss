@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;900&display=swap');
+@import './util/styles/text.scss';
+@import 'material-icons/iconfont/filled.scss';
+@import 'material-icons/iconfont/outlined.scss';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+* {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+.mat-dialog-container {
+	border-radius: 16px !important;
+}
