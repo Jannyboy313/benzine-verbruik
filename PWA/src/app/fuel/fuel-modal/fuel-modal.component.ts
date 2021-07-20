@@ -116,8 +116,4 @@ export class FuelModalComponent implements OnInit {
 		this.error.isError = isError;
 		this.error.message = message;
 	}
-
-	closeError(isError: boolean) {
-		this.error.isError = isError;
-	}
 }

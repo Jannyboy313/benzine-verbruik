@@ -13,10 +13,11 @@
 	></span>
 	<p *ngIf="isLoading">Loading..</p>
 
-	<app-error-span
+	<div
 		*ngIf="error.isError"
-		class="error"
-		[errorMessage]="error.message"
-		(isError)="closeError($event)"
-	></app-error-span>
+		class="alert alert-danger fade show"
+		role="alert"
+	>
+		{{ error.message }}
+	</div>
 </article>
