@@ -1,7 +1,6 @@
 @import '../../../util/styles/colors.scss';
 @import '../../../util/styles/buttons.scss';
 @import '../../../util/styles/effects.scss';
-@import '../../../util/styles/error.scss';
 
 .container {
 	display: flex;
@@ -99,8 +98,4 @@ mat-dialog-actions {
 .spinner-border {
 	position: initial;
 	color: $white;
-}
-
-.error {
-	@extend .error;
 }
