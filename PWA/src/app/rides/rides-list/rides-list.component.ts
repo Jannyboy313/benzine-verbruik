@@ -12,10 +12,7 @@ import { Error } from '../../../shared/models/error.model';
 export class RidesListComponent implements OnInit {
 	isLoading: boolean = true;
 
-	error: Error = {
-		isError: false,
-		message: 'There has been an error while trying to load the rides'
-	};
+	error: Error = new Error;
 
 	rides: Ride[] = [];
 
@@ -32,7 +29,7 @@ export class RidesListComponent implements OnInit {
 	}
 
 	getRides() {
-		this.setError(
+		this.error.setError(
 			false,
 			'There has been an error while trying to load the rides'
 		);
@@ -43,7 +40,7 @@ export class RidesListComponent implements OnInit {
 				this.ridesListService.setRides(result);
 			},
 			err => {
-				this.setError(true, err.error.message);
+				this.error.setError(true, err.error.message);
 				this.isLoading = false;
 			}
 		);
@@ -54,10 +51,5 @@ export class RidesListComponent implements OnInit {
 			return true;
 		}
 		return false;
-	}
-
-	private setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
 	}
 }

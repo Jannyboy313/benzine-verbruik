@@ -11,10 +11,7 @@ import { Ride } from 'src/shared/models/ride.model';
 	styleUrls: ['./ride-modal.component.scss']
 })
 export class RideModalComponent implements OnInit {
-	error: Error = {
-		isError: false,
-		message: 'Iets is fout gegaan'
-	};
+	error: Error = new Error;
 
 	isLoading = false;
 
@@ -58,7 +55,10 @@ export class RideModalComponent implements OnInit {
 		this.isLoading = true;
 		if (!this.isValid()) {
 			this.isLoading = false;
-			return this.setError(true, 'Niet alle velden zijn goed ingevuld');
+			return this.error.setError(
+				true,
+				'Niet alle velden zijn goed ingevuld'
+			);
 		}
 
 		const ride: Ride = {
@@ -90,7 +90,7 @@ export class RideModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message.message);
+				this.error.setError(true, err.error.message.message);
 			}
 		);
 	}
@@ -104,13 +104,8 @@ export class RideModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message.message);
+				this.error.setError(true, err.error.message.message);
 			}
 		);
-	}
-
-	private setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
 	}
 }

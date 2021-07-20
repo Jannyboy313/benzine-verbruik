@@ -18,10 +18,7 @@ export class DashboardScreenComponent implements OnInit {
 		balance: 0
 	};
 
-	error: Error = {
-		isError: false,
-		message: 'Network error'
-	};
+	error: Error = new Error;
 
 	constructor(private dashboardService: DashboardService) {}
 
@@ -30,7 +27,7 @@ export class DashboardScreenComponent implements OnInit {
 	}
 
 	getDashboardData() {
-		this.setError(false, 'Network error');
+		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 		this.dashboardService.getDashboardData().subscribe(
 			result => {
@@ -39,13 +36,8 @@ export class DashboardScreenComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message);
+				this.error.setError(true, err.error.message);
 			}
 		);
-	}
-
-	private setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
 	}
 }
