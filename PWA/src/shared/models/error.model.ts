@@ -1,14 +1,6 @@
 export class Error {
-	isError: boolean;
-	message: string;
+	isError: boolean = false;
+	message: string = 'Network error';
 
-	constructor(
-		isError: boolean,
-		message: string,
-		createdAt: Date,
-		updatedAt: Date
-	) {
-		this.isError = isError;
-		this.message = message;
-	}
+	constructor() {}
 }
