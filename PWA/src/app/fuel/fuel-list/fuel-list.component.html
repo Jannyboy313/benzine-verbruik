@@ -1,6 +1,9 @@
 <article>
 	<div *ngIf="!isLoading && fuelExist()">
-		<app-fuel-card *ngFor="let fuel of fuelList" [fuel]="fuel"></app-fuel-card>
+		<app-fuel-card
+			*ngFor="let fuel of fuelList"
+			[fuel]="fuel"
+		></app-fuel-card>
 	</div>
 
 	<div *ngIf="!isLoading && !fuelExist() && !error.isError">
@@ -13,10 +16,11 @@
 	></span>
 	<p *ngIf="isLoading">Loading..</p>
 
-	<app-error-span
+	<div
 		*ngIf="error.isError"
-		class="error"
-		[errorMessage]="error.message"
-		(isError)="closeError($event)"
-	></app-error-span>
+		class="alert alert-danger fade show"
+		role="alert"
+	>
+		{{ error.message }}
+	</div>
 </article>
