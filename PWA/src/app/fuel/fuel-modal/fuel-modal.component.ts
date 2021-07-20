@@ -76,8 +76,12 @@ export class FuelModalComponent implements OnInit {
 	}
 
 	onSubmit(): void {
+		this.error.setError(
+			false,
+			'There has been a network error'
+		);
 		this.isLoading = true;
-		if (!this.isValid()) {
+		if (!this.form.valid) {
 			this.isLoading = false;
 			return this.error.setError(
 				true,
@@ -95,9 +99,8 @@ export class FuelModalComponent implements OnInit {
 		this.saveFuel(fuel);
 	}
 
-	private isValid(): boolean {
-		// Add regex or validators to form<<<
-		return true;
+	isValid(formController: string): boolean {
+		return this.form.controls[formController].invalid;
 	}
 
 	private saveFuel(fuel: Fuel): void {
