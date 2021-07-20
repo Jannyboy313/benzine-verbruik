@@ -11,10 +11,7 @@ import { FuelService } from 'src/shared/Services/db/fuel.service';
 	styleUrls: ['./fuel-modal.component.scss']
 })
 export class FuelModalComponent implements OnInit {
-	error: Error = {
-		isError: false,
-		message: 'Iets is fout gegaan'
-	};
+	error: Error = new Error;
 
 	isLoading = false;
 
@@ -60,7 +57,10 @@ export class FuelModalComponent implements OnInit {
 		this.isLoading = true;
 		if (!this.isValid()) {
 			this.isLoading = false;
-			return this.setError(true, 'Niet alle velden zijn goed ingevuld');
+			return this.error.setError(
+				true,
+				'Niet alle velden zijn goed ingevuld'
+			);
 		}
 
 		const fuel: Fuel = {
@@ -93,7 +93,7 @@ export class FuelModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message.message);
+				this.error.setError(true, err.error.message.message);
 			}
 		);
 	}
@@ -107,13 +107,8 @@ export class FuelModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message.message);
+				this.error.setError(true, err.error.message.message);
 			}
 		);
-	}
-
-	private setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
 	}
 }
