@@ -1,7 +1,7 @@
 const Fuel = require('../models/fuel.js');
 
 exports.postFuel = (req, res) => {
-	const fuel = new Fuel(req.body);
+	const fuel = createFuel(req.body);
 	fuel.save()
 		.then(result => {
 			res.status(201).send(result);
@@ -37,7 +37,7 @@ exports.getFuel = (req, res) => {
 
 exports.putFuel = (req, res) => {
 	const id = req.params.id;
-	const fuel = new Fuel(req.body);
+	const fuel = createFuel(req.body);
 	Fuel.findOneAndUpdate(
 		{ _id: id },
 		{
@@ -67,4 +67,15 @@ exports.deleteFuel = (req, res) => {
 			const status = err.statusCode || 500;
 			res.status(status).json({ message: err });
 		});
+};
+
+createFuel = body => {
+	body.gas_station = body.gas_station.trim();
+	body.location = body.location.trim();
+	body.gas_station =
+		body.gas_station.charAt(0).toUpperCase() +
+		body.gas_station.slice(1);
+	body.location =
+		body.location.charAt(0).toUpperCase() + body.location.slice(1);
+	return new Fuel(body);
 };
