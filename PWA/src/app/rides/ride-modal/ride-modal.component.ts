@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { Error } from 'src/shared/models/error.model';
 import { Ride } from 'src/shared/models/ride.model';
@@ -11,14 +11,27 @@ import { Ride } from 'src/shared/models/ride.model';
 	styleUrls: ['./ride-modal.component.scss']
 })
 export class RideModalComponent implements OnInit {
-	error: Error = new Error;
+	error: Error = new Error();
 
 	isLoading = false;
 
 	form: FormGroup = new FormGroup({
-		title: new FormControl(''),
-		description: new FormControl(''),
-		distance: new FormControl()
+		title: new FormControl('', [
+			Validators.required,
+			Validators.minLength(3),
+			Validators.maxLength(25),
+			Validators.pattern(/[a-zA-Z]+/)
+		]),
+		description: new FormControl('', [
+			Validators.required,
+			Validators.minLength(10),
+			Validators.maxLength(250)
+		]),
+		distance: new FormControl('', [
+			Validators.required,
+			Validators.min(1),
+			Validators.pattern(/[0-9]+\.?[0-9]{0,2}/)
+		])
 	});
 
 	constructor(
@@ -27,7 +40,7 @@ export class RideModalComponent implements OnInit {
 		@Inject(MAT_DIALOG_DATA)
 		public data: any = {
 			header: 'Aanmaken nieuwe rit',
-      edit: false
+			edit: false
 		}
 	) {}
 
@@ -38,7 +51,9 @@ export class RideModalComponent implements OnInit {
 	setInputValues() {
 		if (this.data.edit) {
 			this.form.controls['title'].setValue(this.data.ride.title);
-			this.form.controls['description'].setValue(this.data.ride.description);
+			this.form.controls['description'].setValue(
+				this.data.ride.description
+			);
 			this.form.controls['distance'].setValue(this.data.ride.distance);
 		}
 	}
@@ -52,8 +67,9 @@ export class RideModalComponent implements OnInit {
 	}
 
 	onSubmit(): void {
+		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
-		if (!this.isValid()) {
+		if (!this.form.valid) {
 			this.isLoading = false;
 			return this.error.setError(
 				true,
@@ -70,9 +86,8 @@ export class RideModalComponent implements OnInit {
 		this.saveRide(ride);
 	}
 
-	private isValid(): boolean {
-		// Add regex or validators to form<<<
-		return true;
+	isValid(formController: string): boolean {
+		return !this.form.controls[formController].invalid;
 	}
 
 	private saveRide(ride: Ride): void {
@@ -96,7 +111,7 @@ export class RideModalComponent implements OnInit {
 	}
 
 	private putRide(ride: Ride): void {
-    ride['_id'] = this.data.ride._id;
+		ride['_id'] = this.data.ride._id;
 		this.rideService.putRide(ride).subscribe(
 			result => {
 				this.isLoading = false;

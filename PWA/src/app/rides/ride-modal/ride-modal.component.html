@@ -13,7 +13,7 @@
 					placeholder="Invullen titel"
 					formControlName="title"
 					required
-					[ngClass]="{ 'invalid-input': error.isError }"
+					[ngClass]="{ 'invalid-input': error.isError && isValid('title') }"
 					class="input"
 					autofocus
 					autocapitalize="on"
@@ -27,7 +27,7 @@
 					placeholder="Invullen beschrijving"
 					formControlName="description"
 					required
-					[ngClass]="{ 'invalid-input': error.isError }"
+					[ngClass]="{ 'invalid-input': error.isError && isValid('description') }"
 					class="input"
 					autocapitalize="on"
 					rows="3"
@@ -42,7 +42,7 @@
 					placeholder="Invullen afstand in km"
 					formControlName="distance"
 					required
-					[ngClass]="{ 'invalid-input': error.isError }"
+					[ngClass]="{ 'invalid-input': error.isError && isValid('distance') }"
 					class="input"
 				/>
 			</div>

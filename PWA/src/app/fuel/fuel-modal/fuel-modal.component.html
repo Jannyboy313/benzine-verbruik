@@ -14,7 +14,9 @@
 						placeholder="Liter"
 						formControlName="litre"
 						required
-						[ngClass]="{ 'invalid-input': error.isError }"
+						[ngClass]="{
+							'invalid-input': error.isError && isValid('litre')
+						}"
 						class="input"
 						autofocus
 					/>
@@ -28,7 +30,9 @@
 						placeholder="Prijs"
 						formControlName="price"
 						required
-						[ngClass]="{ 'invalid-input': error.isError }"
+						[ngClass]="{
+							'invalid-input': error.isError && isValid('price')
+						}"
 						class="input"
 					/>
 				</div>
@@ -43,7 +47,9 @@
 					placeholder="Invullen tankstation"
 					formControlName="gas_station"
 					required
-					[ngClass]="{ 'invalid-input': error.isError }"
+					[ngClass]="{
+						'invalid-input': error.isError && isValid('gas_station')
+					}"
 					class="input"
 				/>
 			</div>
@@ -56,7 +62,9 @@
 					placeholder="Invullen locatie"
 					formControlName="location"
 					required
-					[ngClass]="{ 'invalid-input': error.isError }"
+					[ngClass]="{
+						'invalid-input': error.isError && isValid('location')
+					}"
 					class="input"
 				/>
 			</div>
