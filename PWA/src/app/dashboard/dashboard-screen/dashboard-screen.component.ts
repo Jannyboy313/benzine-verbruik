@@ -18,7 +18,7 @@ export class DashboardScreenComponent implements OnInit {
 		balance: 0
 	};
 
-	error: Error = new Error;
+	error: Error = new Error();
 
 	constructor(private dashboardService: DashboardService) {}
 
@@ -32,12 +32,18 @@ export class DashboardScreenComponent implements OnInit {
 		this.dashboardService.getDashboardData().subscribe(
 			result => {
 				this.isLoading = false;
-				this.dashboardData = result
+				this.dashboardData = result;
 			},
 			err => {
 				this.isLoading = false;
 				this.error.setError(true, err.error.message);
 			}
 		);
+	}
+
+	dataExists() {
+		if (!(this.dashboardData.balance || this.dashboardData.distance || this.dashboardData.prices || this.dashboardData.litres))
+			return false;
+		return true;
 	}
 }
