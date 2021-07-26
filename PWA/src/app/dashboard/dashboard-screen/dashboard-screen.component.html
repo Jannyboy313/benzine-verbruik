@@ -17,20 +17,28 @@
 
 	<div *ngIf="!isLoading && !error.isError">
 		<app-bar-chart
+			*ngIf="dashboardData.litres != null"
 			[name]="'Liter'"
 			[value]="{ amount: dashboardData.litres }"
 		></app-bar-chart>
 		<app-bar-chart
+			*ngIf="dashboardData.distance != null"
 			[name]="'Afstand'"
 			[value]="{ amount: dashboardData.distance }"
 		></app-bar-chart>
 		<app-bar-chart
+			*ngIf="dashboardData.prices != null"
 			[name]="'Prijs'"
 			[value]="{ amount: dashboardData.prices }"
 		></app-bar-chart>
 		<app-bar-chart
+			*ngIf="dashboardData.balance != null"
 			[name]="'Balans'"
 			[value]="{ amount: dashboardData.balance }"
 		></app-bar-chart>
+	</div>
+
+	<div *ngIf="!isLoading && !dataExists() && !error.isError">
+		<p>Er is nog geen data geregistreerd</p>
 	</div>
 </article>

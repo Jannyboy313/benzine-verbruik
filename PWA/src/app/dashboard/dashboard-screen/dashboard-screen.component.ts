@@ -12,13 +12,13 @@ export class DashboardScreenComponent implements OnInit {
 	isLoading: boolean = true;
 
 	dashboardData: Dashboard = {
-		litres: 0,
-		prices: 0,
-		distance: 0,
-		balance: 0
+		litres: null,
+		prices: null,
+		distance: null,
+		balance: null
 	};
 
-	error: Error = new Error;
+	error: Error = new Error();
 
 	constructor(private dashboardService: DashboardService) {}
 
@@ -32,12 +32,18 @@ export class DashboardScreenComponent implements OnInit {
 		this.dashboardService.getDashboardData().subscribe(
 			result => {
 				this.isLoading = false;
-				this.dashboardData = result
+				this.dashboardData = result;
 			},
 			err => {
 				this.isLoading = false;
 				this.error.setError(true, err.error.message);
 			}
 		);
+	}
+
+	dataExists() {
+		if (!(this.dashboardData.balance || this.dashboardData.distance || this.dashboardData.prices || this.dashboardData.litres))
+			return false;
+		return true;
 	}
 }
