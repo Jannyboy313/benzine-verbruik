@@ -12,10 +12,10 @@ export class DashboardScreenComponent implements OnInit {
 	isLoading: boolean = true;
 
 	dashboardData: Dashboard = {
-		litres: 0,
-		prices: 0,
-		distance: 0,
-		balance: 0
+		litres: null,
+		prices: null,
+		distance: null,
+		balance: null
 	};
 
 	error: Error = new Error();

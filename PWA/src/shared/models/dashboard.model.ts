@@ -1,14 +1,14 @@
 export class Dashboard {
-	litres: number;
-	prices: number;
-	distance: number;
-	balance: number;
+	litres: number | null;
+	prices: number | null;
+	distance: number | null;
+	balance: number | null;
 
 	constructor(
-	litres: number,
-	prices: number,
-	distance: number,
-	balance: number,
+	litres: number | null,
+	prices: number | null,
+	distance: number | null,
+	balance: number | null,
 	) {
 		this.litres = litres;
 		this.prices = prices;
