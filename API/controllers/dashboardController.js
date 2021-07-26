@@ -21,6 +21,8 @@ exports.getDashboardData = async (req, res) => {
 };
 
 getBalance = (price, distance) => {
+	if ((price === null || price == undefined) || (distance === null || distance == undefined))
+		return null;
 	let distanceMoney = distance * 0.1;
 	distanceMoney = Math.round(distanceMoney * 100) / 100;
 	return price - distanceMoney;
