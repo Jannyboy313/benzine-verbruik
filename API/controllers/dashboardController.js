@@ -6,23 +6,20 @@ const Types = mongoose.Types;
 
 exports.getDashboardData = async (req, res) => {
 	try {
+		let balance = null;
 		const fuelCosts = await getFuelCosts(res.locals.user._id);
 		const distance = await getDistance(res.locals.user._id);
-		const balance = getBalance(fuelCosts[0].Prices, distance[0].Distance);
-		res.status(200).json({
-			litres: fuelCosts[0].Litres,
-			prices: fuelCosts[0].Prices,
-			distance: distance[0].Distance,
-			balance: balance
-		});
+
+		if (fuelCosts.length > 0 && distance.length > 0)
+			balance = getBalance(fuelCosts[0].Prices, distance[0].Distance);
+
+		return res.status(200).json(getCombined(fuelCosts, distance, balance));
 	} catch (err) {
 		res.status(500).json({ message: 'Something went wrong' });
 	}
 };
 
 getBalance = (price, distance) => {
-	if ((price === null || price == undefined) || (distance === null || distance == undefined))
-		return null;
 	let distanceMoney = distance * 0.1;
 	distanceMoney = Math.round(distanceMoney * 100) / 100;
 	return price - distanceMoney;
@@ -75,4 +72,22 @@ getDistance = id => {
 			}
 		}
 	]);
+};
+
+getCombined = (fuelCosts, distance, balance) => {
+	let litres = null;
+	let prices = null;
+	let distances = null;
+	if (fuelCosts.length > 0) {
+		(litres = fuelCosts[0].Litres), (prices = fuelCosts[0].Prices);
+	}
+	if (distance.length > 0) {
+		distances = distance[0].Distance;
+	}
+	return {
+		litres: litres,
+		prices: prices,
+		distance: distances,
+		balance: balance
+	};
 };
