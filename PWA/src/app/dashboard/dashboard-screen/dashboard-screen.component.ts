@@ -12,16 +12,13 @@ export class DashboardScreenComponent implements OnInit {
 	isLoading: boolean = true;
 
 	dashboardData: Dashboard = {
-		litres: 0,
-		prices: 0,
-		distance: 0,
-		balance: 0
+		litres: null,
+		prices: null,
+		distance: null,
+		balance: null
 	};
 
-	error: Error = {
-		isError: false,
-		message: 'Network error'
-	};
+	error: Error = new Error();
 
 	constructor(private dashboardService: DashboardService) {}
 
@@ -30,26 +27,23 @@ export class DashboardScreenComponent implements OnInit {
 	}
 
 	getDashboardData() {
-		this.setError(false, 'Network error');
+		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 		this.dashboardService.getDashboardData().subscribe(
 			result => {
 				this.isLoading = false;
-				this.dashboardData = result
+				this.dashboardData = result;
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message);
+				this.error.setError(true, err.error.message);
 			}
 		);
 	}
 
-	closeError(isError: boolean) {
-		this.error.isError = isError;
-	}
-
-	private setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
+	dataExists() {
+		if (!(this.dashboardData.balance || this.dashboardData.distance || this.dashboardData.prices || this.dashboardData.litres))
+			return false;
+		return true;
 	}
 }

@@ -1,5 +1,4 @@
 @import '../../../util/styles/colors.scss';
-@import '../../../util/styles/error.scss';
 
 article {
 	display: flex;
@@ -19,8 +18,4 @@ article {
     margin: auto;
     border-color: $secondary-color;
     border-left-color: $white;
-}
-
-.error {
-	@extend .error;
 }

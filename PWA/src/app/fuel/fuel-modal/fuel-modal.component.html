@@ -1,10 +1,7 @@
 <h1 mat-dialog-title>{{ data.header }}</h1>
-<app-error-span
-	*ngIf="error.isError"
-	class="error"
-	[errorMessage]="error.message"
-	(isError)="closeError($event)"
-></app-error-span>
+<div *ngIf="error.isError" class="alert alert-danger fade show" role="alert">
+	{{ error.message }}
+</div>
 
 <mat-dialog-content>
 	<form [formGroup]="form">
@@ -17,7 +14,9 @@
 						placeholder="Liter"
 						formControlName="litre"
 						required
-						[ngClass]="{ 'invalid-input': error.isError }"
+						[ngClass]="{
+							'invalid-input': error.isError && isValid('litre')
+						}"
 						class="input"
 						autofocus
 					/>
@@ -31,7 +30,9 @@
 						placeholder="Prijs"
 						formControlName="price"
 						required
-						[ngClass]="{ 'invalid-input': error.isError }"
+						[ngClass]="{
+							'invalid-input': error.isError && isValid('price')
+						}"
 						class="input"
 					/>
 				</div>
@@ -46,7 +47,9 @@
 					placeholder="Invullen tankstation"
 					formControlName="gas_station"
 					required
-					[ngClass]="{ 'invalid-input': error.isError }"
+					[ngClass]="{
+						'invalid-input': error.isError && isValid('gas_station')
+					}"
 					class="input"
 				/>
 			</div>
@@ -59,7 +62,9 @@
 					placeholder="Invullen locatie"
 					formControlName="location"
 					required
-					[ngClass]="{ 'invalid-input': error.isError }"
+					[ngClass]="{
+						'invalid-input': error.isError && isValid('location')
+					}"
 					class="input"
 				/>
 			</div>

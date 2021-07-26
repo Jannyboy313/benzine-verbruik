@@ -11,10 +11,7 @@ import { Fuel } from 'src/shared/models/fuel.model';
 })
 export class FuelListComponent implements OnInit {
 	isLoading: boolean = false;
-	error: Error = {
-		isError: false,
-		message: 'Network error'
-	};
+	error: Error = new Error;
 
 	fuelList: Fuel[] = [];
 
@@ -31,7 +28,7 @@ export class FuelListComponent implements OnInit {
 	}
 
 	getFuel() {
-		this.setError(
+		this.error.setError(
 			false,
 			'There has been an error while trying to load the fuel'
 		);
@@ -42,7 +39,7 @@ export class FuelListComponent implements OnInit {
 				this.fuelListService.setFuel(result);
 			},
 			err => {
-				this.setError(true, err.error.message);
+				this.error.setError(true, err.error.message);
 				this.isLoading = false;
 			}
 		);
@@ -53,14 +50,5 @@ export class FuelListComponent implements OnInit {
 			return true;
 		}
 		return false;
-	}
-
-	closeError(isError: boolean) {
-		this.error.isError = isError;
-	}
-
-	private setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
 	}
 }

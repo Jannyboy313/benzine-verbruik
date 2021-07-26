@@ -1,14 +1,12 @@
 export class Error {
-	isError: boolean;
-	message: string;
+	isError: boolean = false;
+	message: string = 'There has been a network error';
 
-	constructor(
-		isError: boolean,
-		message: string,
-		createdAt: Date,
-		updatedAt: Date
-	) {
+	constructor() {}
+
+	public setError(isError: boolean, message: string): void {
 		this.isError = isError;
-		this.message = message;
+		if (message !== '')
+			this.message = message;
 	}
 }

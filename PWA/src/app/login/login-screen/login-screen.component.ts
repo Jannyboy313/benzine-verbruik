@@ -10,10 +10,7 @@ import { DataStorageService } from 'src/shared/Services/data-storage.service';
 	styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent implements OnInit {
-	error: Error = {
-		isError: false,
-		message: ''
-	};
+	error: Error = new Error;
 
 	isLoading: boolean = false;
 	email: string = '';
@@ -28,20 +25,15 @@ export class LoginScreenComponent implements OnInit {
 	ngOnInit(): void {}
 
 	onSubmit(): void {
-		this.setError(false, '');
+		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 
 		if (this.email === '' || this.password === '') {
-			this.setError(true, 'Niet alle velden zijn ingevuld');
+			this.error.setError(true, 'Niet alle velden zijn ingevuld');
 			this.isLoading = false;
 		} else {
 			this.login();
 		}
-	}
-
-	setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
 	}
 
 	login() {
@@ -53,7 +45,7 @@ export class LoginScreenComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message);
+				this.error.setError(true, err.error.message);
 			}
 		);
 	}
@@ -64,9 +56,5 @@ export class LoginScreenComponent implements OnInit {
 
 	setPassword(password: string) {
 		this.password = password;
-	}
-
-	closeError(isError: boolean) {
-		this.error.isError = isError;
 	}
 }

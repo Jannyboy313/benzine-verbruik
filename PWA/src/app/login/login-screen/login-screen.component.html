@@ -3,12 +3,9 @@
 		<h1>Login</h1>
 	</header>
 
-	<app-error-span
-		*ngIf="error.isError"
-		class="error"
-		[errorMessage]="error.message"
-		(isError)="closeError($event)"
-	></app-error-span>
+	<div *ngIf="error.isError" class="alert alert-danger fade show" role="alert">
+		{{ error.message }}
+	</div>
 
 	<form>
 		<app-form-input

@@ -1,7 +1,7 @@
 import { Fuel } from './../../../shared/models/fuel.model';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Error } from 'src/shared/models/error.model';
 import { FuelService } from 'src/shared/Services/db/fuel.service';
 
@@ -11,18 +11,35 @@ import { FuelService } from 'src/shared/Services/db/fuel.service';
 	styleUrls: ['./fuel-modal.component.scss']
 })
 export class FuelModalComponent implements OnInit {
-	error: Error = {
-		isError: false,
-		message: 'Iets is fout gegaan'
-	};
+	error: Error = new Error();
 
 	isLoading = false;
 
 	form: FormGroup = new FormGroup({
-		litre: new FormControl(),
-		price: new FormControl(),
-		gas_station: new FormControl(''),
-		location: new FormControl('')
+		litre: new FormControl('', [
+			Validators.required,
+			Validators.min(1),
+			Validators.max(80),
+			Validators.pattern(/[0-9]+\.?[0-9]{0,2}/)
+		]),
+		price: new FormControl('', [
+			Validators.required,
+			Validators.min(1),
+			Validators.max(200),
+			Validators.pattern(/[0-9]+\.?[0-9]{0,2}/)
+		]),
+		gas_station: new FormControl('', [
+			Validators.required,
+			Validators.minLength(2),
+			Validators.maxLength(15),
+			Validators.pattern(/[a-zA-Z]+/)
+		]),
+		location: new FormControl('', [
+			Validators.required,
+			Validators.minLength(2),
+			Validators.maxLength(20),
+			Validators.pattern(/[a-zA-Z]+/)
+		])
 	});
 
 	constructor(
@@ -43,7 +60,9 @@ export class FuelModalComponent implements OnInit {
 		if (this.data.edit) {
 			this.form.controls['litre'].setValue(this.data.fuel.litre);
 			this.form.controls['price'].setValue(this.data.fuel.price);
-			this.form.controls['gas_station'].setValue(this.data.fuel.gas_station);
+			this.form.controls['gas_station'].setValue(
+				this.data.fuel.gas_station
+			);
 			this.form.controls['location'].setValue(this.data.fuel.location);
 		}
 	}
@@ -57,10 +76,17 @@ export class FuelModalComponent implements OnInit {
 	}
 
 	onSubmit(): void {
+		this.error.setError(
+			false,
+			'There has been a network error'
+		);
 		this.isLoading = true;
-		if (!this.isValid()) {
+		if (!this.form.valid) {
 			this.isLoading = false;
-			return this.setError(true, 'Niet alle velden zijn goed ingevuld');
+			return this.error.setError(
+				true,
+				'Niet alle velden zijn goed ingevuld'
+			);
 		}
 
 		const fuel: Fuel = {
@@ -73,9 +99,8 @@ export class FuelModalComponent implements OnInit {
 		this.saveFuel(fuel);
 	}
 
-	private isValid(): boolean {
-		// Add regex or validators to form<<<
-		return true;
+	isValid(formController: string): boolean {
+		return !this.form.controls[formController].invalid;
 	}
 
 	private saveFuel(fuel: Fuel): void {
@@ -93,7 +118,7 @@ export class FuelModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message.message);
+				this.error.setError(true, err.error.message.message);
 			}
 		);
 	}
@@ -107,17 +132,8 @@ export class FuelModalComponent implements OnInit {
 			},
 			err => {
 				this.isLoading = false;
-				this.setError(true, err.error.message.message);
+				this.error.setError(true, err.error.message.message);
 			}
 		);
-	}
-
-	private setError(isError: boolean, message: string): void {
-		this.error.isError = isError;
-		this.error.message = message;
-	}
-
-	closeError(isError: boolean) {
-		this.error.isError = isError;
 	}
 }
