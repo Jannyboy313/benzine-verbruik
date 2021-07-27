@@ -4,9 +4,9 @@ const fuelController = require('../controllers/fuelController.js');
 const addUserId = require('../middleware/addUserId.js');
 
 router.post('/', addUserId, fuelController.postFuel);
-router.get('/:id', fuelController.getFuel);
 router.get('/', fuelController.getFuels);
+router.get('/:id', fuelController.getFuel);
 router.put('/:id', fuelController.putFuel);
-router.delete('/:id', fuelController.putFuel);
+router.delete('/:id', fuelController.deleteFuel);
 
 module.exports = router;
