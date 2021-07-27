@@ -21,8 +21,8 @@ exports.getDashboardData = async (req, res) => {
 
 getBalance = (price, distance) => {
 	let distanceMoney = distance * 0.1;
-	distanceMoney = Math.round(distanceMoney * 100) / 100;
-	return price - distanceMoney;
+	let balance = price - distanceMoney;
+	return Math.round(balance * 100) / 100;
 };
 
 getFuelCosts = id => {
