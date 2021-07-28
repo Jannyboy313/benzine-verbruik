@@ -20,7 +20,10 @@ exports.getRides = (req, res) => {
 	const limit = 5;
 	const skip = (page - 1) * limit;
 
-	Ride.find({ user: res.locals.user._id }, {}, { limit: limit, skip: skip })
+	Ride.find({ user: res.locals.user._id })
+		.sort({ updatedAt: -1 })
+		.limit(limit)
+		.skip(skip)
 		.then(result => {
 			res.status(200).send(result);
 		})
