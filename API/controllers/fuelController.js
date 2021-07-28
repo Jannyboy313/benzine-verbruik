@@ -13,7 +13,14 @@ exports.postFuel = (req, res) => {
 };
 
 exports.getFuels = (req, res) => {
-	Fuel.find({ user: res.locals.user._id })
+	let { page } = req.query;
+
+	if (!page) page = 1;
+	
+	const limit = 5
+	const skip = (page - 1) * limit;
+
+	Fuel.find({ user: res.locals.user._id }, {}, { limit: limit, skip: skip })
 		.then(result => {
 			res.status(200).send(result);
 		})
@@ -73,8 +80,7 @@ createFuel = body => {
 	body.gas_station = body.gas_station.trim();
 	body.location = body.location.trim();
 	body.gas_station =
-		body.gas_station.charAt(0).toUpperCase() +
-		body.gas_station.slice(1);
+		body.gas_station.charAt(0).toUpperCase() + body.gas_station.slice(1);
 	body.location =
 		body.location.charAt(0).toUpperCase() + body.location.slice(1);
 	return new Fuel(body);
