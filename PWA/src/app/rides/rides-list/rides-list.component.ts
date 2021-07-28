@@ -13,6 +13,8 @@ export class RidesListComponent implements OnInit {
 	isLoading: boolean = true;
 
 	error: Error = new Error();
+	page: number = 0;
+
 	rides: Ride[] = [];
 
 	constructor(
@@ -33,7 +35,7 @@ export class RidesListComponent implements OnInit {
 			'There has been an error while trying to load the rides'
 		);
 		this.isLoading = true;
-		this.rideService.getRides().subscribe(
+		this.rideService.getRides(this.page).subscribe(
 			result => {
 				this.isLoading = false;
 				this.ridesListService.setRides(result);
