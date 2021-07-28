@@ -8,6 +8,6 @@ import { ScrollDirective } from './directives/scroll.directive';
 @NgModule({
 	declarations: [ConfirmDialogComponent, ScrollDirective],
 	imports: [CommonModule, MatDialogModule],
-	exports: [ConfirmDialogComponent]
+	exports: [ConfirmDialogComponent, ScrollDirective]
 })
 export class SharedModule {}
