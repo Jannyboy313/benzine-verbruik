@@ -1,5 +1,6 @@
 <article>
 	<div
+		appScrollDirective
 		*ngIf="!isLoading && ridesExist()"
 		infiniteScroll
 		(scrolled)="onScroll()"

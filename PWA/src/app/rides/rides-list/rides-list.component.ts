@@ -55,7 +55,7 @@ export class RidesListComponent implements OnInit {
 	}
 
 	onScroll() {
-		this.page++
+		this.page++;
 		this.getRides();
 	}
 }
