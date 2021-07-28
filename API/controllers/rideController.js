@@ -13,7 +13,13 @@ exports.postRide = (req, res) => {
 };
 
 exports.getRides = (req, res) => {
-	Ride.find({ user: res.locals.user._id })
+	let { page } = req.query;
+
+	if (!page) page = 1;
+
+	const skip = (page - 1) * 5; // 5 is the limit
+
+	Ride.find({ user: res.locals.user._id }, {}, { limit: 5, skip: skip })
 		.then(result => {
 			res.status(200).send(result);
 		})
@@ -73,6 +79,7 @@ createRide = body => {
 	body.description = body.description.trim();
 
 	body.title = body.title.charAt(0).toUpperCase() + body.title.slice(1);
-	body.description = body.description.charAt(0).toUpperCase() + body.description.slice(1);
+	body.description =
+		body.description.charAt(0).toUpperCase() + body.description.slice(1);
 	return new Ride(body);
 };
