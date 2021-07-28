@@ -17,9 +17,10 @@ exports.getRides = (req, res) => {
 
 	if (!page) page = 1;
 
-	const skip = (page - 1) * 5; // 5 is the limit
+	const limit = 5;
+	const skip = (page - 1) * limit;
 
-	Ride.find({ user: res.locals.user._id }, {}, { limit: 5, skip: skip })
+	Ride.find({ user: res.locals.user._id }, {}, { limit: limit, skip: skip })
 		.then(result => {
 			res.status(200).send(result);
 		})
