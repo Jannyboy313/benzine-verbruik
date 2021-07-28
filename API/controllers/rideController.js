@@ -15,10 +15,10 @@ exports.postRide = (req, res) => {
 exports.getRides = (req, res) => {
 	let { page } = req.query;
 
-	if (!page) page = 1;
+	if (!page) page = 0;
 
 	const limit = 5;
-	const skip = (page - 1) * limit;
+	const skip = page * limit;
 
 	Ride.find({ user: res.locals.user._id })
 		.sort({ updatedAt: -1 })

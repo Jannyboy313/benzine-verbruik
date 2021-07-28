@@ -15,10 +15,10 @@ exports.postFuel = (req, res) => {
 exports.getFuels = (req, res) => {
 	let { page } = req.query;
 
-	if (!page) page = 1;
+	if (!page) page = 0;
 
 	const limit = 5;
-	const skip = (page - 1) * limit;
+	const skip = page * limit;
 
 	Fuel.find({ user: res.locals.user._id })
 		.sort({ updatedAt: -1 })
