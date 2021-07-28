@@ -12,8 +12,7 @@ import { Error } from '../../../shared/models/error.model';
 export class RidesListComponent implements OnInit {
 	isLoading: boolean = true;
 
-	error: Error = new Error;
-
+	error: Error = new Error();
 	rides: Ride[] = [];
 
 	constructor(
@@ -51,5 +50,8 @@ export class RidesListComponent implements OnInit {
 			return true;
 		}
 		return false;
+	}
+
+	onScroll() {
 	}
 }

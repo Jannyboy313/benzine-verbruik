@@ -1,5 +1,5 @@
 <article>
-	<div *ngIf="!isLoading && ridesExist()">
+	<div *ngIf="!isLoading && ridesExist()" infiniteScroll [infiniteScrollDistance]="2" [fromRoot]="true" (scrolled)="onScroll()">
 		<app-ride-card *ngFor="let ride of rides" [ride]="ride"></app-ride-card>
 	</div>
 
