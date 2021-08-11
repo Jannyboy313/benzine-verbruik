@@ -1,10 +1,5 @@
 <article>
-	<div
-		*ngIf="!isLoading && ridesExist()"
-		(scrolled)="onScroll()"
-	>
-		<app-ride-card *ngFor="let ride of rides" [ride]="ride"></app-ride-card>
-	</div>
+
 	<div *ngIf="!isLoading && ridesExist()">
 		<app-ride-card *ngFor="let ride of rides" [ride]="ride"></app-ride-card>
 	</div>
