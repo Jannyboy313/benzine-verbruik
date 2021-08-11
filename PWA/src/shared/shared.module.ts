@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { ScrollDirective } from './directives/scroll.directive';
 
 @NgModule({
-	declarations: [ConfirmDialogComponent, ScrollDirective],
+	declarations: [ConfirmDialogComponent],
 	imports: [CommonModule, MatDialogModule],
-	exports: [ConfirmDialogComponent, ScrollDirective]
+	exports: [ConfirmDialogComponent]
 })
 export class SharedModule {}
