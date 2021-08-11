@@ -2,7 +2,6 @@
 	<div
 		appScrollDirective
 		*ngIf="!isLoading && ridesExist()"
-		infiniteScroll
 		(scrolled)="onScroll()"
 	>
 		<app-ride-card *ngFor="let ride of rides" [ride]="ride"></app-ride-card>
