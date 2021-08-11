@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RidesRoutingModule } from './rides-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { RidesScreenComponent } from './rides-screen/rides-screen.component';
 import { RidesListComponent } from './rides-list/rides-list.component';
@@ -26,8 +25,7 @@ import { RideModalComponent } from './ride-modal/ride-modal.component';
 		SharedModule,
 		MatDialogModule,
 		FormsModule,
-		ReactiveFormsModule,
-		InfiniteScrollModule
+		ReactiveFormsModule
 	],
 	providers: [RideService]
 })
