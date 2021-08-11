@@ -8,6 +8,7 @@ import { RidesModule } from './rides/rides.module';
 import { FuelModule } from './fuel/fuel.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { AppComponent } from './app.component';
 import { LogoBannerComponent } from 'src/shared/components/logo-banner/logo-banner.component';
@@ -36,7 +37,8 @@ import { environment } from '../environments/environment';
 			// Register the ServiceWorker as soon as the app is stable
 			// or after 30 seconds (whichever comes first).
 			registrationStrategy: 'registerWhenStable:30000'
-		})
+		}),
+		ScrollingModule
 	],
 	bootstrap: [AppComponent]
 })
