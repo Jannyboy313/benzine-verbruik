@@ -18,8 +18,12 @@ export class FuelListService {
 	}
 
 	setFuel(fuelList: Fuel[]): void {
-		this.fuelList = fuelList;
-		this.fuelSubject.next(fuelList);
+		if (this.fuelList.length === 0) {
+			this.fuelList = fuelList;
+		} else {
+			this.fuelList = this.fuelList.concat(fuelList);
+		}
+		this.fuelSubject.next(this.fuelList);
 	}
 
 	addFuel(fuel: Fuel): void {

@@ -20,4 +20,13 @@
 	>
 		{{ error.message }}
 	</div>
+
+	<button
+		id="loadMoreBtn"
+		(click)="loadMoreRides()"
+		class="btn"
+		*ngIf="!isLoading && ridesExist()"
+	>
+		<span>Load more</span>
+	</button>
 </article>
