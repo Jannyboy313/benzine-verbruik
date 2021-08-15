@@ -23,4 +23,13 @@
 	>
 		{{ error.message }}
 	</div>
+
+	<button
+		id="loadMoreBtn"
+		(click)="loadMoreFuel()"
+		class="btn"
+		*ngIf="!isLoading && fuelExist()"
+	>
+		<span>Load more</span>
+	</button>
 </article>
