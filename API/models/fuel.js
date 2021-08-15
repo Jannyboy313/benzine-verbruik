@@ -36,4 +36,6 @@ const FuelSchema = new Schema(
 	{ timestamps: true }
 );
 
+FuelSchema.index({ updatedAt: 1 });
+
 module.exports = mongoose.model('Fuel', FuelSchema);

@@ -16,8 +16,8 @@ export class RideService {
 		);
 	}
 
-	getRides(): Observable<Ride[]> {
-		return this.db.sendGetRequest(`ride`).pipe(
+	getRides(page: number): Observable<Ride[]> {
+		return this.db.sendGetRequest(`ride?page=${page}`).pipe(
 			map((response: Ride[]) => {
 				return response;
 			})

@@ -39,6 +39,7 @@ label {
 	border-bottom: 1px solid $grey-light;
 	font-size: medium;
 	padding: 5px 5px 5px 0;
+	appearance: none;
 
 	&:focus {
 		border-bottom: 2px solid $primary-color;

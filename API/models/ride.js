@@ -20,7 +20,7 @@ const RideSchema = new Schema(
 		},
 		distance: {
 			type: Float,
-			min: [1, "Distance has to be more then 1"],
+			min: [1, 'Distance has to be more then 1'],
 			required: [true, 'Distance in kilometers is required']
 		},
 		user: {
@@ -30,5 +30,7 @@ const RideSchema = new Schema(
 	},
 	{ timestamps: true }
 );
+
+RideSchema.index({ updatedAt: 1 });
 
 module.exports = mongoose.model('Ride', RideSchema);

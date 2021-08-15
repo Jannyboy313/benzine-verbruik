@@ -12,7 +12,8 @@ import { Error } from '../../../shared/models/error.model';
 export class RidesListComponent implements OnInit {
 	isLoading: boolean = true;
 
-	error: Error = new Error;
+	error: Error = new Error();
+	page: number = 0;
 
 	rides: Ride[] = [];
 
@@ -34,7 +35,7 @@ export class RidesListComponent implements OnInit {
 			'There has been an error while trying to load the rides'
 		);
 		this.isLoading = true;
-		this.rideService.getRides().subscribe(
+		this.rideService.getRides(this.page).subscribe(
 			result => {
 				this.isLoading = false;
 				this.ridesListService.setRides(result);
@@ -51,5 +52,10 @@ export class RidesListComponent implements OnInit {
 			return true;
 		}
 		return false;
+	}
+
+	loadMoreRides(): void {
+		this.page++;
+		this.getRides();
 	}
 }

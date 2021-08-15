@@ -37,7 +37,11 @@
 }
 
 .round-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 46px;
+	width: 46px;
 
 	background-color: $primary-color;
 
@@ -51,8 +55,6 @@
 	border-radius: 100%;
 	box-shadow: 0 4px 4px rgba($color: $black, $alpha: 0.25);
 	transition: opacity 0.2s ease-in-out;
-
-	display: inline-block;
 
 	&:disabled {
 		pointer-events: none;

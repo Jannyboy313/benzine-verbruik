@@ -1,5 +1,6 @@
 @import '../../../util/styles/colors.scss';
 @import '../../../util/styles/effects.scss';
+@import '../../../util/styles/buttons.scss';
 
 article {
 	width: 100%;
@@ -13,4 +14,15 @@ article {
     margin: auto;
     border-color: $primary-color;
     border-left-color: $white;
+}
+
+#loadMoreBtn {
+	height: 27px;
+	width: 93px;
+	display: flex;
+	align-self: center;
+}
+
+button {
+	@include button;
 }

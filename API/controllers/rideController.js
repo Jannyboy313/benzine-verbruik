@@ -13,7 +13,17 @@ exports.postRide = (req, res) => {
 };
 
 exports.getRides = (req, res) => {
+	let { page } = req.query;
+
+	if (!page) page = 0;
+
+	const limit = 5;
+	const skip = page * limit;
+
 	Ride.find({ user: res.locals.user._id })
+		.sort({ updatedAt: -1 })
+		.limit(limit)
+		.skip(skip)
 		.then(result => {
 			res.status(200).send(result);
 		})
@@ -73,6 +83,7 @@ createRide = body => {
 	body.description = body.description.trim();
 
 	body.title = body.title.charAt(0).toUpperCase() + body.title.slice(1);
-	body.description = body.description.charAt(0).toUpperCase() + body.description.slice(1);
+	body.description =
+		body.description.charAt(0).toUpperCase() + body.description.slice(1);
 	return new Ride(body);
 };

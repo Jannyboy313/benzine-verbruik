@@ -10,8 +10,10 @@ import { Fuel } from 'src/shared/models/fuel.model';
 	styleUrls: ['./fuel-list.component.scss']
 })
 export class FuelListComponent implements OnInit {
-	isLoading: boolean = false;
-	error: Error = new Error;
+	isLoading: boolean = true;
+
+	error: Error = new Error();
+	page: number = 0;
 
 	fuelList: Fuel[] = [];
 
@@ -50,5 +52,10 @@ export class FuelListComponent implements OnInit {
 			return true;
 		}
 		return false;
+	}
+
+	loadMoreFuel(): void {
+		this.page++;
+		this.getFuel();
 	}
 }
