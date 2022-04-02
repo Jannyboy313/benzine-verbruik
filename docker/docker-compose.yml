@@ -25,6 +25,8 @@ services:
         dockerfile: Dockerfile.angular
       ports:
         - 4200:4200
+      volumes:
+        - ../web:/home/node/app
       command: "ng serve"
       networks:
         - benzine
