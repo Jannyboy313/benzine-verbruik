@@ -41,6 +41,19 @@ docker compose down
 
 To remove all containers.
 
+## Env credentials
+Below are the credentials needed by the application. <br />
+There have to be 2 env files in both folders (web & api).
+
+### web
+- api_url (Inside environment.ts)
+
+### api
+- DATABASE_URL
+- ACCESS_TOKEN
+- REFRESH_TOKEN
+- PORT=3000
+
 ## Deployment
 Be sure to have a mongo database setup on you're own server or from mongo atlas. <br />
 If you want to deploy this on you're server u have to follow these steps.
