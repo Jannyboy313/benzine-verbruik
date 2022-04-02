@@ -14,6 +14,7 @@ services:
       image: node:16.14.2-alpine3.15
       ports:
         - 3000:3000
+      working_dir: /home/node/app
       volumes:
         - ../api:/home/node/app
       command: "npm run start"
@@ -25,6 +26,7 @@ services:
         dockerfile: Dockerfile.angular
       ports:
         - 4200:4200
+      working_dir: /home/node/app
       volumes:
         - ../web:/home/node/app
       command: "npm run start"
