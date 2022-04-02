@@ -1,6 +1,6 @@
 {
 	"name": "bezine-verbruik",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "Een api voor het eigen benzine verbruik",
 	"main": "app.js",
 	"scripts": {
@@ -21,15 +21,15 @@
 		"bcryptjs": "^2.4.3",
 		"cookie-parser": "^1.4.5",
 		"cors": "^2.8.5",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
+		"dotenv": "^16.0.0",
+		"express": "^4.17.3",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.12.1",
 		"mongoose-beautiful-unique-validation": "^7.1.1",
 		"mongoose-float": "^1.0.4",
 		"passport": "^0.4.1",
 		"passport-jwt": "^4.0.0",
-		"swagger-ui-express": "^4.1.6"
+		"swagger-ui-express": "^4.3.0"
 	},
 	"devDependencies": {
 		"swagger-cli": "^4.0.4"

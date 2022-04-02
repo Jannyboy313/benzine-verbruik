@@ -1,0 +1,5 @@
+# Same version as the api is currently using
+FROM node:16.14.2-alpine3.15
+WORKDIR /usr/app
+RUN npm install @angular/cli@13
+EXPOSE 4200
