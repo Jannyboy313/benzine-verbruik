@@ -10,5 +10,14 @@ services:
       environment:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: rootpwd
+    api:
+      image: node:16.14.2-alpine3.15
+      ports:
+        - 3000:3000
+      volumes:
+        - ../API:/home/node/app
+      command: "npm run start"
+      networks:
+        - benzine
 networks:
   benzine:
