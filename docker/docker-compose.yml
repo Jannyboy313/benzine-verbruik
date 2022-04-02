@@ -27,7 +27,7 @@ services:
         - 4200:4200
       volumes:
         - ../web:/home/node/app
-      command: "ng serve"
+      command: "npm run start"
       networks:
         - benzine
 networks:
