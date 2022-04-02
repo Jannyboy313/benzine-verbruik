@@ -8,6 +8,16 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jannyboy313/benzine-verbruik.git"
+  },
+  "author": "Jan van Overbeek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jannyboy313/benzine-verbruik/issues"
+  },
+  "homepage": "https://github.com/Jannyboy313/benzine-verbruik#readme",
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
