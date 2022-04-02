@@ -19,5 +19,14 @@ services:
       command: "npm run start"
       networks:
         - benzine
+    web:
+      build:
+        context: .
+        dockerfile: Dockerfile.angular
+      ports:
+        - 4200:4200
+      command: "ng serve"
+      networks:
+        - benzine
 networks:
   benzine:
