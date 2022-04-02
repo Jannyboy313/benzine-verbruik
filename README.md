@@ -40,3 +40,42 @@ docker compose down
 ```
 
 To remove all containers.
+
+## Deployment
+Be sure to have a mongo database setup on you're own server or from mongo atlas. <br />
+If you want to deploy this on you're server u have to follow these steps.
+
+### Without docker
+
+#### Frontend
+- Navigate into the web folder
+- Run ```ng build```
+- Upload "dist" of the web folder to you're server
+- Configure you're nginx or apache
+
+#### Backend
+- Install Node and PM2
+- Copy the api folder to the server
+- Run the api with ```pm2 start```
+- Configure you're nginx or apache
+
+Don't forget to add and update the ENV file!
+
+### With docker
+U can be lazy and just copy everything and use ```docker compose up``` but I strongly advice against it. <br />
+I would suggest following these steps:
+
+#### Frontend
+- Navigate into the web folder
+- Run ```ng build```
+- Create a docker file -> from NGINX
+- Copy the angular dist into the image
+- Put the image on the server
+
+#### Backend
+- Create a docker file -> from node:16.14.2-alpine3.15
+- Copy the api folder into that image
+- Add the ```npm install``` and ```npm run start``` commands.
+- Put the image on the server
+
+Now you can put these images in a swarm by a stack.yml file or run them manually/docker compose.
