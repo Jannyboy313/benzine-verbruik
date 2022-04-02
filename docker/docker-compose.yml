@@ -15,7 +15,7 @@ services:
       ports:
         - 3000:3000
       volumes:
-        - ../API:/home/node/app
+        - ../api:/home/node/app
       command: "npm run start"
       networks:
         - benzine
