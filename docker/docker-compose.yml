@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+    database:
+      image: mongo
+      restart: always
+      ports:
+        - 27017:27017
+      networks:
+        - benzine
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: rootpwd
+    api:
+      image: node:16.14.2-alpine3.15
+      ports:
+        - 3000:3000
+      working_dir: /home/node/app
+      volumes:
+        - ../api:/home/node/app
+      command: "npm run start"
+      networks:
+        - benzine
+    web:
+      build:
+        context: .
+        dockerfile: Dockerfile.angular
+      ports:
+        - 4200:4200
+      working_dir: /home/node/app
+      volumes:
+        - ../web:/home/node/app
+      command: "npm run start"
+      networks:
+        - benzine
+networks:
+  benzine:
