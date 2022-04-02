@@ -92,3 +92,8 @@ I would suggest following these steps:
 - Put the image on the server
 
 Now you can put these images in a swarm by a stack.yml file or run them manually/docker compose.
+
+## Documentation
+This readme is a form of documentation for the project ofcourse, but there is more! <br />
+The api uses swagger as documentation tool for all the endpoints, this can be found on localhost:port/api-docs when the api is running. <br />
+The angular webapplication doesn't contain any documentation **yet** this will be added in the future.
