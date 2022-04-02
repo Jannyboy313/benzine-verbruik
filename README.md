@@ -12,8 +12,31 @@ This has to be done with future changes in mind like implement nestjs in the cur
 The api uses rest for the same reason as stated above.
 
 ## Installation
+The installation is rather simple since this project has been dockerized. <br />
+Before starting the application you have to install all modules. <br />
+This is done be running this command in both the web & api folder.
 
-Install the node modules
 ```bash
 npm install
 ```
+
+After that you have to create an ENV file based on the example in both the web & api folder. <br />
+Without the env file the api will not work and the web will not function properly. <br />
+
+## Running
+To run the project you have to navigate into the "docker" folder. <br />
+Once navigated run the command:
+
+```bash
+docker compose up
+```
+
+This will create all containers used for this project. <br />
+To quit the serves use CTRL + C. <br />
+If needed use:
+
+```bash
+docker compose down
+```
+
+To remove all containers.
