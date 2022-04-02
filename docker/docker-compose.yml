@@ -25,7 +25,7 @@ services:
         context: .
         dockerfile: Dockerfile.angular
       ports:
-        - 4200:80
+        - 4200:4200
       working_dir: /home/node/app
       volumes:
         - ../web:/home/node/app
