@@ -45,6 +45,7 @@ To remove all containers.
 A standard test account is created when starting the project:
  - email: test@test.nl
  - password: test
+
 This is set in the ```mongodb-init.js``` file located in the docker folder. <br />
 Below are the credentials needed by the application. <br />
 There have to be 2 env files in both folders (web & api).
