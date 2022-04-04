@@ -1,3 +1,4 @@
+/* global createFuel */
 const Fuel = require('../models/fuel.js');
 
 exports.postFuel = (req, res) => {

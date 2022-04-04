@@ -76,10 +76,7 @@ export class FuelModalComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		this.error.setError(
-			false,
-			'There has been a network error'
-		);
+		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 		if (!this.form.valid) {
 			this.isLoading = false;

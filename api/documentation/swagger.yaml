@@ -1,39 +1,39 @@
 openapi: 3.0.0
 info:
-  title: Benzine api
-  description: This api serves the benzine app.
-  version: 1.0.0
+    title: Benzine api
+    description: This api serves the benzine app.
+    version: 1.0.0
 tags:
-  - name: User
-  - name: Fuel
-  - name: Ride
+    - name: User
+    - name: Fuel
+    - name: Ride
 servers:
-  - url: https://benzine-api.janvanoverbeek.nl/
+    - url: https://benzine-api.janvanoverbeek.nl/
 
 paths:
-  /user/{id}:
-    $ref: ./user/getUser.yaml
-  /user/login:
-    $ref: ./user/login.yaml
-  /user/register:
-    $ref: ./user/register.yaml
-  /fuel/:
-    $ref: ./fuel/getFuels.yaml
-  /fuel/{id}/:
-    $ref: ./fuel/getFuel.yaml
-  /fuel:
-    $ref: ./fuel/postFuel.yaml
-  /fuel/{id}:
-    $ref: ./fuel/putFuel.yaml
-  /fuel/{id}//:
-    $ref: ./fuel/deleteFuel.yaml
-  /ride/:
-    $ref: ./ride/getRides.yaml
-  /ride/{id}/:
-    $ref: ./ride/getRide.yaml
-  /ride:
-    $ref: ./ride/postRide.yaml
-  /ride/{id}:
-    $ref: ./ride/putRide.yaml
-  /ride/{id}//:
-    $ref: ./ride/deleteRide.yaml
+    /user/{id}:
+        $ref: ./user/getUser.yaml
+    /user/login:
+        $ref: ./user/login.yaml
+    /user/register:
+        $ref: ./user/register.yaml
+    /fuel/:
+        $ref: ./fuel/getFuels.yaml
+    /fuel/{id}/:
+        $ref: ./fuel/getFuel.yaml
+    /fuel:
+        $ref: ./fuel/postFuel.yaml
+    /fuel/{id}:
+        $ref: ./fuel/putFuel.yaml
+    /fuel/{id}//:
+        $ref: ./fuel/deleteFuel.yaml
+    /ride/:
+        $ref: ./ride/getRides.yaml
+    /ride/{id}/:
+        $ref: ./ride/getRide.yaml
+    /ride:
+        $ref: ./ride/postRide.yaml
+    /ride/{id}:
+        $ref: ./ride/putRide.yaml
+    /ride/{id}//:
+        $ref: ./ride/deleteRide.yaml

@@ -1,0 +1,21 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "commonjs": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["mongodb-init.js"],
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "no-global-assign": "off"
+     }
+}
