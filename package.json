@@ -1,0 +1,22 @@
+{
+    "name": "benzine-verbruik",
+    "version": "1.2.0",
+    "description": "A project to keep track of miles and fuel usage.",
+    "scripts": {
+        "format": "prettier --config ./.prettierrc --write \"{,!(node_modules)/**/}*.{js,ts,html,yaml,scss}\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Jannyboy313/benzine-verbruik.git"
+    },
+    "author": "Jan van Overbeek",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Jannyboy313/benzine-verbruik/issues"
+    },
+    "homepage": "https://github.com/Jannyboy313/benzine-verbruik#readme",
+    "dependencies": { },
+    "devDependencies": {
+        "prettier": "^2.6.2"
+    }
+}
