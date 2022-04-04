@@ -3,7 +3,8 @@
     "version": "1.2.0",
     "description": "A project to keep track of miles and fuel usage.",
     "scripts": {
-        "format": "prettier --config ./.prettierrc --write \"{,!(node_modules)/**/}*.{js,ts,html,yaml,scss}\""
+        "format": "prettier --config ./.prettierrc --write \"{,!(node_modules)/**/}*.{js,ts,html,yaml,scss}\"",
+        "eslint": "eslint . --ext .js --ext .ts"
     },
     "repository": {
         "type": "git",
@@ -16,6 +17,7 @@
     },
     "homepage": "https://github.com/Jannyboy313/benzine-verbruik#readme",
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.18.0",
         "@typescript-eslint/parser": "^5.18.0",
         "eslint": "^8.12.0",
         "prettier": "^2.6.2"
