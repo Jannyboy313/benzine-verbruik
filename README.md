@@ -52,9 +52,7 @@ Below are the credentials needed by the application. <br />
 There have to be 2 env files in both folders (web & api).
 
 ### web
-```env
 api_url (Inside environment.ts)
-```
 
 ### api
 ```env
