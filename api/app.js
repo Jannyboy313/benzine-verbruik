@@ -42,9 +42,7 @@ app.use('/dashboard', isAuth, dashboardRouter);
 //LISTENER
 mongoose
 	.connect(process.env.DATABASE_URL, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useCreateIndex: true
+		useNewUrlParser: true
 	})
 	.then(result => {
 		app.listen(process.env.PORT);
