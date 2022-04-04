@@ -16,7 +16,6 @@ export class FuelScreenComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-
 	openCreateModal(): void {
 		let dialogRef = this.dialog.open(FuelModalComponent, {
 			width: '85vw',
@@ -31,5 +30,5 @@ export class FuelScreenComponent implements OnInit {
 				this.fuelListService.addFuel(result);
 			}
 		});
-  }
+	}
 }

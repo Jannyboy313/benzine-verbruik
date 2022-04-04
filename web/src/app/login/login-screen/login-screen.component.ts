@@ -10,7 +10,7 @@ import { DataStorageService } from 'src/shared/Services/data-storage.service';
 	styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent implements OnInit {
-	error: Error = new Error;
+	error: Error = new Error();
 
 	isLoading: boolean = false;
 	email: string = '';

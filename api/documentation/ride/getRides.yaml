@@ -1,33 +1,33 @@
 get:
-  summary: Returns all the rides of user.
-  tags:
-    - Ride
-  responses:
-    '200':
-      description: Ride object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              type: object
-              properties:
-                _id:
-                  type: string
-                title:
-                  type: string
-                description:
-                  type: string
-                distance:
-                  type: number
-                user:
-                  type: string
-                createdAt:
-                  type: string
-                updatedAt:
-                  type: string
-                __v:
-                  type: string
+    summary: Returns all the rides of user.
+    tags:
+        - Ride
+    responses:
+        '200':
+            description: Ride object
+            content:
+                application/json:
+                    schema:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                                _id:
+                                    type: string
+                                title:
+                                    type: string
+                                description:
+                                    type: string
+                                distance:
+                                    type: number
+                                user:
+                                    type: string
+                                createdAt:
+                                    type: string
+                                updatedAt:
+                                    type: string
+                                __v:
+                                    type: string
 
-    '500':
-      description: Rides does not exists
+        '500':
+            description: Rides does not exists

@@ -1,39 +1,39 @@
 get:
-  summary: Returns the fuel by ID.
-  tags:
-    - Fuel
-  parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type : string
-        minimum: 1
-  responses:
-    '200':
-      description: Fuel object
-      content:
-        application/json:
+    summary: Returns the fuel by ID.
+    tags:
+        - Fuel
+    parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            type: object
-            properties:
-              _id:
-                type: string
-              litre:
-                type: number
-              price:
-                type: number
-              gas_station:
-                type: string
-              location:
-                type: string
-              user:
-                type: string
-              createdAt:
-                type: string
-              updatedAt:
-                type: string
-              __v:
-                type: string
-    '500':
-      description: Fuel does not exists
+              type: string
+              minimum: 1
+    responses:
+        '200':
+            description: Fuel object
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            _id:
+                                type: string
+                            litre:
+                                type: number
+                            price:
+                                type: number
+                            gas_station:
+                                type: string
+                            location:
+                                type: string
+                            user:
+                                type: string
+                            createdAt:
+                                type: string
+                            updatedAt:
+                                type: string
+                            __v:
+                                type: string
+        '500':
+            description: Fuel does not exists

@@ -42,7 +42,14 @@ export class DashboardScreenComponent implements OnInit {
 	}
 
 	dataExists() {
-		if (!(this.dashboardData.balance || this.dashboardData.distance || this.dashboardData.prices || this.dashboardData.litres))
+		if (
+			!(
+				this.dashboardData.balance ||
+				this.dashboardData.distance ||
+				this.dashboardData.prices ||
+				this.dashboardData.litres
+			)
+		)
 			return false;
 		return true;
 	}
