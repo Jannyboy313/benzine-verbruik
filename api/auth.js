@@ -3,7 +3,7 @@ const User = require('./models/user.js');
 require('dotenv/config');
 
 module.exports.createTokens = user => {
-	user.password = "Wow! U found a little easteregg :)";
+	user.password = 'Wow! U found a little easteregg :)';
 	const createdAccessToken = jwt.sign(
 		{ user: user },
 		process.env.ACCESS_TOKEN,
