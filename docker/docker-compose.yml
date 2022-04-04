@@ -20,6 +20,8 @@ services:
       command: "npm run start"
       networks:
         - benzine
+      depends_on:
+        - database
     web:
       build:
         context: .
