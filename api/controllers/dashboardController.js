@@ -1,4 +1,5 @@
 /*global getFuelCosts getDistance, getBalance, getCombined */
+/*eslint no-undef: "error"*/
 const Ride = require('../models/ride.js');
 const Fuel = require('../models/fuel.js');
 const User = require('../models/user.js');

@@ -1,4 +1,5 @@
 /*global createFuel */
+/*eslint no-undef: "error"*/
 const Fuel = require('../models/fuel.js');
 
 exports.postFuel = (req, res) => {

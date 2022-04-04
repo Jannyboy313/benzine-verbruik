@@ -1,4 +1,5 @@
 /*global createRide */
+/*eslint no-undef: "error"*/
 const Ride = require('../models/ride.js');
 
 exports.postRide = (req, res) => {
