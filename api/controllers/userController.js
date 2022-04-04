@@ -12,9 +12,9 @@ exports.login = async (req, res) => {
 			if (isEqual) {
 				const [accesstoken, refreshToken] = auth.createTokens(user);
 				res.cookie('access-token', accesstoken, {
-					maxAge: 60 * 60 * 24 * 7 * 1000,
-					httpOnly: true,
-					secure: false
+				maxAge: 60 * 60 * 24 * 7 * 1000,
+				httpOnly: true,
+				secure: false
 				});
 				res.cookie('refresh-token', refreshToken, {
 					maxAge: 60 * 60 * 24 * 7 * 1000,
