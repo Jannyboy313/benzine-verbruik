@@ -58,7 +58,7 @@ api_url (Inside environment.ts)
 
 ### api
 ```env
-DATABASE_URL=mongodb://test:testpwd@database:27017/benzine?authMechanism=DEFAULT
+DATABASE_URL="mongodb://test:testpwd@database:27017/benzine?authMechanism=DEFAULT"
 ACCESS_TOKEN=secret
 REFRESH_TOKEN=secret
 PORT=3000
