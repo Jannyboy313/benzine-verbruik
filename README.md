@@ -46,7 +46,7 @@ A standard test account is created when starting the project:
  - email: test@test.nl
  - password: test
 
-This is set in the ```mongodb-init.js``` file located in the docker folder.
+This is set in the ```mongodb-init.js``` file. This is located in the docker folder.
 
 Below are the credentials needed by the application. <br />
 There have to be 2 env files in both folders (web & api).
