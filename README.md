@@ -41,18 +41,26 @@ docker compose down
 
 To remove all containers.
 
-## Env credentials
+## Credentials
+A standard test account is created when starting the project:
+ - email: test@test.nl
+ - password: test
+This is set in the ```mongodb-init.js``` file located in the docker folder. <br />
 Below are the credentials needed by the application. <br />
 There have to be 2 env files in both folders (web & api).
 
 ### web
-- api_url (Inside environment.ts)
+```env
+api_url (Inside environment.ts)
+```
 
 ### api
-- DATABASE_URL
-- ACCESS_TOKEN
-- REFRESH_TOKEN
-- PORT=3000
+```env
+DATABASE_URL=mongodb://test:testpwd@database:27017/benzine?authMechanism=DEFAULT
+ACCESS_TOKEN=secret
+REFRESH_TOKEN=secret
+PORT=3000
+```
 
 ## Deployment
 Be sure to have a mongo database setup on you're own server or from mongo atlas. <br />
