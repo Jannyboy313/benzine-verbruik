@@ -22,7 +22,6 @@ services:
         - benzine
       depends_on:
         - database
-      restart: on-failure
     web:
       build:
         context: .
