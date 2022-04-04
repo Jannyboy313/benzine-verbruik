@@ -10,6 +10,8 @@ services:
       environment:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: rootpwd
+      volumes:
+        - ./mongodb-init.js:/docker-entrypoint-initdb.d/mongodb-init.js
     api:
       image: node:16.14.2-alpine3.15
       ports:
