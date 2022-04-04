@@ -1,3 +1,4 @@
+/*global createRide */
 const Ride = require('../models/ride.js');
 
 exports.postRide = (req, res) => {

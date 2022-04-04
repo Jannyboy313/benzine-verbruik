@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
 					.json({ message: 'Email or password incorrect' });
 			}
 		})
-		.catch(err => {
+		.catch((err) => {
 			return res
 				.status(401)
 				.json({ message: 'Email or password incorrect' });
@@ -57,7 +57,7 @@ exports.register = async (req, res) => {
 			result.password = null;
 			res.status(201).send(result);
 		})
-		.catch(err => {
+		.catch((err) => {
 			const status = err.statusCode || 500;
 			res.status(status).json({ message: err });
 		});
@@ -70,7 +70,7 @@ exports.getUser = (req, res) => {
 		.then(result => {
 			res.status(200).send(result);
 		})
-		.catch(err => {
+		.catch((err) => {
 			const status = err.statusCode || 500;
 			res.status(status).json({ message: err });
 		});
