@@ -5,7 +5,7 @@ With the data given about distance and refueling the application will create sta
 if you have used more fuel then you have refueled. <br />
 Its primary used for when you are using someone elses car and want to keep track globally.
 
-### Techinacal overview
+### Technical overview
 
 The "benzine-verbruik" repository has a full **MEAN** stack application seperated into 2 folders. <br />
 The folders are categorized as frontend (web) and backend (api). <br />
