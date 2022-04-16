@@ -1,6 +1,13 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+	Component,
+	Input,
+	OnChanges,
+	OnInit,
+	SimpleChanges
+} from '@angular/core';
 import { Subject } from 'rxjs';
 import { Filter } from 'src/shared/models/filter.model';
+import { FilterIconSettings } from 'src/shared/models/filterIconSettings.model';
 
 @Component({
 	selector: 'app-filter',
@@ -8,9 +15,17 @@ import { Filter } from 'src/shared/models/filter.model';
 	styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit, OnChanges {
-	private filterSettingsSubject: Subject<string> = new Subject<string>();
 	@Input() filterShown: boolean = false;
 	@Input() filters: Filter[] = [];
+
+	private filterUrlSettingsSubject: Subject<string> = new Subject<string>();
+	private filterUrlSettings: Filter[] = [];
+
+	private filterIconSettings: FilterIconSettings[] = [
+		new FilterIconSettings("import_export", "south", ''),
+		new FilterIconSettings("south", "north", 'desc'),
+		new FilterIconSettings("north", "import_export", 'asc'),
+	];
 
 	constructor() {}
 
@@ -20,5 +35,32 @@ export class FilterComponent implements OnInit, OnChanges {
 		this.filterShown = changes.filterShown.currentValue;
 	}
 
-	filterClicked(name: string): void {}
+	filterClicked(index: number): void {
+		const currentIcon: string = this.filters[index].icon;
+		const filterIconSetting = this.findFilterIconSettings(currentIcon);
+		this.filters[index].icon = filterIconSetting.nextIcon;
+		this.filters[index].url = filterIconSetting.url;
+		this.setFilterUrl(this.filters[index]);
+	}
+
+	private findFilterIconSettings(icon: string): FilterIconSettings {
+		let returnValue: FilterIconSettings = new FilterIconSettings('', '', '');
+		this.filterIconSettings.forEach(element => {
+			if (element.name === icon) {
+				returnValue = element;
+			}
+		});
+		return returnValue;
+	}
+
+	private isUrlSet(filterItem: Filter): boolean {
+		let isUrlSet = false;
+		this.filterUrlSettings.forEach(element => {
+			if ((element === filterItem)) {
+				isUrlSet = true;
+			}
+		});
+		return isUrlSet;
+	}
+
 }
