@@ -47,14 +47,14 @@ export class FuelCardComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			if (result) {
-				this.fuelService.deleteFuel(this.fuel._id).subscribe(
-					() => {
+				this.fuelService.deleteFuel(this.fuel._id).subscribe({
+					next: () => {
 						this.fuelListService.deleteFuel(this.fuel);
 					},
-					err => {
-						console.log(err);
+					error: (err) => {
+						console.error(err);
 					}
-				);
+				});
 			}
 		});
 	}

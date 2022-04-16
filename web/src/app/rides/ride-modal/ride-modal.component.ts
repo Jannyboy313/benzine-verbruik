@@ -98,29 +98,29 @@ export class RideModalComponent implements OnInit {
 	}
 
 	private postRide(ride: Ride): void {
-		this.rideService.postRide(ride).subscribe(
-			result => {
+		this.rideService.postRide(ride).subscribe({
+			next: (result) => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			err => {
-				this.isLoading = false;
+			error: (err) => {
 				this.error.setError(true, err.error.message.message);
+				this.isLoading = false;
 			}
-		);
+		});
 	}
 
 	private putRide(ride: Ride): void {
 		ride['_id'] = this.data.ride._id;
-		this.rideService.putRide(ride).subscribe(
-			result => {
+		this.rideService.putRide(ride).subscribe({
+			next: (result) => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			err => {
-				this.isLoading = false;
+			error: (err) => {
 				this.error.setError(true, err.error.message.message);
+				this.isLoading = false;
 			}
-		);
+		});
 	}
 }

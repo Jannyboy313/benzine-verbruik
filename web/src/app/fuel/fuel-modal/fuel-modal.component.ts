@@ -108,29 +108,29 @@ export class FuelModalComponent implements OnInit {
 	}
 
 	private postFuel(fuel: Fuel): void {
-		this.fuelService.postFuel(fuel).subscribe(
-			result => {
+		this.fuelService.postFuel(fuel).subscribe({
+			next: (result) => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			err => {
-				this.isLoading = false;
+			error: (err) => {
 				this.error.setError(true, err.error.message.message);
+				this.isLoading = false;
 			}
-		);
+		});
 	}
 
 	private putFuel(fuel: Fuel): void {
 		fuel['_id'] = this.data.fuel._id;
-		this.fuelService.putFuel(fuel).subscribe(
-			result => {
+		this.fuelService.putFuel(fuel).subscribe({
+			next: (result) => {
 				this.isLoading = false;
-				this.closeDialog(result);
+				this.closeDialog(result)
 			},
-			err => {
-				this.isLoading = false;
+			error: (err) => {
 				this.error.setError(true, err.error.message.message);
+				this.isLoading = false;
 			}
-		);
+		});
 	}
 }
