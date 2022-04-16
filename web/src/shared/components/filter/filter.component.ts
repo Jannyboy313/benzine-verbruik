@@ -66,7 +66,7 @@ export class FilterComponent implements OnInit, OnChanges {
 
 		let url = '';
 		if (this.filterUrlSettings.length > 0) {
-			url += 'filter=true';
+			url += '&filter=true';
 			this.filterUrlSettings.forEach(element => {
 				url += '&' + element.name + '=' + element.url;
 			});
