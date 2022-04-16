@@ -9,6 +9,7 @@ import { FuelScreenComponent } from './fuel-screen/fuel-screen.component';
 import { FuelListComponent } from './fuel-list/fuel-list.component';
 import { FuelCardComponent } from './fuel-list/fuel-card/fuel-card.component';
 import { FuelModalComponent } from './fuel-modal/fuel-modal.component';
+import { FilterComponent } from 'src/shared/components/filter/filter.component';
 
 import { FuelService } from 'src/shared/Services/db/fuel.service';
 
@@ -17,7 +18,8 @@ import { FuelService } from 'src/shared/Services/db/fuel.service';
 		FuelScreenComponent,
 		FuelListComponent,
 		FuelCardComponent,
-		FuelModalComponent
+		FuelModalComponent,
+		FilterComponent
 	],
 	imports: [
 		CommonModule,
