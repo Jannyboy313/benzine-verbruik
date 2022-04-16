@@ -12,6 +12,7 @@ import { Filter } from 'src/shared/models/filter.model';
 export class RidesScreenComponent implements OnInit {
 	public filterShown: boolean = false;
 	public filters: Filter[] = [];
+	public filterUrl: string = '';
 
 	constructor(
 		public dialog: MatDialog,
@@ -47,5 +48,9 @@ export class RidesScreenComponent implements OnInit {
 
 	openFilter(): void {
 		this.filterShown = this.filterShown ? false : true;
+	}
+
+	updateFilterUrl(url: string): void {
+		this.filterUrl = url;
 	}
 }
