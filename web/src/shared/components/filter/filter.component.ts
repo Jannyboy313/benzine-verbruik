@@ -35,7 +35,7 @@ export class FilterComponent implements OnInit, OnChanges {
 		this.filterShown = changes.filterShown.currentValue;
 	}
 
-	filterClicked(index: number): void {
+	public filterClicked(index: number): void {
 		const currentIcon: string = this.filters[index].icon;
 		const filterIconSetting = this.findFilterIconSettings(currentIcon);
 		this.filters[index].icon = filterIconSetting.nextIcon;
