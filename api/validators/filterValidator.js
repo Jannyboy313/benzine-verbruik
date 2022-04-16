@@ -4,8 +4,8 @@ var allowedOptions = ['asc', 'desc', 'ascending', 'descending'];
 exports.areValidFilterOptions = function (filterColumns, filterOptions) {
     const columns = areValidValues(filterColumns, allowedColumns);
     const options = areValidValues(filterOptions, allowedOptions);
-    if (columns.length > 0 && options.length > 0) {
-        throw "Invalid filter query params found! Invalid filter query params are: ", columns.toString() + "," + options.toString()
+    if (columns.length > 0 || options.length > 0) {
+        throw "Invalid filter query params found! [" + columns.toString() + "," + options.toString() + "]";
     }
 }
 
