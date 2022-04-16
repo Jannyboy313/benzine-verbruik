@@ -22,6 +22,7 @@ exports.getFilterOptions = function (queries) {
 	} catch (error) {
 		throw error;
 	}
+	return queriesObject;
 };
 
 const getSanitizedQueries = queries => {
