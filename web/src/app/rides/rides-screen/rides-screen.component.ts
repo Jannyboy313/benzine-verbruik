@@ -11,7 +11,7 @@ import { Filter } from 'src/shared/models/filter.model';
 })
 export class RidesScreenComponent implements OnInit {
 	public filterShown: boolean = false;
-	public filters: Filter[] = []
+	public filters: Filter[] = [];
 
 	constructor(
 		public dialog: MatDialog,
