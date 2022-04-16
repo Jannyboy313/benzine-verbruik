@@ -2,7 +2,7 @@
     <h5>Filter settings</h5>
     <div class="filterOptions">
         <section (click)="filterClicked(i)" *ngFor="let filter of filters; index as i">
-            <span class="material-icons">import_export</span>
+            <span class="material-icons">filter.icon</span>
             <p>{{ filter.description }}</p>
         </section>
     </div>
