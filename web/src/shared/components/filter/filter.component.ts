@@ -28,9 +28,7 @@ export class FilterComponent implements OnInit, OnChanges {
 		new FilterIconSettings('north', 'import_export', 'asc')
 	];
 
-	constructor() {
-		this.onFilterUrl.emit('');
-	}
+	constructor() {	}
 
 	ngOnInit(): void {}
 
