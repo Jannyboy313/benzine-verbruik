@@ -18,7 +18,7 @@ import { FilterIconSettings } from 'src/shared/models/filter-icon-settings.model
 export class FilterComponent implements OnInit, OnChanges {
 	@Input() filterShown: boolean = false;
 	@Input() filters: Filter[] = [];
-	@Output() filterUrlSettingsSubject: EventEmitter<string> = new EventEmitter<string>();
+	@Output() onFilterUrl: EventEmitter<string> = new EventEmitter<string>();
 
 	private filterUrlSettings: Filter[] = [];
 
@@ -29,7 +29,7 @@ export class FilterComponent implements OnInit, OnChanges {
 	];
 
 	constructor() {
-		this.filterUrlSettingsSubject.emit('');
+		this.onFilterUrl.emit('');
 	}
 
 	ngOnInit(): void {}
@@ -73,7 +73,7 @@ export class FilterComponent implements OnInit, OnChanges {
 				url += '&' + element.name + '=' + element.url;
 			});
 		}
-		this.filterUrlSettingsSubject.emit(url);
+		this.onFilterUrl.emit(url);
 	}
 
 	private removeFilterSetting(filter: Filter): void {
