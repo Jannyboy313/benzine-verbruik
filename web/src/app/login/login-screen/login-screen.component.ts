@@ -37,17 +37,17 @@ export class LoginScreenComponent implements OnInit {
 	}
 
 	login() {
-		this.userService.login(this.email, this.password).subscribe(
-			result => {
+		this.userService.login(this.email, this.password).subscribe({
+			next: result => {
 				this.isLoading = false;
 				this.router.navigate(['/rides']);
 				this.dataStorageService.storeData('user_id', result._id);
 			},
-			err => {
-				this.isLoading = false;
+			error: err => {
 				this.error.setError(true, err.error.message);
+				this.isLoading = false;
 			}
-		);
+		});
 	}
 
 	setEmail(email: string) {

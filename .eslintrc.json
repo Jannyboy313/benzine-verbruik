@@ -16,6 +16,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "no-global-assign": "off"
+        "no-global-assign": "off",
+        "no-unused-vars": "off"
      }
 }
