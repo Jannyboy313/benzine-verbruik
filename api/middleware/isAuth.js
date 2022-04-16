@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const auth = require('../auth.js');
 
 module.exports = async (req, res, next) => {
-	return next();
 	if (!req.cookies['access-token'] && !req.cookies['refresh-token']) {
 		return res
 			.status(401)
