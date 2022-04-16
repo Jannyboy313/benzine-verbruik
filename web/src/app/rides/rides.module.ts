@@ -9,7 +9,6 @@ import { RidesScreenComponent } from './rides-screen/rides-screen.component';
 import { RidesListComponent } from './rides-list/rides-list.component';
 import { RideCardComponent } from './rides-list/ride-card/ride-card.component';
 import { RideService } from 'src/shared/Services/db/ride.service';
-import { FilterService } from 'src/shared/Services/filter.service';
 import { SharedModule } from 'src/shared/shared.module';
 import { RideModalComponent } from './ride-modal/ride-modal.component';
 
@@ -28,6 +27,6 @@ import { RideModalComponent } from './ride-modal/ride-modal.component';
 		FormsModule,
 		ReactiveFormsModule
 	],
-	providers: [RideService, FilterService]
+	providers: [RideService]
 })
 export class RidesModule {}
