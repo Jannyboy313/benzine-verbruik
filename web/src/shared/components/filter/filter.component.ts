@@ -9,14 +9,16 @@ import { Filter } from 'src/shared/models/filter.model';
 })
 export class FilterComponent implements OnInit, OnChanges {
 	private filterSettingsSubject: Subject<string> = new Subject<string>();
-  @Input() filterShown: boolean = false;
-  @Input() filters: Filter[] = [];
+	@Input() filterShown: boolean = false;
+	@Input() filters: Filter[] = [];
 
 	constructor() {}
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-      this.filterShown = changes.filterShown.currentValue;
-  }
+	ngOnChanges(changes: SimpleChanges): void {
+		this.filterShown = changes.filterShown.currentValue;
+	}
+
+	filterClicked(name: string): void {}
 }
