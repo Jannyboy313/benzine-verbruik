@@ -25,7 +25,7 @@ exports.areValidFilterOptions = function (filterColumns, filterOptions) {
 	}
 };
 
-areValidValues = function (valuesToCheck, allowedValues) {
+const areValidValues = function (valuesToCheck, allowedValues) {
 	const invalidValues = [];
 	for (let i = 0; i < valuesToCheck.length; i++) {
 		if (!allowedValues.includes(valuesToCheck[i])) {
