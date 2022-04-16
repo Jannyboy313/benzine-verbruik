@@ -25,7 +25,7 @@ exports.getRides = (req, res) => {
 	}
 
 	const { skip, limit } = pageHelper.getPageInformation(req.query);
-	Ride.find(/*{ user: res.locals.user._id }*/)
+	Ride.find({ user: res.locals.user._id })
 		.sort(filter)
 		.limit(limit)
 		.skip(skip)
