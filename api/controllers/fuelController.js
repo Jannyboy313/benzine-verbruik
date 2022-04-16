@@ -1,5 +1,6 @@
 /* global createFuel */
 const Fuel = require('../models/fuel.js');
+const pageHelper = require('../util/pageHelper.js');
 
 exports.postFuel = (req, res) => {
 	const fuel = createFuel(req.body);
@@ -14,12 +15,7 @@ exports.postFuel = (req, res) => {
 };
 
 exports.getFuels = (req, res) => {
-	let { page } = req.query;
-
-	if (!page) page = 0;
-
-	const limit = 5;
-	const skip = page * limit;
+	const { skip, limit } = pageHelper.getPageInformation(req.query);
 
 	Fuel.find({ user: res.locals.user._id })
 		.sort({ updatedAt: -1 })

@@ -1,6 +1,7 @@
 /* global createRide */
 const Ride = require('../models/ride.js');
 const filterHelper = require('../util/filterHelper.js');
+const pageHelper = require('../util/pageHelper.js');
 
 exports.postRide = (req, res) => {
 	const ride = createRide(req.body);
@@ -15,9 +16,6 @@ exports.postRide = (req, res) => {
 };
 
 exports.getRides = (req, res) => {
-	let { page } = req.query;
-
-	if (!page) page = 0;
 	let filter = {};
 	try {
 		filter = filterHelper.getFilterOptions(req.query);
@@ -26,9 +24,7 @@ exports.getRides = (req, res) => {
 		return;
 	}
 
-	const limit = 5;
-	const skip = page * limit;
-
+	const { skip, limit } = pageHelper.getPageInformation(req.query);
 	Ride.find(/*{ user: res.locals.user._id }*/)
 		.sort(filter)
 		.limit(limit)
