@@ -1,5 +1,5 @@
 import { FuelListService } from './../../../shared/Services/fuel-list-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Error } from 'src/shared/models/error.model';
 import { FuelService } from 'src/shared/Services/db/fuel.service';
 import { Fuel } from 'src/shared/models/fuel.model';
@@ -9,7 +9,9 @@ import { Fuel } from 'src/shared/models/fuel.model';
 	templateUrl: './fuel-list.component.html',
 	styleUrls: ['./fuel-list.component.scss']
 })
-export class FuelListComponent implements OnInit {
+export class FuelListComponent implements OnInit, OnChanges {
+	@Input() filterUrl: string = '';
+
 	isLoading: boolean = true;
 
 	error: Error = new Error();
@@ -29,13 +31,18 @@ export class FuelListComponent implements OnInit {
 		this.getFuel();
 	}
 
+	ngOnChanges(changes: SimpleChanges): void {
+		this.filterUrl = changes.filterUrl.currentValue;
+		this.getFuel();
+	}
+
 	getFuel() {
 		this.error.setError(
 			false,
 			'There has been an error while trying to load the fuel'
 		);
 		this.isLoading = true;
-		this.fuelService.getFuels().subscribe({
+		this.fuelService.getFuels(this.filterUrl).subscribe({
 			next: result => {
 				this.isLoading = false;
 				this.fuelListService.setFuel(result);
