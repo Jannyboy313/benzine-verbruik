@@ -1,15 +1,15 @@
 var allowedColumns = ['title', 'description', 'distance', 'litre', 'price', 'gas_station', 'location', 'createdAt', 'updatedAt'];
-var allowedConfig = ['asc', 'desc', 'ascending', 'descending'];
+var allowedOptions = ['asc', 'desc', 'ascending', 'descending'];
 
-exports.areValidFilterOptions = function (filterColumns, filterConfigs) {
+exports.areValidFilterOptions = function (filterColumns, filterOptions) {
     const columns = areValidValues(filterColumns, allowedColumns);
-    const configs = areValidValues(filterConfigs, allowedConfig);
-    return (!columns || !configs) ? false : true;
+    const options = areValidValues(filterOptions, allowedOptions);
+    return columns && options;
 }
 
 areValidValues = function (valuesToCheck, allowedValues) {
     for (let i = 0; i < valuesToCheck.length; i++) {
-		if (allowedValues.includes(valuesToCheck[i])) {
+		if (!allowedValues.includes(valuesToCheck[i])) {
 			return false;
 		}
 	}
