@@ -17,6 +17,7 @@
     ],
     "rules": {
         "no-global-assign": "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "no-useless-catch": "off"
      }
 }
