@@ -8,7 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RidesScreenComponent } from './rides-screen/rides-screen.component';
 import { RidesListComponent } from './rides-list/rides-list.component';
 import { RideCardComponent } from './rides-list/ride-card/ride-card.component';
-import { FilterComponent } from 'src/shared/components/filter/filter.component';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { SharedModule } from 'src/shared/shared.module';
 import { RideModalComponent } from './ride-modal/ride-modal.component';
@@ -18,8 +17,7 @@ import { RideModalComponent } from './ride-modal/ride-modal.component';
 		RidesScreenComponent,
 		RidesListComponent,
 		RideCardComponent,
-		RideModalComponent,
-		FilterComponent
+		RideModalComponent
 	],
 	imports: [
 		CommonModule,
