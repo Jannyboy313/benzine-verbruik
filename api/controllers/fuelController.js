@@ -1,5 +1,6 @@
 /* global createFuel */
 const Fuel = require('../models/fuel.js');
+const filterHelper = require('../util/filterHelper.js');
 const pageHelper = require('../util/pageHelper.js');
 
 exports.postFuel = (req, res) => {
@@ -15,10 +16,18 @@ exports.postFuel = (req, res) => {
 };
 
 exports.getFuels = (req, res) => {
+	let filter = {};
+	try {
+		filter = filterHelper.getFilterOptions(req.query);
+	} catch (error) {
+		res.status(400).json({ message: error });
+		return;
+	}
+
 	const { skip, limit } = pageHelper.getPageInformation(req.query);
 
 	Fuel.find({ user: res.locals.user._id })
-		.sort({ updatedAt: -1 })
+		.sort(filter)
 		.limit(limit)
 		.skip(skip)
 		.then(result => {
