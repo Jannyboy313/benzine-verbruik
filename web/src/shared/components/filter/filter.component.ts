@@ -22,9 +22,9 @@ export class FilterComponent implements OnInit, OnChanges {
 	private filterUrlSettings: Filter[] = [];
 
 	private filterIconSettings: FilterIconSettings[] = [
-		new FilterIconSettings("import_export", "south", ''),
-		new FilterIconSettings("south", "north", 'desc'),
-		new FilterIconSettings("north", "import_export", 'asc'),
+		new FilterIconSettings('import_export', 'south', ''),
+		new FilterIconSettings('south', 'north', 'desc'),
+		new FilterIconSettings('north', 'import_export', 'asc')
 	];
 
 	constructor() {}
@@ -53,14 +53,20 @@ export class FilterComponent implements OnInit, OnChanges {
 		return returnValue;
 	}
 
-	private isUrlSet(filterItem: Filter): boolean {
-		let isUrlSet = false;
-		this.filterUrlSettings.forEach(element => {
-			if ((element === filterItem)) {
-				isUrlSet = true;
-			}
-		});
-		return isUrlSet;
+	private setFilterUrl(filter: Filter) {
+		this.removeFilterSetting(filter);
+		if (filter.url !== '') {
+			this.filterUrlSettings.push(filter);
+		}
 	}
 
+	private removeFilterSetting(filter: Filter): void {
+		var settingsCopy = this.filterUrlSettings;
+		for (let i = 0; i < settingsCopy.length; i++) {
+			if (settingsCopy[i] === filter) {
+				delete this.filterUrlSettings[i];
+				return;
+			}
+		}
+	}
 }
