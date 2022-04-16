@@ -35,16 +35,16 @@ export class FuelListComponent implements OnInit {
 			'There has been an error while trying to load the fuel'
 		);
 		this.isLoading = true;
-		this.fuelService.getFuels().subscribe(
-			result => {
+		this.fuelService.getFuels().subscribe({
+			next: result => {
 				this.isLoading = false;
 				this.fuelListService.setFuel(result);
 			},
-			err => {
+			error: err => {
 				this.error.setError(true, err.error.message);
 				this.isLoading = false;
 			}
-		);
+		});
 	}
 
 	fuelExist(): boolean {

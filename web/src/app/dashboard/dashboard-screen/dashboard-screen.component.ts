@@ -29,16 +29,16 @@ export class DashboardScreenComponent implements OnInit {
 	getDashboardData() {
 		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
-		this.dashboardService.getDashboardData().subscribe(
-			result => {
+		this.dashboardService.getDashboardData().subscribe({
+			next: result => {
 				this.isLoading = false;
 				this.dashboardData = result;
 			},
-			err => {
-				this.isLoading = false;
+			error: err => {
 				this.error.setError(true, err.error.message);
+				this.isLoading = false;
 			}
-		);
+		});
 	}
 
 	dataExists() {

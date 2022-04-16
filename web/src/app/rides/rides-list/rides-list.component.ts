@@ -35,16 +35,16 @@ export class RidesListComponent implements OnInit {
 			'There has been an error while trying to load the rides'
 		);
 		this.isLoading = true;
-		this.rideService.getRides(this.page).subscribe(
-			result => {
+		this.rideService.getRides(this.page).subscribe({
+			next: result => {
 				this.isLoading = false;
 				this.ridesListService.setRides(result);
 			},
-			err => {
+			error: err => {
 				this.error.setError(true, err.error.message);
 				this.isLoading = false;
 			}
-		);
+		});
 	}
 
 	ridesExist(): boolean {
