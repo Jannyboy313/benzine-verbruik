@@ -40,7 +40,7 @@ export class FilterComponent implements OnInit, OnChanges {
 		const filterIconSetting = this.findFilterIconSettings(currentIcon);
 		this.filters[index].icon = filterIconSetting.nextIcon;
 		this.filters[index].url = filterIconSetting.url;
-		this.setFilterUrl(this.filters[index]);
+		this.setFilterUrlSettings(this.filters[index]);
 	}
 
 	private findFilterIconSettings(icon: string): FilterIconSettings {
@@ -53,7 +53,7 @@ export class FilterComponent implements OnInit, OnChanges {
 		return returnValue;
 	}
 
-	private setFilterUrl(filter: Filter) {
+	private setFilterUrlSettings(filter: Filter) {
 		this.removeFilterSetting(filter);
 		if (filter.url !== '') {
 			this.filterUrlSettings.push(filter);
