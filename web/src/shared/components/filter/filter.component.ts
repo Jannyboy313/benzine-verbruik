@@ -78,7 +78,7 @@ export class FilterComponent implements OnInit, OnChanges {
 		var settingsCopy = this.filterUrlSettings;
 		for (let i = 0; i < settingsCopy.length; i++) {
 			if (settingsCopy[i] === filter) {
-				this.filterUrlSettings.splice(i, 1)
+				this.filterUrlSettings.splice(i, 1);
 				return;
 			}
 		}

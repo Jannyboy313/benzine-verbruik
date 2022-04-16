@@ -15,6 +15,9 @@
 			>filter_alt</span
 		>
 	</section>
-	<app-filter (onFilterUrl)="updateFilterUrl($event)" [filterShown]="filterShown" [filters]="filters"></app-filter>
+	<app-filter
+		(onFilterUrl)="updateFilterUrl($event)"
+		[filterShown]="filterShown"
+		[filters]="filters"></app-filter>
 	<app-rides-list [filterUrl]="filterUrl"></app-rides-list>
 </article>

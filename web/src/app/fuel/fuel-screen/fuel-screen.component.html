@@ -14,6 +14,9 @@
 		<span class="filter material-icons">filter_alt</span>
 	</section>
 
-	<app-filter (onFilterUrl)="updateFilterUrl($event)" [filterShown]="filterShown" [filters]="filters"></app-filter>
+	<app-filter
+		(onFilterUrl)="updateFilterUrl($event)"
+		[filterShown]="filterShown"
+		[filters]="filters"></app-filter>
 	<app-fuel-list [filterUrl]="filterUrl"></app-fuel-list>
 </article>

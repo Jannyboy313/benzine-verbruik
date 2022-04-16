@@ -1,5 +1,11 @@
 import { RidesListService } from './../../../shared/Services/rides-list-service';
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	SimpleChanges,
+	OnChanges
+} from '@angular/core';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { Ride } from 'src/shared/models/ride.model';
 import { Error } from '../../../shared/models/error.model';

@@ -4,7 +4,7 @@
 		<section
 			(click)="filterClicked(i)"
 			*ngFor="let filter of filters; index as i">
-			<span class="material-icons">{{filter.icon}}</span>
+			<span class="material-icons">{{ filter.icon }}</span>
 			<p>{{ filter.description }}</p>
 		</section>
 	</div>

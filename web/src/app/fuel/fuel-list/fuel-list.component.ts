@@ -1,5 +1,11 @@
 import { FuelListService } from './../../../shared/Services/fuel-list-service';
-import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import {
+	Component,
+	Input,
+	OnInit,
+	OnChanges,
+	SimpleChanges
+} from '@angular/core';
 import { Error } from 'src/shared/models/error.model';
 import { FuelService } from 'src/shared/Services/db/fuel.service';
 import { Fuel } from 'src/shared/models/fuel.model';
