@@ -1,8 +1,8 @@
 <section class="filterSettings" *ngIf="filterShown">
     <h5>Filter settings</h5>
     <div class="filterOptions">
-        <section *ngFor="let filter of filters">
-            <span (click)="filterClicked(filter.name)" class="material-icons">import_export</span>
+        <section (click)="filterClicked(filter.name)" *ngFor="let filter of filters">
+            <span class="material-icons">import_export</span>
             <p>{{ filter.description }}</p>
         </section>
     </div>
