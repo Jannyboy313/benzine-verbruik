@@ -46,7 +46,11 @@ export class FilterComponent implements OnInit, OnChanges {
 	}
 
 	private findFilterIconSettings(icon: string): FilterIconSettings {
-		let returnValue: FilterIconSettings = new FilterIconSettings('', '', '');
+		let returnValue: FilterIconSettings = new FilterIconSettings(
+			'',
+			'',
+			''
+		);
 		this.filterIconSettings.forEach(element => {
 			if (element.name === icon) {
 				returnValue = element;
@@ -61,7 +65,7 @@ export class FilterComponent implements OnInit, OnChanges {
 			this.filterUrlSettings.push(filter);
 		}
 
-		let url = ''
+		let url = '';
 		if (this.filterUrlSettings.length > 0) {
 			url += '?filter=true';
 			this.filterUrlSettings.forEach(element => {
@@ -69,8 +73,6 @@ export class FilterComponent implements OnInit, OnChanges {
 			});
 		}
 		this.filterUrlSettingsSubject.next(url);
-
-
 	}
 
 	private removeFilterSetting(filter: Filter): void {

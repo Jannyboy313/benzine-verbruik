@@ -1,10 +1,10 @@
 exports.getPageInformation = function (queries) {
-    let { page } = queries;
+	let { page } = queries;
 
 	if (!page) page = 0;
 
-    const limit = 5;
-    const skip = page * limit;
+	const limit = 5;
+	const skip = page * limit;
 
-    return { 'page': page, 'limit': limit, 'skip': skip };
+	return { page: page, limit: limit, skip: skip };
 };
