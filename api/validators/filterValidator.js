@@ -4,14 +4,17 @@ var allowedOptions = ['asc', 'desc', 'ascending', 'descending'];
 exports.areValidFilterOptions = function (filterColumns, filterOptions) {
     const columns = areValidValues(filterColumns, allowedColumns);
     const options = areValidValues(filterOptions, allowedOptions);
-    return columns && options;
+    if (columns.length > 0 && options.length > 0) {
+        throw "Invalid filter query params found! Invalid filter query params are: ", columns.toString() + "," + options.toString()
+    }
 }
 
 areValidValues = function (valuesToCheck, allowedValues) {
+    const invalidValues = [];
     for (let i = 0; i < valuesToCheck.length; i++) {
 		if (!allowedValues.includes(valuesToCheck[i])) {
-			return false;
+			invalidValues.push(valuesToCheck[i]);
 		}
 	}
-    return true
+    return invalidValues;
 }

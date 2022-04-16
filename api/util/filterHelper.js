@@ -17,15 +17,14 @@ exports.getFilterOptions = function(queries) {
 		filterData.options.push(element[1]);
 	});
 
-    const isValid = filter.areValidFilterOptions(
-		filterData.columns,
-		filterData.options
-	);
-
-    if (isValid === true) {
-        return queriesObject;
+    try {
+        filter.areValidFilterOptions(
+            filterData.columns,
+            filterData.options
+        );
+    } catch (error) {
+        throw error;
     }
-    throw 'Invalid filter query params';
 }
 
 const getSanitizedQueries = queries => {
