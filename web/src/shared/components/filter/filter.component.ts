@@ -23,12 +23,12 @@ export class FilterComponent implements OnInit, OnChanges {
 	private filterUrlSettings: Filter[] = [];
 
 	private filterIconSettings: FilterIconSettings[] = [
-		new FilterIconSettings('import_export', 'south', ''),
-		new FilterIconSettings('south', 'north', 'desc'),
-		new FilterIconSettings('north', 'import_export', 'asc')
+		new FilterIconSettings('import_export', 'south', 'desc'),
+		new FilterIconSettings('south', 'north', 'asc'),
+		new FilterIconSettings('north', 'import_export', '')
 	];
 
-	constructor() {	}
+	constructor() {}
 
 	ngOnInit(): void {}
 
@@ -78,7 +78,7 @@ export class FilterComponent implements OnInit, OnChanges {
 		var settingsCopy = this.filterUrlSettings;
 		for (let i = 0; i < settingsCopy.length; i++) {
 			if (settingsCopy[i] === filter) {
-				delete this.filterUrlSettings[i];
+				this.filterUrlSettings.splice(i, 1)
 				return;
 			}
 		}
