@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Filter } from 'src/shared/models/filter.model';
-import { FilterIconSettings } from 'src/shared/models/filterIconSettings.model';
+import { FilterIconSettings } from 'src/shared/models/filter-icon-settings.model';
 
 @Component({
 	selector: 'app-filter',
