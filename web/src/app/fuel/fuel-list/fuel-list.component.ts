@@ -42,7 +42,7 @@ export class FuelListComponent implements OnInit, OnChanges {
 			'There has been an error while trying to load the fuel'
 		);
 		this.isLoading = true;
-		this.fuelService.getFuels(this.filterUrl).subscribe({
+		this.fuelService.getFuels(this.page, this.filterUrl).subscribe({
 			next: result => {
 				this.isLoading = false;
 				this.fuelListService.setFuel(result);
