@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 	styleUrls: ['./rides-screen.component.scss']
 })
 export class RidesScreenComponent implements OnInit {
+	public filterShown: boolean = false;
+
 	constructor(
 		public dialog: MatDialog,
 		private ridesListService: RidesListService
@@ -30,5 +32,9 @@ export class RidesScreenComponent implements OnInit {
 				this.ridesListService.addRide(result);
 			}
 		});
+	}
+
+	openFilter(): void {
+		this.filterShown = this.filterShown ? false : true;
 	}
 }
