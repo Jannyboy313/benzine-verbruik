@@ -61,11 +61,15 @@ export class FilterComponent implements OnInit, OnChanges {
 			this.filterUrlSettings.push(filter);
 		}
 
-		let url = '?filter=true';
-		this.filterUrlSettings.forEach(element => {
-			url += "&" + element.name + "=" + element.url;
-		});
+		let url = ''
+		if (this.filterUrlSettings.length > 0) {
+			url += '?filter=true';
+			this.filterUrlSettings.forEach(element => {
+				url += '&' + element.name + '=' + element.url;
+			});
+		}
 		this.filterUrlSettingsSubject.next(url);
+
 
 	}
 
