@@ -16,5 +16,5 @@
 		>
 	</section>
 	<app-filter (onFilterUrl)="updateFilterUrl($event)" [filterShown]="filterShown" [filters]="filters"></app-filter>
-	<app-rides-list></app-rides-list>
+	<app-rides-list [filterUrl]="filterUrl"></app-rides-list>
 </article>
