@@ -27,7 +27,9 @@ export class FilterComponent implements OnInit, OnChanges {
 		new FilterIconSettings('north', 'import_export', 'asc')
 	];
 
-	constructor() {}
+	constructor() {
+		this.filterUrlSettingsSubject.next('');
+	}
 
 	ngOnInit(): void {}
 
@@ -40,7 +42,7 @@ export class FilterComponent implements OnInit, OnChanges {
 		const filterIconSetting = this.findFilterIconSettings(currentIcon);
 		this.filters[index].icon = filterIconSetting.nextIcon;
 		this.filters[index].url = filterIconSetting.url;
-		this.setFilterUrlSettings(this.filters[index]);
+		this.setFilterUrl(this.filters[index]);
 	}
 
 	private findFilterIconSettings(icon: string): FilterIconSettings {
@@ -53,11 +55,18 @@ export class FilterComponent implements OnInit, OnChanges {
 		return returnValue;
 	}
 
-	private setFilterUrlSettings(filter: Filter) {
+	private setFilterUrl(filter: Filter) {
 		this.removeFilterSetting(filter);
 		if (filter.url !== '') {
 			this.filterUrlSettings.push(filter);
 		}
+
+		let url = '';
+		this.filterUrlSettings.forEach(element => {
+			url += element.name + "=" + element.url;
+		});
+		this.filterUrlSettingsSubject.next(url);
+
 	}
 
 	private removeFilterSetting(filter: Filter): void {
