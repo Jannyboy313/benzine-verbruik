@@ -1,11 +1,12 @@
 import {
 	Component,
 	Input,
+	Output,
 	OnChanges,
 	OnInit,
-	SimpleChanges
+	SimpleChanges,
+	EventEmitter
 } from '@angular/core';
-import { Subject } from 'rxjs';
 import { Filter } from 'src/shared/models/filter.model';
 import { FilterIconSettings } from 'src/shared/models/filter-icon-settings.model';
 
@@ -17,8 +18,8 @@ import { FilterIconSettings } from 'src/shared/models/filter-icon-settings.model
 export class FilterComponent implements OnInit, OnChanges {
 	@Input() filterShown: boolean = false;
 	@Input() filters: Filter[] = [];
+	@Output() filterUrlSettingsSubject: EventEmitter<string> = new EventEmitter<string>();
 
-	private filterUrlSettingsSubject: Subject<string> = new Subject<string>();
 	private filterUrlSettings: Filter[] = [];
 
 	private filterIconSettings: FilterIconSettings[] = [
@@ -28,7 +29,7 @@ export class FilterComponent implements OnInit, OnChanges {
 	];
 
 	constructor() {
-		this.filterUrlSettingsSubject.next('');
+		this.filterUrlSettingsSubject.emit('');
 	}
 
 	ngOnInit(): void {}
@@ -72,7 +73,7 @@ export class FilterComponent implements OnInit, OnChanges {
 				url += '&' + element.name + '=' + element.url;
 			});
 		}
-		this.filterUrlSettingsSubject.next(url);
+		this.filterUrlSettingsSubject.emit(url);
 	}
 
 	private removeFilterSetting(filter: Filter): void {
