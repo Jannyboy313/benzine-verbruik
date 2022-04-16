@@ -36,11 +36,11 @@ export class FuelListComponent implements OnInit {
 		);
 		this.isLoading = true;
 		this.fuelService.getFuels().subscribe({
-			next: (result) => {
+			next: result => {
 				this.isLoading = false;
 				this.fuelListService.setFuel(result);
 			},
-			error: (err) => {
+			error: err => {
 				this.error.setError(true, err.error.message);
 				this.isLoading = false;
 			}

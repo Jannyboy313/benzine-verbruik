@@ -36,11 +36,11 @@ export class RidesListComponent implements OnInit {
 		);
 		this.isLoading = true;
 		this.rideService.getRides(this.page).subscribe({
-			next: (result) => {
+			next: result => {
 				this.isLoading = false;
 				this.ridesListService.setRides(result);
 			},
-			error: (err) => {
+			error: err => {
 				this.error.setError(true, err.error.message);
 				this.isLoading = false;
 			}

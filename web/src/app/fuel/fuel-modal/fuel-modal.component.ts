@@ -109,11 +109,11 @@ export class FuelModalComponent implements OnInit {
 
 	private postFuel(fuel: Fuel): void {
 		this.fuelService.postFuel(fuel).subscribe({
-			next: (result) => {
+			next: result => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			error: (err) => {
+			error: err => {
 				this.error.setError(true, err.error.message.message);
 				this.isLoading = false;
 			}
@@ -123,11 +123,11 @@ export class FuelModalComponent implements OnInit {
 	private putFuel(fuel: Fuel): void {
 		fuel['_id'] = this.data.fuel._id;
 		this.fuelService.putFuel(fuel).subscribe({
-			next: (result) => {
+			next: result => {
 				this.isLoading = false;
-				this.closeDialog(result)
+				this.closeDialog(result);
 			},
-			error: (err) => {
+			error: err => {
 				this.error.setError(true, err.error.message.message);
 				this.isLoading = false;
 			}

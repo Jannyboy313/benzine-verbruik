@@ -51,7 +51,7 @@ export class FuelCardComponent implements OnInit {
 					next: () => {
 						this.fuelListService.deleteFuel(this.fuel);
 					},
-					error: (err) => {
+					error: err => {
 						console.error(err);
 					}
 				});

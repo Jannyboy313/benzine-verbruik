@@ -99,11 +99,11 @@ export class RideModalComponent implements OnInit {
 
 	private postRide(ride: Ride): void {
 		this.rideService.postRide(ride).subscribe({
-			next: (result) => {
+			next: result => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			error: (err) => {
+			error: err => {
 				this.error.setError(true, err.error.message.message);
 				this.isLoading = false;
 			}
@@ -113,11 +113,11 @@ export class RideModalComponent implements OnInit {
 	private putRide(ride: Ride): void {
 		ride['_id'] = this.data.ride._id;
 		this.rideService.putRide(ride).subscribe({
-			next: (result) => {
+			next: result => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			error: (err) => {
+			error: err => {
 				this.error.setError(true, err.error.message.message);
 				this.isLoading = false;
 			}
