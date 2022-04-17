@@ -1,5 +1,11 @@
 import { RidesListService } from './../../../shared/Services/rides-list-service';
-import { Component, OnInit } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	SimpleChanges,
+	OnChanges
+} from '@angular/core';
 import { RideService } from 'src/shared/Services/db/ride.service';
 import { Ride } from 'src/shared/models/ride.model';
 import { Error } from '../../../shared/models/error.model';
@@ -9,52 +15,59 @@ import { Error } from '../../../shared/models/error.model';
 	templateUrl: './rides-list.component.html',
 	styleUrls: ['./rides-list.component.scss']
 })
-export class RidesListComponent implements OnInit {
-	isLoading: boolean = true;
+export class RidesListComponent implements OnInit, OnChanges {
+	@Input() public filterUrl: string = '';
 
-	error: Error = new Error();
-	page: number = 0;
+	public isLoading: boolean = true;
 
-	rides: Ride[] = [];
+	public error: Error = new Error();
+	public page: number = 0;
+
+	public rides: Ride[] = [];
 
 	constructor(
 		private rideService: RideService,
 		private ridesListService: RidesListService
 	) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.ridesListService.getRidesSubject().subscribe(result => {
 			this.rides = result;
 		});
 		this.getRides();
 	}
 
-	getRides() {
+	public ngOnChanges(changes: SimpleChanges): void {
+		this.filterUrl = changes.filterUrl.currentValue;
+		this.getRides();
+	}
+
+	public getRides() {
 		this.error.setError(
 			false,
 			'There has been an error while trying to load the rides'
 		);
 		this.isLoading = true;
-		this.rideService.getRides(this.page).subscribe(
-			result => {
+		this.rideService.getRides(this.page, this.filterUrl).subscribe({
+			next: result => {
 				this.isLoading = false;
 				this.ridesListService.setRides(result);
 			},
-			err => {
+			error: err => {
 				this.error.setError(true, err.error.message);
 				this.isLoading = false;
 			}
-		);
+		});
 	}
 
-	ridesExist(): boolean {
+	public ridesExist(): boolean {
 		if (this.rides.length > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	loadMoreRides(): void {
+	public loadMoreRides(): void {
 		this.page++;
 		this.getRides();
 	}

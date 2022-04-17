@@ -13,7 +13,7 @@ import { FuelModalComponent } from '../../fuel-modal/fuel-modal.component';
 	styleUrls: ['./fuel-card.component.scss']
 })
 export class FuelCardComponent implements OnInit {
-	@Input() fuel: Fuel = {
+	@Input() public fuel: Fuel = {
 		litre: 0,
 		price: 0,
 		gas_station: '',
@@ -25,9 +25,9 @@ export class FuelCardComponent implements OnInit {
 		private fuelListService: FuelListService
 	) {}
 
-	ngOnInit(): void {}
+	public ngOnInit(): void {}
 
-	formatDate(date: Date | undefined) {
+	public formatDate(date: Date | undefined) {
 		moment.locale('nl');
 		let formattedDate = moment(date).format('ddd DD MMM YYYY HH:mm'); // Woe 17 Mrt 2021 14:31
 		return (
@@ -36,7 +36,7 @@ export class FuelCardComponent implements OnInit {
 		);
 	}
 
-	openConfirmDialog(): void {
+	public openConfirmDialog(): void {
 		let dialogRef = this.dialog.open(ConfirmDialogComponent, {
 			data: {
 				title: `Tankbeurt verwijderen?`,
@@ -47,19 +47,19 @@ export class FuelCardComponent implements OnInit {
 
 		dialogRef.afterClosed().subscribe(result => {
 			if (result) {
-				this.fuelService.deleteFuel(this.fuel._id).subscribe(
-					() => {
+				this.fuelService.deleteFuel(this.fuel._id).subscribe({
+					next: () => {
 						this.fuelListService.deleteFuel(this.fuel);
 					},
-					err => {
-						console.log(err);
+					error: err => {
+						console.error(err);
 					}
-				);
+				});
 			}
 		});
 	}
 
-	openEditModal(): void {
+	public openEditModal(): void {
 		let dialogRef = this.dialog.open(FuelModalComponent, {
 			width: '85vw',
 			maxWidth: '85vw',

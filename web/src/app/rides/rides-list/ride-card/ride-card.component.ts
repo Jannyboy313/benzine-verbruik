@@ -13,7 +13,7 @@ import { RideModalComponent } from '../../ride-modal/ride-modal.component';
 	styleUrls: ['./ride-card.component.scss']
 })
 export class RideCardComponent implements OnInit {
-	@Input() ride: Ride = {
+	@Input() public ride: Ride = {
 		title: 'Naam van rit',
 		description: 'Dit is de beschrijving van de rit',
 		distance: 0
@@ -25,9 +25,9 @@ export class RideCardComponent implements OnInit {
 		private ridesListService: RidesListService
 	) {}
 
-	ngOnInit(): void {}
+	public ngOnInit(): void {}
 
-	formatDate(date: Date | undefined) {
+	public formatDate(date: Date | undefined) {
 		moment.locale('nl');
 		let formattedDate = moment(date).format('ddd DD MMM YYYY HH:mm'); // Woe 17 Mrt 2021 14:31
 		return (
@@ -36,7 +36,7 @@ export class RideCardComponent implements OnInit {
 		);
 	}
 
-	showDot(size: number): boolean {
+	public showDot(size: number): boolean {
 		const wordCount = this.ride.description.split(' ').length;
 		if (wordCount < 10 * size) {
 			return false;
@@ -44,7 +44,7 @@ export class RideCardComponent implements OnInit {
 		return true;
 	}
 
-	openConfirmDialog(): void {
+	public openConfirmDialog(): void {
 		let dialogRef = this.dialog.open(ConfirmDialogComponent, {
 			data: {
 				title: `${this.ride.title} verwijderen?`,
@@ -67,7 +67,7 @@ export class RideCardComponent implements OnInit {
 		});
 	}
 
-	openEditModal(): void {
+	public openEditModal(): void {
 		let dialogRef = this.dialog.open(RideModalComponent, {
 			width: '85vw',
 			maxWidth: '85vw',

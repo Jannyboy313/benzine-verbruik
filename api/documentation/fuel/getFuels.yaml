@@ -1,35 +1,56 @@
 get:
-  summary: Returns all the fuel of user.
-  tags:
-    - Fuel
-  responses:
-    '200':
-      description: Fuel object
-      content:
-        application/json:
+    summary: Returns all the fuel of user.
+    tags:
+        - Fuel
+    parameters:
+        - name: path
+          in: query
+          required: false
           schema:
-            type: array
-            items:
-              type: object
-              properties:
-                _id:
-                  type: string
-                liter:
-                  type: number
-                price:
-                  type: number
-                gas_station:
-                  type: string
-                location:
-                  type: string
-                user:
-                  type: string
-                createdAt:
-                  type: string
-                updatedAt:
-                  type: string
-                __v:
-                  type: string
+          type: string
+          description: The page of which the ride results need to be returned.
+        - name: filter
+          in: query
+          required: false
+          schema:
+          type: boolean
+          example: true
+          description: If a filter is sent with the request
+        - name: column_name
+          in: query
+          required: false
+          schema:
+          type: string
+          example: asc, desc, ascending and descending
+          description: The column name can almost be every column of ride
+    responses:
+        '200':
+            description: Fuel object
+            content:
+                application/json:
+                    schema:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                                _id:
+                                    type: string
+                                litre:
+                                    type: number
+                                price:
+                                    type: number
+                                gas_station:
+                                    type: string
+                                location:
+                                    type: string
+                                user:
+                                    type: string
+                                createdAt:
+                                    type: string
+                                updatedAt:
+                                    type: string
+                                __v:
+                                    type: string
 
-    '500':
-      description: Fuels does not exists
+        '500':
+            description: Fuels does not exists

@@ -20,7 +20,7 @@ export class RidesListService {
 	setRides(rides: Ride[]): void {
 		if (this.rides.length === 0) {
 			this.rides = rides;
-		}else {
+		} else {
 			this.rides = this.rides.concat(rides);
 		}
 		this.ridesSubject.next(this.rides);
