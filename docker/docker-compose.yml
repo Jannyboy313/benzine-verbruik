@@ -10,8 +10,13 @@ services:
       environment:
         MONGO_INITDB_ROOT_USERNAME: root
         MONGO_INITDB_ROOT_PASSWORD: rootpwd
+      command: 'mongod --quiet --logpath /dev/null'
+      volumes:
+        - ./mongodb-init.js:/docker-entrypoint-initdb.d/mongodb-init.js
     api:
-      image: node:16.14.2-alpine3.15
+      build:
+        context: .
+        dockerfile: Dockerfile.node
       ports:
         - 3000:3000
       working_dir: /home/node/app
@@ -20,6 +25,8 @@ services:
       command: "npm run start"
       networks:
         - benzine
+      depends_on:
+        - database
     web:
       build:
         context: .

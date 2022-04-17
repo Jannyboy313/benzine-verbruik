@@ -3,7 +3,10 @@
 		<h1>Login</h1>
 	</header>
 
-	<div *ngIf="error.isError" class="alert alert-danger fade show" role="alert">
+	<div
+		*ngIf="error.isError"
+		class="alert alert-danger fade show"
+		role="alert">
 		{{ error.message }}
 	</div>
 
@@ -11,23 +14,20 @@
 		<app-form-input
 			[formName]="'Email'"
 			[isError]="error.isError"
-			(formData)="setEmail($event)"
-		></app-form-input>
+			(formData)="setEmail($event)"></app-form-input>
 		<app-form-input
 			[formName]="'Wachtwoord'"
 			[isError]="error.isError"
-			(formData)="setPassword($event)"
-		></app-form-input>
+			(formData)="setPassword($event)"></app-form-input>
 		<button
 			id="loginButton"
 			(click)="onSubmit()"
 			class="btn float-right"
-			[disabled]="isLoading"
-		>
+			type="button"
+			[disabled]="isLoading">
 			<span
 				*ngIf="isLoading"
-				class="spinner-border spinner-border-mm mr-1"
-			></span>
+				class="spinner-border spinner-border-mm mr-1"></span>
 			<span *ngIf="!isLoading">LOG IN</span>
 		</button>
 		<button class="btn float-right" [disabled]="true">REGISTREREN</button>

@@ -1,54 +1,54 @@
 put:
-  summary: Updates fuel in the database
-  tags:
-    - Fuel
-  parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type : string
-        minimum: 1
-  requestBody:
-    required: true
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            liter:
-              type: number
-            price:
-              type: number
-            gas_station:
-              type: string
-            location:
-              type: string
-  responses:
-    '200':
-      description: Receiving updated fuel
-      content:
-        application/json:
+    summary: Updates fuel in the database
+    tags:
+        - Fuel
+    parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            type: object
-            properties:
-              _id:
-                type: string
-              liter:
-                type: number
-              price:
-                type: number
-              gas_station:
-                type: string
-              location:
-                type: string
-              user:
-                type: string
-              createdAt:
-                type: string
-              updatedAt:
-                type: string
-              __v:
-                type: string
-    '500':
-      description: validation error
+              type: string
+              minimum: 1
+    requestBody:
+        required: true
+        content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                        litre:
+                            type: number
+                        price:
+                            type: number
+                        gas_station:
+                            type: string
+                        location:
+                            type: string
+    responses:
+        '200':
+            description: Receiving updated fuel
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            _id:
+                                type: string
+                            litre:
+                                type: number
+                            price:
+                                type: number
+                            gas_station:
+                                type: string
+                            location:
+                                type: string
+                            user:
+                                type: string
+                            createdAt:
+                                type: string
+                            updatedAt:
+                                type: string
+                            __v:
+                                type: string
+        '500':
+            description: validation error

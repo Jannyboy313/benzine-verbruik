@@ -8,7 +8,6 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
 
 import { DashboardService } from 'src/shared/Services/db/dashboard.service';
 
-
 @NgModule({
 	declarations: [DashboardScreenComponent, BarChartComponent],
 	imports: [CommonModule, DashboardRoutingModule, SharedModule],

@@ -78,7 +78,8 @@
               "browserTarget": "benzine-pwa:build:production"
             },
             "development": {
-              "browserTarget": "benzine-pwa:build:development"
+              "browserTarget": "benzine-pwa:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

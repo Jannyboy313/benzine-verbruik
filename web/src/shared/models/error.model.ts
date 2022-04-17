@@ -6,7 +6,6 @@ export class Error {
 
 	public setError(isError: boolean, message: string): void {
 		this.isError = isError;
-		if (message !== '')
-			this.message = message;
+		if (message !== '') this.message = message;
 	}
 }

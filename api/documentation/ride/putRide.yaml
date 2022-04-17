@@ -1,50 +1,50 @@
 put:
-  summary: Updates ride in the database
-  tags:
-    - Ride
-  parameters:
-    - name: id
-      in: path
-      required: true
-      schema:
-        type : string
-        minimum: 1
-  requestBody:
-    required: true
-    content:
-      application/json:
-        schema:
-          type: object
-          properties:
-            title:
-              type: string
-            description:
-              type: string
-            distance:
-              type: number
-  responses:
-    '200':
-      description: Receiving updated ride
-      content:
-        application/json:
+    summary: Updates ride in the database
+    tags:
+        - Ride
+    parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            type: object
-            properties:
-              _id:
-                type: string
-              title:
-                type: string
-              description:
-                type: string
-              distance:
-                type: number
-              user:
-                type: string
-              createdAt:
-                type: string
-              updatedAt:
-                type: string
-              __v:
-                type: string
-    '500':
-      description: validation error
+              type: string
+              minimum: 1
+    requestBody:
+        required: true
+        content:
+            application/json:
+                schema:
+                    type: object
+                    properties:
+                        title:
+                            type: string
+                        description:
+                            type: string
+                        distance:
+                            type: number
+    responses:
+        '200':
+            description: Receiving updated ride
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            _id:
+                                type: string
+                            title:
+                                type: string
+                            description:
+                                type: string
+                            distance:
+                                type: number
+                            user:
+                                type: string
+                            createdAt:
+                                type: string
+                            updatedAt:
+                                type: string
+                            __v:
+                                type: string
+        '500':
+            description: validation error
