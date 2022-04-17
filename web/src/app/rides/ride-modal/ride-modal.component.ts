@@ -11,11 +11,9 @@ import { Ride } from 'src/shared/models/ride.model';
 	styleUrls: ['./ride-modal.component.scss']
 })
 export class RideModalComponent implements OnInit {
-	error: Error = new Error();
-
-	isLoading = false;
-
-	form: FormGroup = new FormGroup({
+	public error: Error = new Error();
+	public isLoading = false;
+	public form: FormGroup = new FormGroup({
 		title: new FormControl('', [
 			Validators.required,
 			Validators.minLength(3),
@@ -44,11 +42,11 @@ export class RideModalComponent implements OnInit {
 		}
 	) {}
 
-	ngOnInit() {
+	public ngOnInit() {
 		this.setInputValues();
 	}
 
-	setInputValues() {
+	public setInputValues() {
 		if (this.data.edit) {
 			this.form.controls['title'].setValue(this.data.ride.title);
 			this.form.controls['description'].setValue(
@@ -58,15 +56,15 @@ export class RideModalComponent implements OnInit {
 		}
 	}
 
-	closeDialog(succes: boolean | Ride): void {
+	public closeDialog(succes: boolean | Ride): void {
 		this.dialogRef.close(succes);
 	}
 
-	getActionName(): string {
+	public getActionName(): string {
 		return this.data.header.split(' ')[0];
 	}
 
-	onSubmit(): void {
+	public onSubmit(): void {
 		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 		if (!this.form.valid) {
@@ -86,7 +84,7 @@ export class RideModalComponent implements OnInit {
 		this.saveRide(ride);
 	}
 
-	isValid(formController: string): boolean {
+	public isValid(formController: string): boolean {
 		return !this.form.controls[formController].invalid;
 	}
 

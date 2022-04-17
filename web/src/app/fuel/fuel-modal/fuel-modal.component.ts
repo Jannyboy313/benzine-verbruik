@@ -11,11 +11,9 @@ import { FuelService } from 'src/shared/Services/db/fuel.service';
 	styleUrls: ['./fuel-modal.component.scss']
 })
 export class FuelModalComponent implements OnInit {
-	error: Error = new Error();
-
-	isLoading = false;
-
-	form: FormGroup = new FormGroup({
+	public error: Error = new Error();
+	public isLoading = false;
+	public form: FormGroup = new FormGroup({
 		litre: new FormControl('', [
 			Validators.required,
 			Validators.min(1),
@@ -52,11 +50,11 @@ export class FuelModalComponent implements OnInit {
 		}
 	) {}
 
-	ngOnInit() {
+	public ngOnInit() {
 		this.setInputValues();
 	}
 
-	setInputValues() {
+	public setInputValues() {
 		if (this.data.edit) {
 			this.form.controls['litre'].setValue(this.data.fuel.litre);
 			this.form.controls['price'].setValue(this.data.fuel.price);
@@ -67,15 +65,15 @@ export class FuelModalComponent implements OnInit {
 		}
 	}
 
-	closeDialog(succes: boolean | Fuel): void {
+	public closeDialog(succes: boolean | Fuel): void {
 		this.dialogRef.close(succes);
 	}
 
-	getActionName(): string {
+	public getActionName(): string {
 		return this.data.header.split(' ')[0];
 	}
 
-	onSubmit(): void {
+	public onSubmit(): void {
 		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 		if (!this.form.valid) {
@@ -96,7 +94,7 @@ export class FuelModalComponent implements OnInit {
 		this.saveFuel(fuel);
 	}
 
-	isValid(formController: string): boolean {
+	public isValid(formController: string): boolean {
 		return !this.form.controls[formController].invalid;
 	}
 

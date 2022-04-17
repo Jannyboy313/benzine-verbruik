@@ -6,27 +6,26 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 	styleUrls: ['./form-input.component.scss']
 })
 export class FormInputComponent implements OnInit {
-	@Input() formName: string = '';
-	@Input() isError: boolean = false;
-
-	@Output() formData = new EventEmitter<string>();
+	@Input() public formName: string = '';
+	@Input() public isError: boolean = false;
+	@Output() public formData = new EventEmitter<string>();
 
 	constructor() {}
 
-	ngOnInit(): void {}
+	public ngOnInit(): void {}
 
-	emitFormData(event: any) {
+	public emitFormData(event: any) {
 		this.formData.emit(event.target.value);
 	}
 
-	getEnglishName(): string {
+	public getEnglishName(): string {
 		if (this.formName.toLowerCase() !== 'wachtwoord') {
 			return 'email';
 		}
 		return 'password';
 	}
 
-	isEmail(): boolean {
+	public isEmail(): boolean {
 		if (this.formName.toLowerCase() === 'email') {
 			return true;
 		}

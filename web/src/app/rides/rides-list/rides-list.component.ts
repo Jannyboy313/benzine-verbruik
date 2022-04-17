@@ -16,33 +16,33 @@ import { Error } from '../../../shared/models/error.model';
 	styleUrls: ['./rides-list.component.scss']
 })
 export class RidesListComponent implements OnInit, OnChanges {
-	@Input() filterUrl: string = '';
+	@Input() public filterUrl: string = '';
 
-	isLoading: boolean = true;
+	public isLoading: boolean = true;
 
-	error: Error = new Error();
-	page: number = 0;
+	public error: Error = new Error();
+	public page: number = 0;
 
-	rides: Ride[] = [];
+	public rides: Ride[] = [];
 
 	constructor(
 		private rideService: RideService,
 		private ridesListService: RidesListService
 	) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.ridesListService.getRidesSubject().subscribe(result => {
 			this.rides = result;
 		});
 		this.getRides();
 	}
 
-	ngOnChanges(changes: SimpleChanges): void {
+	public ngOnChanges(changes: SimpleChanges): void {
 		this.filterUrl = changes.filterUrl.currentValue;
 		this.getRides();
 	}
 
-	getRides() {
+	public getRides() {
 		this.error.setError(
 			false,
 			'There has been an error while trying to load the rides'
@@ -60,14 +60,14 @@ export class RidesListComponent implements OnInit, OnChanges {
 		});
 	}
 
-	ridesExist(): boolean {
+	public ridesExist(): boolean {
 		if (this.rides.length > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	loadMoreRides(): void {
+	public loadMoreRides(): void {
 		this.page++;
 		this.getRides();
 	}
