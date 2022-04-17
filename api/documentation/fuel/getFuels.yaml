@@ -2,6 +2,27 @@ get:
     summary: Returns all the fuel of user.
     tags:
         - Fuel
+    parameters:
+        - name: path
+          in: query
+          required: false
+          schema:
+          type: string
+          description: The page of which the ride results need to be returned.
+        - name: filter
+          in: query
+          required: false
+          schema:
+          type: boolean
+          example: true
+          description: If a filter is sent with the request
+        - name: column_name
+          in: query
+          required: false
+          schema:
+          type: string
+          example: asc, desc, ascending and descending
+          description: The column name can almost be every column of ride
     responses:
         '200':
             description: Fuel object
@@ -14,7 +35,7 @@ get:
                             properties:
                                 _id:
                                     type: string
-                                liter:
+                                litre:
                                     type: number
                                 price:
                                     type: number

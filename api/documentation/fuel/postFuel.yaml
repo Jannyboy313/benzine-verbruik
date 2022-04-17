@@ -9,7 +9,7 @@ post:
                 schema:
                     type: object
                     properties:
-                        liter:
+                        litre:
                             type: number
                         price:
                             type: number
@@ -27,7 +27,7 @@ post:
                         properties:
                             _id:
                                 type: string
-                            liter:
+                            litre:
                                 type: number
                             price:
                                 type: number

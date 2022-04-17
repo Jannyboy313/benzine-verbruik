@@ -16,7 +16,7 @@ put:
                 schema:
                     type: object
                     properties:
-                        liter:
+                        litre:
                             type: number
                         price:
                             type: number
@@ -34,7 +34,7 @@ put:
                         properties:
                             _id:
                                 type: string
-                            liter:
+                            litre:
                                 type: number
                             price:
                                 type: number
