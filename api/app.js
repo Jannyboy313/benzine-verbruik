@@ -27,15 +27,13 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use(passport.initialize());
 
 //ROUTES
-// app.use(
-// 	cors({
-// 		origin: [process.env.CORS_ORIGIN],
-// 		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-// 		credentials: true
-// 	})
-// );
-app.use(cors());
-app.options('*', cors());
+app.use(
+	cors({
+		origin: [process.env.CORS_ORIGIN],
+		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+		credentials: true
+	})
+);
 
 app.use('/user', userRouter);
 app.use('/ride', isAuth, rideRouter);
