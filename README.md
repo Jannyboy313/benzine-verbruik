@@ -57,10 +57,6 @@ This is set in the `mongodb-init.js` file. This is located in the docker folder.
 Below are the credentials needed by the application. <br />
 There have to be 2 env files in both folders (web & api).
 
-### web
-
-api_url (Inside environment.ts)
-
 ### api
 
 ```env
