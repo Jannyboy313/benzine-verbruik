@@ -7,12 +7,16 @@ module.exports.createTokens = user => {
 	const createdAccessToken = jwt.sign(
 		{ user: user },
 		process.env.ACCESS_TOKEN,
-		{ expiresIn: '3m' }
+		{
+			expiresIn: '3m'
+		}
 	);
 	const createdRefreshToken = jwt.sign(
 		{ user: user },
 		process.env.REFRESH_TOKEN,
-		{ expiresIn: '40d' }
+		{
+			expiresIn: '40d'
+		}
 	);
 
 	return [createdAccessToken, createdRefreshToken];

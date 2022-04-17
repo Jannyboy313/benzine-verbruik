@@ -68,6 +68,7 @@ DATABASE_URL="mongodb://test:testpwd@database:27017/benzine?authMechanism=DEFAUL
 ACCESS_TOKEN=secret
 REFRESH_TOKEN=secret
 PORT=3000
+CORS_ORIGIN=http://web:4200
 ```
 
 ## Deployment

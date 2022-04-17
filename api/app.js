@@ -29,11 +29,12 @@ app.use(passport.initialize());
 //ROUTES
 app.use(
 	cors({
-		origin: [`http://localhost:4200`],
-		methods: ['GET', 'POST', 'PUT', 'DELETE'],
+		origin: [process.env.CORS_ORIGIN],
+		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 		credentials: true
 	})
 );
+
 app.use('/user', userRouter);
 app.use('/ride', isAuth, rideRouter);
 app.use('/fuel', isAuth, fuelRouter);
