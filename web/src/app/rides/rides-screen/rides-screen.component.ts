@@ -28,9 +28,9 @@ export class RidesScreenComponent implements OnInit {
 		this.filters.push(new Filter('title', 'Sorting on title'));
 	}
 
-	ngOnInit(): void {}
+	public ngOnInit(): void {}
 
-	openCreateModal(): void {
+	public openCreateModal(): void {
 		let dialogRef = this.dialog.open(RideModalComponent, {
 			width: '85vw',
 			maxWidth: '85vw',
@@ -46,11 +46,11 @@ export class RidesScreenComponent implements OnInit {
 		});
 	}
 
-	openFilter(): void {
+	public openFilter(): void {
 		this.filterShown = this.filterShown ? false : true;
 	}
 
-	updateFilterUrl(url: string): void {
+	public updateFilterUrl(url: string): void {
 		this.filterUrl = url;
 	}
 }

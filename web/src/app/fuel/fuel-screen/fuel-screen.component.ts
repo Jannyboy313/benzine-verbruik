@@ -30,9 +30,9 @@ export class FuelScreenComponent implements OnInit {
 		this.filters.push(new Filter('location', 'Sorting on locations'));
 	}
 
-	ngOnInit(): void {}
+	public ngOnInit(): void {}
 
-	openCreateModal(): void {
+	public openCreateModal(): void {
 		let dialogRef = this.dialog.open(FuelModalComponent, {
 			width: '85vw',
 			maxWidth: '85vw',
@@ -48,11 +48,11 @@ export class FuelScreenComponent implements OnInit {
 		});
 	}
 
-	openFilter(): void {
+	public openFilter(): void {
 		this.filterShown = this.filterShown ? false : true;
 	}
 
-	updateFilterUrl(url: string): void {
+	public updateFilterUrl(url: string): void {
 		this.filterUrl = url;
 	}
 }

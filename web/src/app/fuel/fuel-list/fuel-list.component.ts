@@ -16,33 +16,31 @@ import { Fuel } from 'src/shared/models/fuel.model';
 	styleUrls: ['./fuel-list.component.scss']
 })
 export class FuelListComponent implements OnInit, OnChanges {
-	@Input() filterUrl: string = '';
+	@Input() public filterUrl: string = '';
 
-	isLoading: boolean = true;
-
-	error: Error = new Error();
-	page: number = 0;
-
-	fuelList: Fuel[] = [];
+	public isLoading: boolean = true;
+	public error: Error = new Error();
+	public page: number = 0;
+	public fuelList: Fuel[] = [];
 
 	constructor(
 		private fuelService: FuelService,
 		private fuelListService: FuelListService
 	) {}
 
-	ngOnInit(): void {
+	public ngOnInit(): void {
 		this.fuelListService.getFuelSubject().subscribe(result => {
 			this.fuelList = result;
 		});
 		this.getFuel();
 	}
 
-	ngOnChanges(changes: SimpleChanges): void {
+	public ngOnChanges(changes: SimpleChanges): void {
 		this.filterUrl = changes.filterUrl.currentValue;
 		this.getFuel();
 	}
 
-	getFuel() {
+	public getFuel() {
 		this.error.setError(
 			false,
 			'There has been an error while trying to load the fuel'
@@ -60,14 +58,14 @@ export class FuelListComponent implements OnInit, OnChanges {
 		});
 	}
 
-	fuelExist(): boolean {
+	public fuelExist(): boolean {
 		if (this.fuelList.length > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	loadMoreFuel(): void {
+	public loadMoreFuel(): void {
 		this.page++;
 		this.getFuel();
 	}
