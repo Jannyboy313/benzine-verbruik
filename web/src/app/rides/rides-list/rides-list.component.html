@@ -9,13 +9,15 @@
 
 	<span
 		*ngIf="isLoading"
-		class="spinner-border spinner-border-mm mr-1"></span>
+		class="spinner-border spinner-border-mm mr-1"
+	></span>
 	<p *ngIf="isLoading">Loading..</p>
 
 	<div
 		*ngIf="error.isError"
 		class="alert alert-danger fade show"
-		role="alert">
+		role="alert"
+	>
 		{{ error.message }}
 	</div>
 
@@ -23,7 +25,8 @@
 		id="loadMoreBtn"
 		(click)="loadMoreRides()"
 		class="btn"
-		*ngIf="!isLoading && ridesExist()">
+		*ngIf="!isLoading && ridesExist()"
+	>
 		<span>Load more</span>
 	</button>
 </article>

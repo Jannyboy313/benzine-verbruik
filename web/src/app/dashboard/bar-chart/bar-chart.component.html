@@ -1,11 +1,9 @@
 <article>
-	<section>
-		<h1>{{ name }}</h1>
-		<div class="progress">
-			<div
-				class="progress-bar"
-				[ngStyle]="{ width: percentage + '%' }"></div>
-		</div>
-	</section>
-	<h1 class="number">{{ value.amount }}</h1>
+    <section>
+        <h1>{{name}}</h1>
+        <div class="progress">
+            <div class="progress-bar" [ngStyle]="{'width': percentage + '%'}"></div>
+        </div>
+    </section>
+    <h1 class="number">{{value.amount}}</h1>
 </article>

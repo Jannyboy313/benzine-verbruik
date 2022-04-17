@@ -11,9 +11,11 @@ import { Ride } from 'src/shared/models/ride.model';
 	styleUrls: ['./ride-modal.component.scss']
 })
 export class RideModalComponent implements OnInit {
-	public error: Error = new Error();
-	public isLoading = false;
-	public form: FormGroup = new FormGroup({
+	error: Error = new Error();
+
+	isLoading = false;
+
+	form: FormGroup = new FormGroup({
 		title: new FormControl('', [
 			Validators.required,
 			Validators.minLength(3),
@@ -42,11 +44,11 @@ export class RideModalComponent implements OnInit {
 		}
 	) {}
 
-	public ngOnInit() {
+	ngOnInit() {
 		this.setInputValues();
 	}
 
-	public setInputValues() {
+	setInputValues() {
 		if (this.data.edit) {
 			this.form.controls['title'].setValue(this.data.ride.title);
 			this.form.controls['description'].setValue(
@@ -56,15 +58,15 @@ export class RideModalComponent implements OnInit {
 		}
 	}
 
-	public closeDialog(succes: boolean | Ride): void {
+	closeDialog(succes: boolean | Ride): void {
 		this.dialogRef.close(succes);
 	}
 
-	public getActionName(): string {
+	getActionName(): string {
 		return this.data.header.split(' ')[0];
 	}
 
-	public onSubmit(): void {
+	onSubmit(): void {
 		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 		if (!this.form.valid) {
@@ -84,7 +86,7 @@ export class RideModalComponent implements OnInit {
 		this.saveRide(ride);
 	}
 
-	public isValid(formController: string): boolean {
+	isValid(formController: string): boolean {
 		return !this.form.controls[formController].invalid;
 	}
 
@@ -96,29 +98,29 @@ export class RideModalComponent implements OnInit {
 	}
 
 	private postRide(ride: Ride): void {
-		this.rideService.postRide(ride).subscribe({
-			next: result => {
+		this.rideService.postRide(ride).subscribe(
+			result => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			error: err => {
-				this.error.setError(true, err.error.message.message);
+			err => {
 				this.isLoading = false;
+				this.error.setError(true, err.error.message.message);
 			}
-		});
+		);
 	}
 
 	private putRide(ride: Ride): void {
 		ride['_id'] = this.data.ride._id;
-		this.rideService.putRide(ride).subscribe({
-			next: result => {
+		this.rideService.putRide(ride).subscribe(
+			result => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			error: err => {
-				this.error.setError(true, err.error.message.message);
+			err => {
 				this.isLoading = false;
+				this.error.setError(true, err.error.message.message);
 			}
-		});
+		);
 	}
 }

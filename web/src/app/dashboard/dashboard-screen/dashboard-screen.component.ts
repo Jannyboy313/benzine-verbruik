@@ -9,46 +9,40 @@ import { Dashboard } from 'src/shared/models/dashboard.model';
 	styleUrls: ['./dashboard-screen.component.scss']
 })
 export class DashboardScreenComponent implements OnInit {
-	public isLoading: boolean = true;
-	public dashboardData: Dashboard = {
+	isLoading: boolean = true;
+
+	dashboardData: Dashboard = {
 		litres: null,
 		prices: null,
 		distance: null,
 		balance: null
 	};
 
-	public error: Error = new Error();
+	error: Error = new Error();
 
 	constructor(private dashboardService: DashboardService) {}
 
-	public ngOnInit(): void {
+	ngOnInit(): void {
 		this.getDashboardData();
 	}
 
-	public getDashboardData() {
+	getDashboardData() {
 		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
-		this.dashboardService.getDashboardData().subscribe({
-			next: result => {
+		this.dashboardService.getDashboardData().subscribe(
+			result => {
 				this.isLoading = false;
 				this.dashboardData = result;
 			},
-			error: err => {
-				this.error.setError(true, err.error.message);
+			err => {
 				this.isLoading = false;
+				this.error.setError(true, err.error.message);
 			}
-		});
+		);
 	}
 
-	public dataExists() {
-		if (
-			!(
-				this.dashboardData.balance ||
-				this.dashboardData.distance ||
-				this.dashboardData.prices ||
-				this.dashboardData.litres
-			)
-		)
+	dataExists() {
+		if (!(this.dashboardData.balance || this.dashboardData.distance || this.dashboardData.prices || this.dashboardData.litres))
 			return false;
 		return true;
 	}

@@ -3,11 +3,10 @@ import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
-	declarations: [ConfirmDialogComponent, FilterComponent],
+	declarations: [ConfirmDialogComponent],
 	imports: [CommonModule, MatDialogModule],
-	exports: [ConfirmDialogComponent, FilterComponent]
+	exports: [ConfirmDialogComponent]
 })
 export class SharedModule {}

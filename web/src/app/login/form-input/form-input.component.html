@@ -7,7 +7,8 @@
 			name="{{ getEnglishName() }}"
 			required
 			(change)="emitFormData($event)"
-			[ngClass]="{ 'invalid-input': isError }" />
+			[ngClass]="{ 'invalid-input': isError }"
+		/>
 		<span *ngIf="isEmail()" class="material-icons">email</span>
 		<span *ngIf="!isEmail()" class="material-icons">lock</span>
 	</div>

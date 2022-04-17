@@ -1,37 +1,37 @@
 get:
-    summary: Returns the ride by ID.
-    tags:
-        - Ride
-    parameters:
-        - name: id
-          in: path
-          required: true
+  summary: Returns the ride by ID.
+  tags:
+    - Ride
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type : string
+        minimum: 1
+  responses:
+    '200':
+      description: Ride object
+      content:
+        application/json:
           schema:
-              type: string
-              minimum: 1
-    responses:
-        '200':
-            description: Ride object
-            content:
-                application/json:
-                    schema:
-                        type: object
-                        properties:
-                            _id:
-                                type: string
-                            title:
-                                type: string
-                            description:
-                                type: string
-                            distance:
-                                type: number
-                            user:
-                                type: string
-                            createdAt:
-                                type: string
-                            updatedAt:
-                                type: string
-                            __v:
-                                type: string
-        '500':
-            description: Ride does not exists
+            type: object
+            properties:
+              _id:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              distance:
+                type: number
+              user:
+                type: string
+              createdAt:
+                type: string
+              updatedAt:
+                type: string
+              __v:
+                type: string
+    '500':
+      description: Ride does not exists

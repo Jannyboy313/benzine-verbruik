@@ -8,27 +8,27 @@ article {
 	flex-direction: row;
 	box-shadow: $box-shadow;
 	border-radius: 16px;
-	padding: 20px;
+    padding: 20px;
 }
 
 .number {
-	margin: 0;
-	display: inherit;
-	align-self: center;
-	justify-content: flex-end;
-	margin-left: 25px;
+    margin: 0;
+    display: inherit;
+    align-self: center;
+    justify-content: flex-end;
+    margin-left: 25px;
 }
 
 section {
-	width: 75%;
-	display: inherit;
-	flex-direction: column;
+    width: 75%;
+    display: inherit;
+    flex-direction: column;
 
-	.progress {
-		background-color: transparent;
-		.progress-bar {
-			background: $secondary-gradient;
-			width: 40%;
-		}
-	}
+    .progress {
+        background-color: transparent;
+        .progress-bar {
+            background: $secondary-gradient;
+            width: 40%;
+        }
+    }
 }

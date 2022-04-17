@@ -7,13 +7,11 @@
 
 	<span
 		*ngIf="isLoading"
-		class="spinner-border spinner-border-mm mr-1"></span>
+		class="spinner-border spinner-border-mm mr-1"
+	></span>
 	<p *ngIf="isLoading">Loading..</p>
 
-	<div
-		*ngIf="error.isError"
-		class="alert alert-danger fade show"
-		role="alert">
+	<div *ngIf="error.isError" class="alert alert-danger fade show" role="alert">
 		{{ error.message }}
 	</div>
 
@@ -21,19 +19,23 @@
 		<app-bar-chart
 			*ngIf="dashboardData.litres != null"
 			[name]="'Liter'"
-			[value]="{ amount: dashboardData.litres }"></app-bar-chart>
+			[value]="{ amount: dashboardData.litres }"
+		></app-bar-chart>
 		<app-bar-chart
 			*ngIf="dashboardData.distance != null"
 			[name]="'Afstand'"
-			[value]="{ amount: dashboardData.distance }"></app-bar-chart>
+			[value]="{ amount: dashboardData.distance }"
+		></app-bar-chart>
 		<app-bar-chart
 			*ngIf="dashboardData.prices != null"
 			[name]="'Prijs'"
-			[value]="{ amount: dashboardData.prices }"></app-bar-chart>
+			[value]="{ amount: dashboardData.prices }"
+		></app-bar-chart>
 		<app-bar-chart
 			*ngIf="dashboardData.balance != null"
 			[name]="'Balans'"
-			[value]="{ amount: dashboardData.balance }"></app-bar-chart>
+			[value]="{ amount: dashboardData.balance }"
+		></app-bar-chart>
 	</div>
 
 	<div *ngIf="!isLoading && !dataExists() && !error.isError">
