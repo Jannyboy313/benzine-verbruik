@@ -3,26 +3,26 @@ get:
     tags:
         - Ride
     parameters:
-      - name: path
-        in: query
-        required: false
-        schema:
-        type: string
-        description: The page of which the ride results need to be returned.
-      - name: filter
-        in: query
-        required: false
-        schema:
-        type: boolean
-        example: true
-        description: If a filter is sent with the request
-      - name: column_name
-        in: query
-        required: false
-        schema:
-        type: string
-        example: asc, desc, ascending and descending
-        description: The column name can almost be every column of ride
+        - name: path
+          in: query
+          required: false
+          schema:
+          type: string
+          description: The page of which the ride results need to be returned.
+        - name: filter
+          in: query
+          required: false
+          schema:
+          type: boolean
+          example: true
+          description: If a filter is sent with the request
+        - name: column_name
+          in: query
+          required: false
+          schema:
+          type: string
+          example: asc, desc, ascending and descending
+          description: The column name can almost be every column of ride
     responses:
         '200':
             description: Ride object
