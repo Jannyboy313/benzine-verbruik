@@ -203,6 +203,34 @@
         "tags": [
           "Fuel"
         ],
+        "parameters": [
+          {
+            "name": "path",
+            "in": "query",
+            "required": false,
+            "schema": null,
+            "type": "string",
+            "description": "The page of which the ride results need to be returned."
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": null,
+            "type": "boolean",
+            "example": true,
+            "description": "If a filter is sent with the request"
+          },
+          {
+            "name": "column_name",
+            "in": "query",
+            "required": false,
+            "schema": null,
+            "type": "string",
+            "example": "asc, desc, ascending and descending",
+            "description": "The column name can almost be every column of ride"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Fuel object",
@@ -216,7 +244,7 @@
                       "_id": {
                         "type": "string"
                       },
-                      "liter": {
+                      "litre": {
                         "type": "number"
                       },
                       "price": {
@@ -328,7 +356,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "liter": {
+                  "litre": {
                     "type": "number"
                   },
                   "price": {
@@ -356,7 +384,7 @@
                     "_id": {
                       "type": "string"
                     },
-                    "liter": {
+                    "litre": {
                       "type": "number"
                     },
                     "price": {
@@ -415,7 +443,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "liter": {
+                  "litre": {
                     "type": "number"
                   },
                   "price": {
@@ -443,7 +471,7 @@
                     "_id": {
                       "type": "string"
                     },
-                    "liter": {
+                    "litre": {
                       "type": "number"
                     },
                     "price": {
@@ -510,6 +538,34 @@
         "summary": "Returns all the rides of user.",
         "tags": [
           "Ride"
+        ],
+        "parameters": [
+          {
+            "name": "path",
+            "in": "query",
+            "required": false,
+            "schema": null,
+            "type": "string",
+            "description": "The page of which the ride results need to be returned."
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": null,
+            "type": "boolean",
+            "example": true,
+            "description": "If a filter is sent with the request"
+          },
+          {
+            "name": "column_name",
+            "in": "query",
+            "required": false,
+            "schema": null,
+            "type": "string",
+            "example": "asc, desc, ascending and descending",
+            "description": "The column name can almost be every column of ride"
+          }
         ],
         "responses": {
           "200": {
