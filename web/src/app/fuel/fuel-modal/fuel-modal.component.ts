@@ -11,9 +11,11 @@ import { FuelService } from 'src/shared/Services/db/fuel.service';
 	styleUrls: ['./fuel-modal.component.scss']
 })
 export class FuelModalComponent implements OnInit {
-	public error: Error = new Error();
-	public isLoading = false;
-	public form: FormGroup = new FormGroup({
+	error: Error = new Error();
+
+	isLoading = false;
+
+	form: FormGroup = new FormGroup({
 		litre: new FormControl('', [
 			Validators.required,
 			Validators.min(1),
@@ -50,11 +52,11 @@ export class FuelModalComponent implements OnInit {
 		}
 	) {}
 
-	public ngOnInit() {
+	ngOnInit() {
 		this.setInputValues();
 	}
 
-	public setInputValues() {
+	setInputValues() {
 		if (this.data.edit) {
 			this.form.controls['litre'].setValue(this.data.fuel.litre);
 			this.form.controls['price'].setValue(this.data.fuel.price);
@@ -65,16 +67,19 @@ export class FuelModalComponent implements OnInit {
 		}
 	}
 
-	public closeDialog(succes: boolean | Fuel): void {
+	closeDialog(succes: boolean | Fuel): void {
 		this.dialogRef.close(succes);
 	}
 
-	public getActionName(): string {
+	getActionName(): string {
 		return this.data.header.split(' ')[0];
 	}
 
-	public onSubmit(): void {
-		this.error.setError(false, 'There has been a network error');
+	onSubmit(): void {
+		this.error.setError(
+			false,
+			'There has been a network error'
+		);
 		this.isLoading = true;
 		if (!this.form.valid) {
 			this.isLoading = false;
@@ -94,7 +99,7 @@ export class FuelModalComponent implements OnInit {
 		this.saveFuel(fuel);
 	}
 
-	public isValid(formController: string): boolean {
+	isValid(formController: string): boolean {
 		return !this.form.controls[formController].invalid;
 	}
 
@@ -106,29 +111,29 @@ export class FuelModalComponent implements OnInit {
 	}
 
 	private postFuel(fuel: Fuel): void {
-		this.fuelService.postFuel(fuel).subscribe({
-			next: result => {
+		this.fuelService.postFuel(fuel).subscribe(
+			result => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			error: err => {
-				this.error.setError(true, err.error.message.message);
+			err => {
 				this.isLoading = false;
+				this.error.setError(true, err.error.message.message);
 			}
-		});
+		);
 	}
 
 	private putFuel(fuel: Fuel): void {
 		fuel['_id'] = this.data.fuel._id;
-		this.fuelService.putFuel(fuel).subscribe({
-			next: result => {
+		this.fuelService.putFuel(fuel).subscribe(
+			result => {
 				this.isLoading = false;
 				this.closeDialog(result);
 			},
-			error: err => {
-				this.error.setError(true, err.error.message.message);
+			err => {
 				this.isLoading = false;
+				this.error.setError(true, err.error.message.message);
 			}
-		});
+		);
 	}
 }

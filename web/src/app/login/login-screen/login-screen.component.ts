@@ -10,10 +10,11 @@ import { DataStorageService } from 'src/shared/Services/data-storage.service';
 	styleUrls: ['./login-screen.component.scss']
 })
 export class LoginScreenComponent implements OnInit {
-	public error: Error = new Error();
-	public isLoading: boolean = false;
-	public email: string = '';
-	public password: string = '';
+	error: Error = new Error;
+
+	isLoading: boolean = false;
+	email: string = '';
+	password: string = '';
 
 	constructor(
 		private userService: UserService,
@@ -21,9 +22,9 @@ export class LoginScreenComponent implements OnInit {
 		private dataStorageService: DataStorageService
 	) {}
 
-	public ngOnInit(): void {}
+	ngOnInit(): void {}
 
-	public onSubmit(): void {
+	onSubmit(): void {
 		this.error.setError(false, 'There has been a network error');
 		this.isLoading = true;
 
@@ -35,25 +36,25 @@ export class LoginScreenComponent implements OnInit {
 		}
 	}
 
-	public login() {
-		this.userService.login(this.email, this.password).subscribe({
-			next: result => {
+	login() {
+		this.userService.login(this.email, this.password).subscribe(
+			result => {
 				this.isLoading = false;
 				this.router.navigate(['/rides']);
 				this.dataStorageService.storeData('user_id', result._id);
 			},
-			error: err => {
-				this.error.setError(true, err.error.message);
+			err => {
 				this.isLoading = false;
+				this.error.setError(true, err.error.message);
 			}
-		});
+		);
 	}
 
-	public setEmail(email: string) {
+	setEmail(email: string) {
 		this.email = email;
 	}
 
-	public setPassword(password: string) {
+	setPassword(password: string) {
 		this.password = password;
 	}
 }

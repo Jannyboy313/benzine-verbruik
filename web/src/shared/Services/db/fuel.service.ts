@@ -16,8 +16,8 @@ export class FuelService {
 		);
 	}
 
-	getFuels(page: number, filter: string): Observable<Fuel[]> {
-		return this.db.sendGetRequest(`fuel?page=${page}${filter}`).pipe(
+	getFuels(): Observable<Fuel[]> {
+		return this.db.sendGetRequest(`fuel`).pipe(
 			map((response: Fuel[]) => {
 				return response;
 			})

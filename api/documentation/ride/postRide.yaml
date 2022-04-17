@@ -1,43 +1,43 @@
 post:
-    summary: Adds ride to the database
-    tags:
-        - Ride
-    requestBody:
-        required: true
-        content:
-            application/json:
-                schema:
-                    type: object
-                    properties:
-                        title:
-                            type: string
-                        description:
-                            type: string
-                        distance:
-                            type: number
-    responses:
-        '201':
-            description: Receiving created ride
-            content:
-                application/json:
-                    schema:
-                        type: object
-                        properties:
-                            _id:
-                                type: string
-                            title:
-                                type: string
-                            description:
-                                type: string
-                            distance:
-                                type: number
-                            user:
-                                type: string
-                            createdAt:
-                                type: string
-                            updatedAt:
-                                type: string
-                            __v:
-                                type: string
-        '500':
-            description: validation error
+  summary: Adds ride to the database
+  tags:
+    - Ride
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+            description:
+              type: string
+            distance:
+              type: number
+  responses:
+    '201':
+      description: Receiving created ride
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _id:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              distance:
+                type: number
+              user:
+                type: string
+              createdAt:
+                type: string
+              updatedAt:
+                type: string
+              __v:
+                type: string
+    '500':
+      description: validation error

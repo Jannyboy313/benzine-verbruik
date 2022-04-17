@@ -2,7 +2,8 @@
 	<div *ngIf="!isLoading && fuelExist()">
 		<app-fuel-card
 			*ngFor="let fuel of fuelList"
-			[fuel]="fuel"></app-fuel-card>
+			[fuel]="fuel"
+		></app-fuel-card>
 	</div>
 
 	<div *ngIf="!isLoading && !fuelExist() && !error.isError">
@@ -11,13 +12,15 @@
 
 	<span
 		*ngIf="isLoading"
-		class="spinner-border spinner-border-mm mr-1"></span>
+		class="spinner-border spinner-border-mm mr-1"
+	></span>
 	<p *ngIf="isLoading">Loading..</p>
 
 	<div
 		*ngIf="error.isError"
 		class="alert alert-danger fade show"
-		role="alert">
+		role="alert"
+	>
 		{{ error.message }}
 	</div>
 
@@ -25,7 +28,8 @@
 		id="loadMoreBtn"
 		(click)="loadMoreFuel()"
 		class="btn"
-		*ngIf="!isLoading && fuelExist()">
+		*ngIf="!isLoading && fuelExist()"
+	>
 		<span>Load more</span>
 	</button>
 </article>

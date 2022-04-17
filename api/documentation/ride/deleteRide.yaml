@@ -1,16 +1,16 @@
 delete:
-    summary: Deletes the ride by ID.
-    tags:
-        - Ride
-    parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-              type: string
-              minimum: 1
-    responses:
-        '200':
-            description: Succes message
-        '500':
-            description: Ride does not exists
+  summary: Deletes the ride by ID.
+  tags:
+    - Ride
+  parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type : string
+        minimum: 1
+  responses:
+    '200':
+      description: Succes message
+    '500':
+      description: Ride does not exists

@@ -13,12 +13,11 @@
 					placeholder="Invullen titel"
 					formControlName="title"
 					required
-					[ngClass]="{
-						'invalid-input': error.isError && isValid('title')
-					}"
+					[ngClass]="{ 'invalid-input': error.isError && isValid('title') }"
 					class="input"
 					autofocus
-					autocapitalize="on" />
+					autocapitalize="on"
+				/>
 			</div>
 		</div>
 		<div class="container">
@@ -28,12 +27,11 @@
 					placeholder="Invullen beschrijving"
 					formControlName="description"
 					required
-					[ngClass]="{
-						'invalid-input': error.isError && isValid('description')
-					}"
+					[ngClass]="{ 'invalid-input': error.isError && isValid('description') }"
 					class="input"
 					autocapitalize="on"
-					rows="3"></textarea>
+					rows="3"
+				></textarea>
 			</div>
 		</div>
 		<div class="container">
@@ -44,10 +42,9 @@
 					placeholder="Invullen afstand in km"
 					formControlName="distance"
 					required
-					[ngClass]="{
-						'invalid-input': error.isError && isValid('distance')
-					}"
-					class="input" />
+					[ngClass]="{ 'invalid-input': error.isError && isValid('distance') }"
+					class="input"
+				/>
 			</div>
 		</div>
 	</form>
@@ -62,6 +59,7 @@
 
 		<span
 			*ngIf="isLoading"
-			class="spinner-border spinner-border-mm mr-1"></span>
+			class="spinner-border spinner-border-mm mr-1"
+		></span>
 	</button>
 </mat-dialog-actions>

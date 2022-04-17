@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-	public title: string = 'benzine-pwa';
+	title = 'benzine-pwa';
 
 	constructor(private router: Router) {}
 
-	public isLogin() {
+	isLogin() {
 		const routerPath = this.router.url.split('/')[1];
 		if (routerPath === 'home') {
 			return true;

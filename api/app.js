@@ -29,12 +29,11 @@ app.use(passport.initialize());
 //ROUTES
 app.use(
 	cors({
-		origin: [process.env.CORS_ORIGIN],
-		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+		origin: [`http://localhost:4200`],
+		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true
 	})
 );
-
 app.use('/user', userRouter);
 app.use('/ride', isAuth, rideRouter);
 app.use('/fuel', isAuth, fuelRouter);
@@ -43,9 +42,11 @@ app.use('/dashboard', isAuth, dashboardRouter);
 //LISTENER
 mongoose
 	.connect(process.env.DATABASE_URL, {
-		useNewUrlParser: true
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true
 	})
-	.then(() => {
+	.then(result => {
 		app.listen(process.env.PORT);
 		console.log(`Running on port ${process.env.PORT}`);
 	})

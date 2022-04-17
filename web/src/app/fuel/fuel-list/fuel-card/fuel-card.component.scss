@@ -4,13 +4,13 @@
 
 h1 {
 	margin: 0;
-	line-height: 40px;
-	font-size: 24px;
+    line-height: 40px;
+    font-size: 24px;
 }
 
 h2 {
 	margin: 0;
-	font-size: 13px;
+    font-size: 13px;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 }
@@ -33,7 +33,7 @@ article {
 	flex-direction: row;
 	align-items: flex-start;
 	margin: 20px 20px 0 20px;
-	padding: 1px;
+    padding: 1px;
 
 	.item {
 		display: flex;
@@ -42,12 +42,12 @@ article {
 		margin-bottom: 15px;
 		margin-left: 15px;
 
-		p {
-			font-size: 16px;
-			color: $black;
-			line-height: 16px;
-			margin-top: 6px;
-		}
+        p {
+            font-size: 16px;
+            color: $black;
+            line-height: 16px;
+            margin-top: 6px;
+        }
 	}
 }
 
