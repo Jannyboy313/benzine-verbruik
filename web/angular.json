@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "benzine-pwa": {
+    "benzine-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -74,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "benzine-pwa:build:production"
+              "browserTarget": "benzine-web:build:production"
             },
             "development": {
-              "browserTarget": "benzine-pwa:build:development",
+              "browserTarget": "benzine-web:build:development",
               "proxyConfig": "src/proxy.conf.json"
             }
           },
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "benzine-pwa:build"
+            "browserTarget": "benzine-web:build"
           }
         },
         "test": {
@@ -111,5 +111,5 @@
       }
     }
   },
-  "defaultProject": "benzine-pwa"
+  "defaultProject": "benzine-web"
 }
