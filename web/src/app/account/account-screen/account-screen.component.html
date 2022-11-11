@@ -42,6 +42,9 @@
 <article class="log-out">
     <button class="btn" (click)="logout()">
         Uitloggen
-        <span class="material-icons">exit_to_app</span>
+        <span
+		*ngIf="isLoading"
+		class="spinner-border spinner-border-mm mr-1"></span>
+        <span *ngIf="!isLoading" class="material-icons">exit_to_app</span>
     </button>
 </article>

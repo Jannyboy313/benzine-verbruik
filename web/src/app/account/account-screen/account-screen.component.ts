@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from './../../../shared/Services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from 'src/shared/Services/data-storage.service';
+import { finalize } from 'rxjs';
 
 @Component({
 	selector: 'app-account-screen',
@@ -12,6 +13,7 @@ import { DataStorageService } from 'src/shared/Services/data-storage.service';
 export class AccountScreenComponent implements OnInit {
 	public email: string = '';
 	public error: Error = new Error();
+  public isLoading: boolean = false;
 
 	constructor(
 		private dataStorageService: DataStorageService,
@@ -30,12 +32,13 @@ export class AccountScreenComponent implements OnInit {
 	}
 
 	public logout() {
-		this.loginService.logout().subscribe({
-			next: result => {
+    this.isLoading = true;
+		this.loginService.logout().pipe(finalize( () => this.isLoading = false)).subscribe({
+			next: () => {
 				this.dataStorageService.clearDataStorage();
 				this.router.navigate(['/login']);
 			},
-			error: err => {
+			error: () => {
         this.error.setError(true, "Logout has failed");
       }
 		});
