@@ -3,6 +3,13 @@
     <h2>{{ email }}</h2>
 </header>
 
+<div
+    *ngIf="error.isError"
+    class="alert alert-danger fade show"
+    role="alert">
+    {{ error.message }}
+</div>
+
 <article>
     <section class="account-options">
         <button class="btn">
@@ -33,7 +40,7 @@
 </article>
 
 <article class="log-out">
-    <button class="btn">
+    <button class="btn" (click)="logout()">
         Uitloggen
         <span class="material-icons">exit_to_app</span>
     </button>
