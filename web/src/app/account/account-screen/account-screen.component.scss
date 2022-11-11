@@ -1,12 +1,6 @@
 @import '../../../util/styles/colors.scss';
 @import '../../../util/styles/buttons.scss';
 
-article {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
 header {
     display: flex;
     flex-direction: column;
@@ -24,31 +18,68 @@ header {
     }
 }
 
+article {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+    height: 61vh;
+}
+
 .account-options {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
+    height: 65%;
+    margin: 0 0 50px 0;
 
     button {
         height: 50px;
-        border: 2px solid $primary-color;
+        border: 1px solid $primary-color;
         border-radius: 16px;
         font-size: 16px;
+        width: 85%;
+        font-weight: 400;
 
         .button-container {
+            display: flex;
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
-            width: 90%;
+            width: 100%;
+
+            span {
+                margin: 0 15px;
+            }
         }
     }
+
+    .red {
+        border-color: $delete-color;
+        color: $delete-color;
+        font-weight: 500;
+        span {
+            color: $delete-color;
+        }
+    }
+
 }
 
 
 span {
     color: $grey-light;
     margin: 0 10px;
+}
+
+.log-out {
+    margin-top: 10px;
+    height: fit-content;
+    justify-content: center;
+    button {
+        width: 93%;
+    }
 }
 
 button {
