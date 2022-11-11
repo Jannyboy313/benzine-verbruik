@@ -32,12 +32,10 @@ export class AccountScreenComponent implements OnInit {
 	public logout() {
 		this.loginService.logout().subscribe({
 			next: result => {
-        console.log("IM CALLED! RESULT", result);
 				this.dataStorageService.clearDataStorage();
 				this.router.navigate(['/login']);
 			},
 			error: err => {
-        console.log("IM CALLED! ERROR", err);
         this.error.setError(true, "Logout has failed");
       }
 		});
