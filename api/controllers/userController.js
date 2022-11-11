@@ -39,7 +39,7 @@ exports.login = async (req, res) => {
 exports.logout = (req, res) => {
 	res.clearCookie('access-token');
 	res.clearCookie('refresh-token');
-	return res.status(201).send({message: "Successfully logged out!"});
+	return res.status(201).send({ message: 'Successfully logged out!' });
 };
 
 // Creating a new user and giving tokens for authentication

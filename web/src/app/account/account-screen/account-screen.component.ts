@@ -13,7 +13,7 @@ import { finalize } from 'rxjs';
 export class AccountScreenComponent implements OnInit {
 	public email: string = '';
 	public error: Error = new Error();
-  public isLoading: boolean = false;
+	public isLoading: boolean = false;
 
 	constructor(
 		private dataStorageService: DataStorageService,
@@ -32,15 +32,18 @@ export class AccountScreenComponent implements OnInit {
 	}
 
 	public logout() {
-    this.isLoading = true;
-		this.loginService.logout().pipe(finalize( () => this.isLoading = false)).subscribe({
-			next: () => {
-				this.dataStorageService.clearDataStorage();
-				this.router.navigate(['/login']);
-			},
-			error: () => {
-        this.error.setError(true, "Logout has failed");
-      }
-		});
+		this.isLoading = true;
+		this.loginService
+			.logout()
+			.pipe(finalize(() => (this.isLoading = false)))
+			.subscribe({
+				next: () => {
+					this.dataStorageService.clearDataStorage();
+					this.router.navigate(['/login']);
+				},
+				error: () => {
+					this.error.setError(true, 'Logout has failed');
+				}
+			});
 	}
 }

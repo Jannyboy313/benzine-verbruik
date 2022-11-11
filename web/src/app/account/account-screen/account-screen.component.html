@@ -1,50 +1,47 @@
 <header>
-    <h1>Account</h1>
-    <h2>{{ email }}</h2>
+	<h1>Account</h1>
+	<h2>{{ email }}</h2>
 </header>
 
-<div
-    *ngIf="error.isError"
-    class="alert alert-danger fade show"
-    role="alert">
-    {{ error.message }}
+<div *ngIf="error.isError" class="alert alert-danger fade show" role="alert">
+	{{ error.message }}
 </div>
 
 <article>
-    <section class="account-options">
-        <button class="btn">
-            <div class="button-container">
-                <span class="material-icons">email</span>
-                Emailadres wijzigen
-            </div>
-        </button>
-        <button class="btn">
-            <div class="button-container">
-                <span class="material-icons">lock</span>
-                Wachtwoord wijzigen
-            </div>
-        </button>
-        <button class="btn">
-            <div class="button-container">
-                <span class="material-icons">directions_car</span>
-                Auto's inzien
-            </div>
-        </button>
-        <button class="btn red">
-            <div class="button-container">
-                <span class="material-icons">report_problem</span>
-                Account verwijderen
-            </div>
-        </button>
-    </section>
+	<section class="account-options">
+		<button class="btn">
+			<div class="button-container">
+				<span class="material-icons">email</span>
+				Emailadres wijzigen
+			</div>
+		</button>
+		<button class="btn">
+			<div class="button-container">
+				<span class="material-icons">lock</span>
+				Wachtwoord wijzigen
+			</div>
+		</button>
+		<button class="btn">
+			<div class="button-container">
+				<span class="material-icons">directions_car</span>
+				Auto's inzien
+			</div>
+		</button>
+		<button class="btn red">
+			<div class="button-container">
+				<span class="material-icons">report_problem</span>
+				Account verwijderen
+			</div>
+		</button>
+	</section>
 </article>
 
 <article class="log-out">
-    <button class="btn" (click)="logout()">
-        Uitloggen
-        <span
-		*ngIf="isLoading"
-		class="spinner-border spinner-border-mm mr-1"></span>
-        <span *ngIf="!isLoading" class="material-icons">exit_to_app</span>
-    </button>
+	<button class="btn" (click)="logout()">
+		Uitloggen
+		<span
+			*ngIf="isLoading"
+			class="spinner-border spinner-border-mm mr-1"></span>
+		<span *ngIf="!isLoading" class="material-icons">exit_to_app</span>
+	</button>
 </article>
