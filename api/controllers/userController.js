@@ -36,6 +36,12 @@ exports.login = async (req, res) => {
 		});
 };
 
+exports.logout = (req, res) => {
+	res.clearCookie('access-token');
+	res.clearCookie('refresh-token');
+	return res.status(201).send({message: "Successfully logged out!"});
+};
+
 // Creating a new user and giving tokens for authentication
 exports.register = async (req, res) => {
 	req.body.password = await bcrypt.hash(req.body.password, 12);
