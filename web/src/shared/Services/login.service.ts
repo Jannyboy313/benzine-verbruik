@@ -1,10 +1,12 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Db } from 'src/util/db';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class LoginService {
-	constructor() {}
+	constructor(private db: Db) {}
 
 	isLoggedIn(): boolean {
 		const cookies = document.cookie.split(';');
@@ -15,5 +17,9 @@ export class LoginService {
 			if (cookie.indexOf('refresh-token=') == 0) return true;
 		}
 		return false;
+	}
+
+	logout(): Observable<any> {
+		return this.db.sendPostRequest('user/logout', {});
 	}
 }
