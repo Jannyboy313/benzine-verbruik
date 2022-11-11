@@ -41,6 +41,7 @@ export class LoginScreenComponent implements OnInit {
 				this.isLoading = false;
 				this.router.navigate(['/rides']);
 				this.dataStorageService.storeData('user_id', result._id);
+				this.dataStorageService.storeData('user_email', result.email);
 			},
 			error: err => {
 				this.error.setError(true, err.error.message);
