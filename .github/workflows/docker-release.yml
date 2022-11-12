@@ -18,10 +18,11 @@ jobs:
         run: sudo apt install jq -y
       -
         name: Get latest tag
-        run: tagVersion=$(curl -sL https://api.github.com/repos/jannyboy313/benzine-verbruik/tags |jq -r ".[0].name")
+        id: vars
+        run: echo "tagversion=$(curl -sL https://api.github.com/repos/jannyboy313/benzine-verbruik/tags |jq -r ".[0].name") >> $GITHUB_OUTPUT
       -
         name: Output latest tag
-        run: echo "$tagVersion"
+        run: echo ${{steps.vars.output.tagversion}}
       -
         name: Checkout repo
         uses: actions/checkout@main
