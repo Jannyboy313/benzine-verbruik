@@ -18,11 +18,12 @@ jobs:
         run: curl https://api.github.com/repos/jannyboy313/benzine-verbruik/tags > tags.json
       -
         name: save latest tag
-        id: vars
-        run: echo "TAG_VERSION=$(jq -r '.[0].name' tags.json)" >> $env:GITHUB_OUTPUT
+        run: |
+          echo "TAG_VERSION=$(jq -r '.[0].name' tags.json)" >> $GITHUB_ENV
       -
         name: Outputting tag
-        run: echo ${{ steps.vars.TAG_VERSION }}
+        run: |
+          echo ${{ env.TAG_VERSION }}
       -
         name: Checkout repo
         uses: actions/checkout@main
