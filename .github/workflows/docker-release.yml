@@ -17,13 +17,9 @@ jobs:
         name: Get tags
         run: curl https://api.github.com/repos/jannyboy313/benzine-verbruik/tags > tags.json
       -
-        name: save latest tag
+        name: Save latest tag
         run: |
           echo "TAG_VERSION=$(jq -r '.[0].name' tags.json)" >> $GITHUB_ENV
-      -
-        name: Outputting tag
-        run: |
-          echo ${{ env.TAG_VERSION }}
       -
         name: Checkout repo
         uses: actions/checkout@main
@@ -46,7 +42,7 @@ jobs:
           context: ./web
           file: Dockerfile.webProd
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:${{ steps.vars.tagversion }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:${{ env.TAG_VERSION }}
       -
         name: Build and push tagged api image
         uses: docker/build-push-action@v3
@@ -54,4 +50,4 @@ jobs:
           context: ./api
           file: Dockerfile.apiProd
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:${{ steps.vars.tagversion }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:${{ env.TAG_VERSION }}
