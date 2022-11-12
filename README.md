@@ -85,8 +85,8 @@ If you want to deploy this on you're server u have to follow these steps.
 #### Frontend
 
 -   Navigate into the web folder
--   Run `ng build`
--   Upload "dist" of the web folder to you're server
+-   Run `npm run build --prod`
+-   Upload "dist/benzine-prod" of the web folder to you're server
 -   Configure you're nginx or apache
 
 #### Backend
