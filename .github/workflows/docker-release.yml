@@ -19,11 +19,8 @@ jobs:
       -
         name: Get latest tag
         run: | 
-          curl --location --request GET 'https://api.github.com/repos/jannyboy313/benzine-verbruik/tags' -o tags.json
-      - 
-        name: Saving latest tag
-        id: vars 
-        run: echo "tagversion=$(cat tags.json | jq -r '.[0].name')" >> $GITHUB_OUTPUT
+          output=$(curl -sL https://api.github.com/repos/jannyboy313/benzine-verbruik/tags |jq -r ".[0].name")
+          echo "tagversion=$(output)" >> $GITHUB_OUTPUT
       -
         name: Outputting tag
         run: echo ${{ steps.vars.tagversion }}
