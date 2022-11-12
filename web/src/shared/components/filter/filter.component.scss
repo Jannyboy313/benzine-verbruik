@@ -1,12 +1,25 @@
 @import '../../../util/styles/colors.scss';
+@import '../../../util/styles/effects.scss';
+
+h5 {
+	color: $black;
+	margin: 0 0 0 10px;
+}
 
 .filterSettings {
-	padding: 0 15px 15px 15px;
+	padding: 15px 15px 10px 15px;
+	margin-bottom: 20px;
+	background-color: $white;
+	box-shadow: $box-shadow;
+	border-radius: 16px;
+	border-color: red;
 	.filterOptions {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-auto-rows: auto;
 		justify-items: start;
+		padding: 3px;
+
 		p {
 			margin: 0;
 			line-height: 14px;
@@ -18,19 +31,27 @@
 			justify-content: flex-end;
 			align-items: center;
 			cursor: pointer;
-			margin-left: 10px;
 			user-select: none;
 
 			span {
-				margin-right: 10px;
+				margin-right: 5px;
 				color: $grey;
 			}
 		}
 
-		section:not(:last-child) {
-			margin-bottom: 15px;
+		section:not(:nth-last-of-type(-n+2)) {
+			margin-bottom: 10px;
 		}
 	}
+}
+
+hr {
+	border: none;
+	height: 1px;
+	color: $primary-color;
+	background-color: #eceeef;
+	width: 100%;
+	margin:  5px 0 15px 0;
 }
 
 @media only screen and (min-width: 576px) {
