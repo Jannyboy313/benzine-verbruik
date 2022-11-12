@@ -3,9 +3,6 @@ on:
   release:
     types: [ published ]
   workflow_dispatch:
-env:
-  DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-  IMAGE_TAG: ${{ github.event.release.tag_name }}
 
 jobs:
   build:
@@ -35,7 +32,10 @@ jobs:
           context: ./web
           file: Dockerfile.webProd
           push: true
-          tags: $DOCKER_HUB_USERNAME/web-benzine-verbruik:latest,$DOCKER_HUB_USERNAME/web-benzine-verbruik:$IMAGE_TAG
+          tags: ${{ env.USERNAME }}/web-benzine-verbruik:latest,${{ env.USERNAME }}/web-benzine-verbruik:${{ env.IMAGE_TAG }}
+          build-args: |
+            USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
+            IMAGE_TAG=${{ github.event.release.tag_name }}
       -
         name: Build and push tagged api image
         uses: docker/build-push-action@v3
@@ -43,4 +43,7 @@ jobs:
           context: ./api
           file: Dockerfile.apiProd
           push: true
-          tags: $DOCKER_HUB_USERNAME/api-benzine-verbruik:latest,$DOCKER_HUB_USERNAME/api-benzine-verbruik:$IMAGE_TAG
+          tags: ${{ env.USERNAME }}/api-benzine-verbruik:latest,${{ env.USERNAME }}/api-benzine-verbruik:${{ env.IMAGE_TAG }}
+          build-args: |
+            USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
+            IMAGE_TAG=${{ github.event.release.tag_name }}
