@@ -1,0 +1,49 @@
+name: "Docker Image Release CI"
+on:
+  release:
+    types:
+      - published
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-22.04
+
+    steps:
+      -
+        name: Login to DockerHub Registry
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      -
+        name: Get the version
+        id: vars
+        run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+      -
+        name: Build tagged web image
+        working-directory: ./web
+        run: docker build -f ./Dockerfile.webProd . -t jannyboy313/web-benzine-verbruik:${{steps.vars.output.tag}}
+      -
+        name: Push tagged web image
+        run: docker push jannyboy313/web-benzine-verbruik:${{steps.vars.output.tag}}
+      -
+        name: Build tagged api image
+        working-directory: ./api
+        run: docker build -f ./Dockerfile.apiProd . -t jannyboy313/api-benzine-verbruik:${{steps.vars.output.tag}}
+      -
+        name: Push tagged api image
+        run: docker push jannyboy313/api-benzine-verbruik:${{steps.vars.output.tag}}
+      -
+        name: Build latest web image
+        working-directory: ./api
+        run: docker build -f ./Dockerfile.webProd . -t jannyboy313/web-benzine-verbruik:latest
+      -
+        name: Push latest web image
+        run: docker push jannyboy313/web-benzine-verbruik:latest
+      -
+        name: Build latest api image
+        working-directory: ./api
+        run: docker build -f ./Dockerfile.apiProd . -t jannyboy313/api-benzine-verbruik:latest
+      -
+        name: Push latest api image
+        run: docker push jannyboy313/api-benzine-verbruik:latest
