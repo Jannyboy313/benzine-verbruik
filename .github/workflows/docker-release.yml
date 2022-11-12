@@ -23,28 +23,28 @@ jobs:
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       -
         name: Build tagged web image
-        working-directory: ./web
+        working-directory: web
         run: docker build -f ./Dockerfile.webProd . -t jannyboy313/web-benzine-verbruik:${{steps.vars.output.tag}}
       -
         name: Push tagged web image
         run: docker push jannyboy313/web-benzine-verbruik:${{steps.vars.output.tag}}
       -
         name: Build tagged api image
-        working-directory: ./api
+        working-directory: api
         run: docker build -f ./Dockerfile.apiProd . -t jannyboy313/api-benzine-verbruik:${{steps.vars.output.tag}}
       -
         name: Push tagged api image
         run: docker push jannyboy313/api-benzine-verbruik:${{steps.vars.output.tag}}
       -
         name: Build latest web image
-        working-directory: ./api
+        working-directory: api
         run: docker build -f ./Dockerfile.webProd . -t jannyboy313/web-benzine-verbruik:latest
       -
         name: Push latest web image
         run: docker push jannyboy313/web-benzine-verbruik:latest
       -
         name: Build latest api image
-        working-directory: ./api
+        working-directory: api
         run: docker build -f ./Dockerfile.apiProd . -t jannyboy313/api-benzine-verbruik:latest
       -
         name: Push latest api image
