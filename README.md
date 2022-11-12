@@ -26,6 +26,12 @@ npm install
 After that you have to create an ENV file based on the example in both the web & api folder. <br />
 Without the env file the api will not work and the web will not function properly. <br />
 
+For using linting and formatting run:
+```bash
+npm install
+```
+Inside the parent folder of api and web.
+
 ## Running
 
 To run the project you have to navigate into the "docker" folder. <br />
