@@ -22,10 +22,10 @@ export class RidesScreenComponent implements OnInit {
 	}
 
 	private createFilters(): void {
-		this.filters.push(new Filter('createdAt', 'Sorting on created'));
-		this.filters.push(new Filter('updatedAt', 'Sorting on last updated'));
-		this.filters.push(new Filter('distance', 'Sorting on distance'));
-		this.filters.push(new Filter('title', 'Sorting on title'));
+		this.filters.push(new Filter('createdAt', 'Aangemaakt'));
+		this.filters.push(new Filter('updatedAt', 'Laatst gewijzigd'));
+		this.filters.push(new Filter('distance', 'Afstand'));
+		this.filters.push(new Filter('title', 'Titel'));
 	}
 
 	public ngOnInit(): void {}
