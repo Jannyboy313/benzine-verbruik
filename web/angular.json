@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "benzine-pwa": {
+    "benzine-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -25,11 +25,11 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "aot": true,
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
@@ -56,7 +56,13 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
             },
             "development": {
               "buildOptimizer": false,
@@ -73,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "benzine-pwa:build:production"
+              "browserTarget": "benzine-web:build:production"
             },
             "development": {
-              "browserTarget": "benzine-pwa:build:development",
+              "browserTarget": "benzine-web:build:development",
               "proxyConfig": "src/proxy.conf.json"
             }
           },
@@ -85,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "benzine-pwa:build"
+            "browserTarget": "benzine-web:build"
           }
         },
         "test": {
@@ -110,5 +116,5 @@
       }
     }
   },
-  "defaultProject": "benzine-pwa"
+  "defaultProject": "benzine-web"
 }

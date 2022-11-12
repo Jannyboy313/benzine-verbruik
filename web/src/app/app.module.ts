@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/shared/shared.module';
 import { RidesModule } from './rides/rides.module';
 import { FuelModule } from './fuel/fuel.module';
+import { AccountModule } from './account/account.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -29,6 +30,7 @@ import { BottomNavigationComponent } from 'src/shared/components/bottom-navigati
 		RidesModule,
 		SharedModule,
 		FuelModule,
+		AccountModule,
 		DashboardModule,
 		ScrollingModule
 	],

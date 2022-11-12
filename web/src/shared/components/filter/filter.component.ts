@@ -1,3 +1,4 @@
+import { upToDownAnimation } from '../../animations/upToDownAnimation';
 import {
 	Component,
 	Input,
@@ -13,7 +14,8 @@ import { FilterIconSettings } from 'src/shared/models/filter-icon-settings.model
 @Component({
 	selector: 'app-filter',
 	templateUrl: './filter.component.html',
-	styleUrls: ['./filter.component.scss']
+	styleUrls: ['./filter.component.scss'],
+	animations: [upToDownAnimation]
 })
 export class FilterComponent implements OnInit, OnChanges {
 	@Input() filterShown: boolean = false;

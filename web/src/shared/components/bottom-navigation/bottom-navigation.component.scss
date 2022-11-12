@@ -1,7 +1,7 @@
 @import '../../../util/styles/colors.scss';
 
 nav {
-	padding: 8px 15px 4px 15px;
+	padding: 8px 15px 8px 15px;
 	background-color: $primary-color !important;
 }
 
@@ -35,4 +35,10 @@ nav {
 
 .is-active {
 	opacity: 1 !important;
+}
+
+/* Only for Safari  */
+::i-block-chrome,
+nav {
+	padding: 8px 15px 20px 15px;
 }

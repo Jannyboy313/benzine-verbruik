@@ -17,11 +17,12 @@ import { Error } from '../../../shared/models/error.model';
 })
 export class RidesListComponent implements OnInit, OnChanges {
 	@Input() public filterUrl: string = '';
+	private previousFilterUrl: string = '';
 
 	public isLoading: boolean = true;
 
 	public error: Error = new Error();
-	public page: number = 0;
+	private page: number = 0;
 
 	public rides: Ride[] = [];
 
@@ -47,6 +48,7 @@ export class RidesListComponent implements OnInit, OnChanges {
 			false,
 			'There has been an error while trying to load the rides'
 		);
+		this.processFilter();
 		this.isLoading = true;
 		this.rideService.getRides(this.page, this.filterUrl).subscribe({
 			next: result => {
@@ -58,6 +60,13 @@ export class RidesListComponent implements OnInit, OnChanges {
 				this.isLoading = false;
 			}
 		});
+	}
+
+	private processFilter() {
+		if (this.filterUrl !== this.previousFilterUrl) {
+			this.ridesListService.clearRides();
+			this.page = 0;
+		}
 	}
 
 	public ridesExist(): boolean {

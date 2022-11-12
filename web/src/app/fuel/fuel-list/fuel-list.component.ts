@@ -17,10 +17,13 @@ import { Fuel } from 'src/shared/models/fuel.model';
 })
 export class FuelListComponent implements OnInit, OnChanges {
 	@Input() public filterUrl: string = '';
+	private previousFilterUrl: string = '';
 
 	public isLoading: boolean = true;
+
 	public error: Error = new Error();
-	public page: number = 0;
+	private page: number = 0;
+
 	public fuelList: Fuel[] = [];
 
 	constructor(
@@ -45,6 +48,7 @@ export class FuelListComponent implements OnInit, OnChanges {
 			false,
 			'There has been an error while trying to load the fuel'
 		);
+		this.processFilter();
 		this.isLoading = true;
 		this.fuelService.getFuels(this.page, this.filterUrl).subscribe({
 			next: result => {
@@ -56,6 +60,13 @@ export class FuelListComponent implements OnInit, OnChanges {
 				this.isLoading = false;
 			}
 		});
+	}
+
+	private processFilter() {
+		if (this.filterUrl !== this.previousFilterUrl) {
+			this.fuelListService.clearFuel();
+			this.page = 0;
+		}
 	}
 
 	public fuelExist(): boolean {

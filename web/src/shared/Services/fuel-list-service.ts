@@ -26,6 +26,11 @@ export class FuelListService {
 		this.fuelSubject.next(this.fuelList);
 	}
 
+	clearFuel(): void {
+		this.fuelList = [];
+		this.fuelSubject.next(this.fuelList);
+	}
+
 	addFuel(fuel: Fuel): void {
 		this.fuelList.push(fuel);
 		this.fuelSubject.next(this.fuelList);
