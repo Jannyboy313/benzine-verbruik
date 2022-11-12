@@ -21,8 +21,8 @@ jobs:
         run: |
           echo "TAG_VERSION=$(jq -r '.[0].name' tags.json)" >> $GITHUB_ENV
       -
-        name: Checkout repo
-        uses: actions/checkout@main
+        name: Actionc checkout
+        uses: actions/checkout@v2
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
