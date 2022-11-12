@@ -23,7 +23,7 @@ jobs:
       - 
         name: Saving latest tag
         id: vars 
-        run: echo "::set-output name=tagversion::$(cat tags.json | jq -r '.[0].name\')"
+        run: echo "::set-output name=tagversion::$(cat tags.json | jq -r '.[0].name')"
       -
         name: Outputting tag
         run: echo ${{ steps.vars.tagversion }}
