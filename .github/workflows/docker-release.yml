@@ -26,17 +26,13 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       -
-        name: Get the version
-        id: vars
-        run: echo "{tag}={$GITHUB_REF:10}" >> $GITHUB_OUTPUT
-      -
         name: Build and push tagged web image
         uses: docker/build-push-action@v3
         with:
           context: ./web
           file: Dockerfile.webProd
           push: true
-          tags: jannyboy313/web-benzine-verbruik:latest,jannyboy313/web-benzine-verbruik:${{steps.vars.output.tag}}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:${{ github.event.release.tag_name }}
       -
         name: Build and push tagged api image
         uses: docker/build-push-action@v3
@@ -44,4 +40,4 @@ jobs:
           context: ./api
           file: Dockerfile.apiProd
           push: true
-          tags: jannyboy313/api-benzine-verbruik:latest,jannyboy313/api-benzine-verbruik:${{steps.vars.output.tag}}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:${{ github.event.release.tag_name }}
