@@ -3,7 +3,7 @@ on:
   release:
     types: [ published ]
   workflow_dispatch:
-    
+
 jobs:
   build:
     name: Build
@@ -22,7 +22,7 @@ jobs:
       -
         name: Get the version
         id: vars
-        run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+        run: echo "{tag}={$GITHUB_REF:10}" >> $GITHUB_OUTPUT
       -
         name: Build tagged web image
         working-directory: web
