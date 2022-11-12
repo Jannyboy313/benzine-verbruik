@@ -23,7 +23,7 @@ export class FuelListComponent implements OnInit, OnChanges {
 
 	public error: Error = new Error();
 	private page: number = 0;
-	
+
 	public fuelList: Fuel[] = [];
 
 	constructor(

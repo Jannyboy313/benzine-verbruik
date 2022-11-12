@@ -39,7 +39,7 @@ h5 {
 			}
 		}
 
-		section:not(:nth-last-of-type(-n+2)) {
+		section:not(:nth-last-of-type(-n + 2)) {
 			margin-bottom: 10px;
 		}
 	}
@@ -51,7 +51,7 @@ hr {
 	color: $primary-color;
 	background-color: #eceeef;
 	width: 100%;
-	margin:  5px 0 15px 0;
+	margin: 5px 0 15px 0;
 }
 
 @media only screen and (min-width: 576px) {
