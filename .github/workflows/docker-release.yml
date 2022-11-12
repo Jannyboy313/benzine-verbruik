@@ -24,7 +24,7 @@ jobs:
         run: echo "TAG_VERSION=$(jq -r '.[0].name' tags.json)" >> $GITHUB_OUTPUT
       -
         name: Outputting tag
-        run: echo ${{ steps.vars.tagversion }}
+        run: echo ${{ steps.vars.TAG_VERSION }}
       -
         name: Checkout repo
         uses: actions/checkout@main
