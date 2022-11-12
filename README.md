@@ -75,6 +75,12 @@ PORT=3000
 CORS_ORIGIN=http://web:4200
 ```
 
+## Commands
+There are a few commands for linting and formatting within the project. <br />
+Be sure to be in the parent folder of api and web. <br>
+ - Use the command ```npm run eslint``` for **linting** the whole project. <br />
+ - Use the command ```npm run format``` for **formatting** the whole project. <br />
+
 ## Deployment
 
 Be sure to have a mongo database setup on you're own server or from mongo atlas. <br />
