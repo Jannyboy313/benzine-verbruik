@@ -107,24 +107,16 @@ Don't forget to add and update the ENV file!
 ### With docker
 
 U can be lazy and just copy everything and use `docker compose up` but I strongly advice against it. <br />
-I would suggest following these steps:
+Every release has a docker image of the frontend and backend separately that can be used.
 
 #### Frontend
-
--   Navigate into the web folder
--   Run `ng build`
--   Create a docker file -> from NGINX
--   Copy the angular dist into the image
--   Put the image on the server
+[jannyboy313/web-benzine-verbruik](https://hub.docker.com/repository/docker/jannyboy313/web-benzine-verbruik)
 
 #### Backend
+[jannyboy313/web-benzine-verbruik](https://hub.docker.com/repository/docker/jannyboy313/api-benzine-verbruik)
 
--   Create a docker file -> from node:16.14.2-alpine3.15
--   Copy the api folder into that image
--   Add the `npm install` and `npm run start` commands.
--   Put the image on the server
-
-Now you can put these images in a swarm by a stack.yml file or run them manually/docker compose.
+Now you can put these images in a swarm by a stack.yml file or run them manually/docker compose. <br />
+Be sure to include the environment variables and a mongodb instance for the backend.
 
 ## Documentation
 
