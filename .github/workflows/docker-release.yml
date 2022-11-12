@@ -40,7 +40,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./web
-          file: Dockerfile.webProd
+          file: /web/Dockerfile.webProd
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:${{ env.TAG_VERSION }}
       -
@@ -48,6 +48,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./api
-          file: Dockerfile.apiProd
+          file: /api/Dockerfile.apiProd
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:${{ env.TAG_VERSION }}
