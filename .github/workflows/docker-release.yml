@@ -18,11 +18,15 @@ jobs:
         run: sudo apt install jq -y
       -
         name: Get latest tag
-        id: vars
-        run: echo "tagversion=$(curl -sL https://api.github.com/repos/jannyboy313/benzine-verbruik/tags |jq -r ".[0].name")\n" >> $GITHUB_OUTPUT
+        run: | 
+          curl --location --request GET 'https://api.github.com/repos/jannyboy313/benzine-verbruik/tags' -o tags.json
+      - 
+        name: Saving latest tag
+        id: vars 
+        run: echo "::set-output name=tagversion::$(cat tags.json | jq -r '.[0].name\')"
       -
-        name: Output latest tag
-        run: echo ${{steps.vars.output.tagversion}}
+        name: Outputting tag
+        run: echo ${{ steps.vars.tagversion }}
       -
         name: Checkout repo
         uses: actions/checkout@main
@@ -48,7 +52,7 @@ jobs:
           tags: ${{ env.USERNAME }}/web-benzine-verbruik:latest,${{ env.USERNAME }}/web-benzine-verbruik:${{ env.IMAGE_TAG }}
           build-args: |
             USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
-            IMAGE_TAG=${{ github.event.release.tag_name }}
+            IMAGE_TAG=${{ steps.vars.tagversion }}
       -
         name: Build and push tagged api image
         uses: docker/build-push-action@v3
@@ -59,4 +63,4 @@ jobs:
           tags: ${{ env.USERNAME }}/api-benzine-verbruik:latest,${{ env.USERNAME }}/api-benzine-verbruik:${{ env.IMAGE_TAG }}
           build-args: |
             USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
-            IMAGE_TAG=${{ github.event.release.tag_name }}
+            IMAGE_TAG=${{ steps.vars.tagversion }}
