@@ -49,7 +49,9 @@ If needed use:
 docker compose down
 ```
 
-To remove all containers.
+To remove all containers. <br/>
+**This will also delete all data from the database!** <br />
+This is done on purpose for faster clean environments for developing.
 
 ## Credentials
 
