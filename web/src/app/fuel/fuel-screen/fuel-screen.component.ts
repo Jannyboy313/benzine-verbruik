@@ -22,12 +22,12 @@ export class FuelScreenComponent implements OnInit {
 	}
 
 	private createFilters(): void {
-		this.filters.push(new Filter('createdAt', 'Sorting on created'));
-		this.filters.push(new Filter('updatedAt', 'Sorting on last updated'));
-		this.filters.push(new Filter('litre', 'Sorting on litre'));
-		this.filters.push(new Filter('price', 'Sorting on price'));
-		this.filters.push(new Filter('gas_station', 'Sorting on gas stations'));
-		this.filters.push(new Filter('location', 'Sorting on locations'));
+		this.filters.push(new Filter('createdAt', 'Aangemaakt'));
+		this.filters.push(new Filter('updatedAt', 'Laatst gewijzigd'));
+		this.filters.push(new Filter('litre', 'Liter'));
+		this.filters.push(new Filter('price', 'Prijs'));
+		this.filters.push(new Filter('gas_station', 'Tankstations'));
+		this.filters.push(new Filter('location', 'Locaties'));
 	}
 
 	public ngOnInit(): void {}

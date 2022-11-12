@@ -26,6 +26,11 @@ export class RidesListService {
 		this.ridesSubject.next(this.rides);
 	}
 
+	clearRides(): void {
+		this.rides = [];
+		this.ridesSubject.next(this.rides);
+	}
+
 	addRide(ride: Ride): void {
 		this.rides.push(ride);
 		this.ridesSubject.next(this.rides);
