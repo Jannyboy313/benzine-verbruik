@@ -49,10 +49,7 @@ jobs:
           context: ./web
           file: Dockerfile.webProd
           push: true
-          tags: ${{ env.USERNAME }}/web-benzine-verbruik:latest,${{ env.USERNAME }}/web-benzine-verbruik:${{ env.IMAGE_TAG }}
-          build-args: |
-            USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
-            IMAGE_TAG=${{ steps.vars.tagversion }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/web-benzine-verbruik:${{ steps.vars.tagversion }}
       -
         name: Build and push tagged api image
         uses: docker/build-push-action@v3
@@ -60,7 +57,4 @@ jobs:
           context: ./api
           file: Dockerfile.apiProd
           push: true
-          tags: ${{ env.USERNAME }}/api-benzine-verbruik:latest,${{ env.USERNAME }}/api-benzine-verbruik:${{ env.IMAGE_TAG }}
-          build-args: |
-            USERNAME=${{ secrets.DOCKER_HUB_USERNAME }}
-            IMAGE_TAG=${{ steps.vars.tagversion }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:latest,${{ secrets.DOCKER_HUB_USERNAME }}/api-benzine-verbruik:${{ steps.vars.tagversion }}
