@@ -26,6 +26,12 @@ npm install
 After that you have to create an ENV file based on the example in both the web & api folder. <br />
 Without the env file the api will not work and the web will not function properly. <br />
 
+For using linting and formatting run:
+```bash
+npm install
+```
+Inside the parent folder of api and web.
+
 ## Running
 
 To run the project you have to navigate into the "docker" folder. <br />
@@ -43,7 +49,9 @@ If needed use:
 docker compose down
 ```
 
-To remove all containers.
+To remove all containers. <br/>
+**This will also delete all data from the database!** <br />
+This is done on purpose for faster clean environments for developing.
 
 ## Credentials
 
@@ -67,6 +75,12 @@ PORT=3000
 CORS_ORIGIN=http://web:4200
 ```
 
+## Commands
+There are a few commands for linting and formatting within the project. <br />
+Be sure to be in the parent folder of api and web. <br>
+ - Use the command ```npm run eslint``` for **linting** the whole project. <br />
+ - Use the command ```npm run format``` for **formatting** the whole project. <br />
+
 ## Deployment
 
 Be sure to have a mongo database setup on you're own server or from mongo atlas. <br />
@@ -77,8 +91,8 @@ If you want to deploy this on you're server u have to follow these steps.
 #### Frontend
 
 -   Navigate into the web folder
--   Run `ng build`
--   Upload "dist" of the web folder to you're server
+-   Run `npm run build --prod`
+-   Upload "dist/benzine-prod" of the web folder to you're server
 -   Configure you're nginx or apache
 
 #### Backend
@@ -93,24 +107,16 @@ Don't forget to add and update the ENV file!
 ### With docker
 
 U can be lazy and just copy everything and use `docker compose up` but I strongly advice against it. <br />
-I would suggest following these steps:
+Every release has a docker image of the frontend and backend separately that can be used.
 
 #### Frontend
-
--   Navigate into the web folder
--   Run `ng build`
--   Create a docker file -> from NGINX
--   Copy the angular dist into the image
--   Put the image on the server
+[jannyboy313/web-benzine-verbruik](https://hub.docker.com/repository/docker/jannyboy313/web-benzine-verbruik)
 
 #### Backend
+[jannyboy313/web-benzine-verbruik](https://hub.docker.com/repository/docker/jannyboy313/api-benzine-verbruik)
 
--   Create a docker file -> from node:16.14.2-alpine3.15
--   Copy the api folder into that image
--   Add the `npm install` and `npm run start` commands.
--   Put the image on the server
-
-Now you can put these images in a swarm by a stack.yml file or run them manually/docker compose.
+Now you can put these images in a swarm by a stack.yml file or run them manually/docker compose. <br />
+Be sure to include the environment variables and a mongodb instance for the backend.
 
 ## Documentation
 
