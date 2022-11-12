@@ -20,8 +20,10 @@ export class FuelListComponent implements OnInit, OnChanges {
 	private previousFilterUrl: string = '';
 
 	public isLoading: boolean = true;
+
 	public error: Error = new Error();
 	private page: number = 0;
+	
 	public fuelList: Fuel[] = [];
 
 	constructor(
