@@ -17,9 +17,6 @@ jobs:
         name: Get tags
         run: curl https://api.github.com/repos/jannyboy313/benzine-verbruik/tags > tags.json
       -
-        name: test
-        run: cat tags.json
-      -
         name: save latest tag
         id: vars
         run: echo "TAG_VERSION=$(jq -r '.[0].name' tags.json)" >> $GITHUB_OUTPUT
